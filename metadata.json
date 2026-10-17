@@ -1,0 +1,6 @@
+{
+  "name": "دیجی گیم | نرم‌افزار هوشمند مدیریت گیم‌نت و کلوپ‌های VIP",
+  "description": "سامانه مدرن و یکپارچه مدیریت ایستگاه‌های بازی PS5، سیستم‌های گیمینگ، بوفه، رزرو آنلاین و باشگاه مشتریان گیم‌نت با کنترل هوشمند برق و زمان.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

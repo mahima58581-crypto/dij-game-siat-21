@@ -1,0 +1,343 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    border-color: rgba(226, 232, 240, 0.15);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* =========================================================
+   LIGHT THEME: Complete, High-Contrast, Pristine Styling
+   ========================================================= */
+:root[data-theme="light"],
+[data-theme="light"],
+html.light body,
+.light-theme {
+  background-color: #f1f5fa !important;
+  color: #0f172a !important;
+}
+
+/* Main app root container in light mode */
+[data-theme="light"] .min-h-screen,
+.light-theme .min-h-screen {
+  background-color: #f1f5fa !important;
+  color: #0f172a !important;
+}
+
+/* Background replacements in light mode */
+[data-theme="light"] .bg-\[\#050a14\],
+[data-theme="light"] .bg-\[\#070b14\],
+[data-theme="light"] .bg-\[\#040810\],
+[data-theme="light"] .bg-\[\#070e1c\],
+.light-theme .bg-\[\#050a14\],
+.light-theme .bg-\[\#070b14\],
+.light-theme .bg-\[\#040810\],
+.light-theme .bg-\[\#070e1c\] {
+  background-color: #f1f5fa !important;
+}
+
+/* All Card surfaces in light mode */
+[data-theme="light"] .bg-\[\#0a1426\],
+[data-theme="light"] .bg-\[\#0a1324\],
+[data-theme="light"] .bg-\[\#0b1426\],
+[data-theme="light"] .bg-\[\#0b1325\],
+[data-theme="light"] .bg-\[\#0b1324\],
+[data-theme="light"] .bg-\[\#0e1930\],
+[data-theme="light"] .bg-\[\#091222\],
+[data-theme="light"] .bg-\[\#091122\],
+[data-theme="light"] .bg-\[\#081120\],
+[data-theme="light"] .bg-\[\#0c1830\],
+[data-theme="light"] .bg-\[\#0d1830\],
+[data-theme="light"] .bg-\[\#0e1d38\],
+.light-theme .bg-\[\#0a1426\],
+.light-theme .bg-\[\#0a1324\],
+.light-theme .bg-\[\#0b1426\],
+.light-theme .bg-\[\#0b1325\],
+.light-theme .bg-\[\#0b1324\],
+.light-theme .bg-\[\#0e1930\],
+.light-theme .bg-\[\#091222\],
+.light-theme .bg-\[\#091122\],
+.light-theme .bg-\[\#081120\],
+.light-theme .bg-\[\#0c1830\],
+.light-theme .bg-\[\#0d1830\],
+.light-theme .bg-\[\#0e1d38\] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Card hover background in light mode */
+[data-theme="light"] .hover\:bg-\[\#0d1830\]:hover,
+.light-theme .hover\:bg-\[\#0d1830\]:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Specific Feature 2 (Smart Relay Box) gradient in light mode */
+[data-theme="light"] .from-\[\#0c1a33\].to-\[\#081224\],
+.light-theme .from-\[\#0c1a33\].to-\[\#081224\] {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Specific Feature 6 (Tournament Banner) gradient in light mode */
+[data-theme="light"] .from-emerald-950\/60,
+.light-theme .from-emerald-950\/60 {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #eff6ff 100%) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 6px 25px -4px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Specific ROI Calculator box gradient in light mode */
+[data-theme="light"] #roi-calculator > div,
+.light-theme #roi-calculator > div {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Specific Pricing Popular Card gradient in light mode */
+[data-theme="light"] .from-\[\#0f233f\].to-\[\#0a1529\],
+.light-theme .from-\[\#0f233f\].to-\[\#0a1529\] {
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 12px 35px -4px rgba(16, 185, 129, 0.16) !important;
+}
+
+/* Specific Downloads Primary Server Card gradient in light mode */
+[data-theme="light"] .from-\[\#0c1c38\].to-\[\#081226\],
+.light-theme .from-\[\#0c1c38\].to-\[\#081226\] {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%) !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 8px 30px -4px rgba(16, 185, 129, 0.14) !important;
+}
+
+/* Specific Certification Badge in About section */
+[data-theme="light"] .from-emerald-950\/80.to-\[\#0e1d38\],
+.light-theme .from-emerald-950\/80.to-\[\#0e1d38\] {
+  background: linear-gradient(90deg, #f0fdf4 0%, #f8fafc 100%) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  color: #1e293b !important;
+}
+
+/* Header brand VIP badge & wordmark in light mode */
+[data-theme="light"] header a span.bg-emerald-950\/80,
+.light-theme header a span.bg-emerald-950\/80 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+}
+
+[data-theme="light"] header a .text-slate-400,
+.light-theme header a .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Text colors in light mode */
+[data-theme="light"] .text-white,
+.light-theme .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-slate-100,
+[data-theme="light"] .text-slate-200,
+.light-theme .text-slate-100,
+.light-theme .text-slate-200 {
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .text-slate-300,
+[data-theme="light"] .text-slate-400,
+.light-theme .text-slate-300,
+.light-theme .text-slate-400 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .text-slate-500,
+.light-theme .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Emerald accents high-contrast in light mode */
+[data-theme="light"] .text-emerald-400,
+.light-theme .text-emerald-400 {
+  color: #059669 !important;
+}
+
+[data-theme="light"] .bg-emerald-500\/10,
+.light-theme .bg-emerald-500\/10 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  color: #047857 !important;
+}
+
+/* Borders in light mode */
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-700,
+.light-theme .border-slate-800,
+.light-theme .border-slate-700 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Inner sub-panels in light mode */
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-900\/60,
+[data-theme="light"] .bg-slate-900\/70,
+[data-theme="light"] .bg-slate-900\/80,
+[data-theme="light"] .bg-slate-900\/90,
+.light-theme .bg-slate-900,
+.light-theme .bg-slate-950,
+.light-theme .bg-slate-900\/60,
+.light-theme .bg-slate-900\/70,
+.light-theme .bg-slate-900\/80,
+.light-theme .bg-slate-900\/90 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .bg-slate-800,
+[data-theme="light"] .bg-slate-800\/80,
+[data-theme="light"] .bg-slate-800\/90,
+.light-theme .bg-slate-800,
+.light-theme .bg-slate-800\/80,
+.light-theme .bg-slate-800\/90 {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Footer in light mode */
+[data-theme="light"] footer,
+.light-theme footer {
+  background-color: #ffffff !important;
+  border-top-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+/* Inputs in light mode */
+[data-theme="light"] input,
+[data-theme="light"] select,
+.light-theme input,
+.light-theme select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* =========================================================
+   ANIMATIONS & DYNAMIC LIVING EFFECTS
+   ========================================================= */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.2deg);
+  }
+}
+
+.animate-float {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 38px rgba(16, 185, 129, 0.55);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slowSpin 25s linear infinite;
+}
+
+@keyframes radarSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar {
+  animation: radarSweep 4s linear infinite;
+}
+
+/* Card hover lift effect */
+.card-hover-lift {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-vazir {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+/* Glow effects */
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.35);
+}
+
+.glow-emerald-sm {
+  box-shadow: 0 0 15px -2px rgba(16, 185, 129, 0.3);
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070d1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+.light-theme ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.light-theme ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}

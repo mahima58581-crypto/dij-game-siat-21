@@ -1,0 +1,247 @@
+/* ===================================================
+   CYBERPUNK VIP GAMING BACK TO TOP COMPONENT
+   DIGI-GAME EXCLUSIVE EDITION
+   =================================================== */
+
+.back-to-top {
+  --green: #39ff88;
+  --green-glow: rgba(57, 255, 136, 0.45);
+  --green-soft: rgba(57, 255, 136, 0.12);
+  --dark-chassis: #050d18;
+
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(circle at 50% 20%, #0d2847 0%, #07172b 55%, #030a13 100%);
+  color: var(--green);
+
+  border: 1.5px solid rgba(57, 255, 136, 0.55);
+  border-radius: 19px;
+
+  cursor: pointer;
+  z-index: 9999;
+  isolation: isolate;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px) scale(0.85);
+
+  box-shadow:
+    0 0 16px rgba(57, 255, 136, 0.18),
+    0 14px 35px rgba(0, 0, 0, 0.7),
+    inset 0 0 16px rgba(57, 255, 136, 0.08);
+
+  transition:
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Visibility State */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+
+
+/* Circular SVG Scroll Progress HUD */
+.back-to-top__progress {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.back-to-top__progress-track {
+  fill: none;
+  stroke: rgba(57, 255, 136, 0.14);
+  stroke-width: 2.2;
+}
+
+.back-to-top__progress-fill {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(57, 255, 136, 0.8));
+  transition: stroke-dashoffset 0.12s linear;
+}
+
+/* Holographic Laser Shine */
+.back-to-top__shine {
+  position: absolute;
+  z-index: -1;
+  top: -70%;
+  left: -60%;
+  width: 40%;
+  height: 240%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(57, 255, 136, 0.28),
+    transparent
+  );
+  transform: rotate(28deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.back-to-top:hover .back-to-top__shine {
+  left: 130%;
+}
+
+/* Center Content & Rocket Icon */
+.back-to-top__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding-top: 3px;
+  z-index: 2;
+}
+
+.back-to-top__rocket {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.back-to-top__icon {
+  width: 20px;
+  height: 20px;
+  color: var(--green);
+  filter: drop-shadow(0 0 6px rgba(57, 255, 136, 0.6));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Cyber Rocket Exhaust Flare */
+.back-to-top__flame {
+  position: absolute;
+  bottom: -4px;
+  width: 8px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.6;
+  filter: blur(1.5px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.back-to-top__percent {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+  color: #d8ffea;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(57, 255, 136, 0.65);
+  transition: color 0.3s ease;
+}
+
+/* HUD Corner Brackets */
+.back-to-top__hud-tl,
+.back-to-top__hud-br {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: rgba(57, 255, 136, 0.7);
+  pointer-events: none;
+}
+
+.back-to-top__hud-tl {
+  top: 6px;
+  right: 6px;
+  border-top: 1.5px solid rgba(57, 255, 136, 0.7);
+  border-right: 1.5px solid rgba(57, 255, 136, 0.7);
+}
+
+.back-to-top__hud-br {
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1.5px solid rgba(57, 255, 136, 0.7);
+  border-left: 1.5px solid rgba(57, 255, 136, 0.7);
+}
+
+/* Hover Dynamics */
+.back-to-top:hover {
+  transform: translateY(-6px) scale(1.05);
+  border-color: var(--green);
+  box-shadow:
+    0 0 25px rgba(57, 255, 136, 0.5),
+    0 0 60px rgba(57, 255, 136, 0.25),
+    0 16px 36px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(57, 255, 136, 0.15);
+}
+
+.back-to-top:hover .back-to-top__rocket {
+  transform: translateY(-3px);
+}
+
+.back-to-top:hover .back-to-top__flame {
+  opacity: 1;
+  transform: scaleY(1.8) translateY(1px);
+}
+
+.back-to-top:active {
+  transform: scale(0.93) translateY(-2px);
+}
+
+/* Light Theme Adaptability */
+[data-theme="light"] .back-to-top {
+  background: radial-gradient(circle at 50% 20%, #ffffff 0%, #eef4fb 70%, #dfeaf5 100%);
+  color: #159c49;
+  border-color: rgba(21, 156, 73, 0.5);
+  box-shadow:
+    0 10px 28px rgba(12, 35, 60, 0.14),
+    0 0 15px rgba(21, 156, 73, 0.2);
+}
+
+[data-theme="light"] .back-to-top__percent {
+  color: #0d4a25;
+  text-shadow: none;
+}
+
+[data-theme="light"] .back-to-top:hover {
+  border-color: #159c49;
+  box-shadow:
+    0 0 25px rgba(21, 156, 73, 0.4),
+    0 16px 36px rgba(12, 35, 60, 0.2);
+}
+
+/* Mobile Dimensions */
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 16px;
+  }
+
+  .back-to-top__icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .back-to-top__percent {
+    font-size: 8px;
+  }
+}

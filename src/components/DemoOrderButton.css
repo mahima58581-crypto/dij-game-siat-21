@@ -1,0 +1,184 @@
+.demo-order-button {
+  --cta-green: #39ff78;
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 42px;
+  height: 42px;
+  padding: 4px 12px;
+  overflow: hidden;
+
+  color: #f4fff7;
+  background: linear-gradient(
+    135deg,
+    #10243b 0%,
+    #071426 65%,
+    #0b1d30 100%
+  );
+
+  border: 1px solid rgba(57, 255, 120, 0.55);
+  border-radius: 11px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(57, 255, 120, 0.08);
+
+  font-family: inherit;
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.demo-order-button:hover {
+  transform: translateY(-3px);
+  border-color: var(--cta-green);
+  box-shadow:
+    0 0 14px rgba(57, 255, 120, 0.32),
+    0 8px 28px rgba(0, 0, 0, 0.3),
+    inset 0 0 18px rgba(57, 255, 120, 0.08);
+}
+
+.demo-order-button:active {
+  transform: scale(0.97);
+}
+
+.demo-order-button:focus-visible {
+  outline: 2px solid var(--cta-green);
+  outline-offset: 4px;
+}
+
+.demo-order-button__shine {
+  position: absolute;
+  z-index: -1;
+  top: -80%;
+  left: -65%;
+  width: 40%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(57, 255, 120, 0.25),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: left 0.6s ease;
+}
+
+.demo-order-button:hover .demo-order-button__shine {
+  left: 130%;
+}
+
+.demo-order-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 26px;
+  height: 26px;
+  color: var(--cta-green);
+
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  border-radius: 7px;
+  background: rgba(57, 255, 120, 0.08);
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.demo-order-button__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.demo-order-button:hover .demo-order-button__icon {
+  color: #071426;
+  background: var(--cta-green);
+  transform: scale(1.05);
+}
+
+.demo-order-button__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  white-space: nowrap;
+}
+
+.demo-order-button__title {
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.demo-order-button__subtitle {
+  color: #9cafc3;
+  font-size: 8.5px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.demo-order-button__arrow {
+  margin-right: 2px;
+  color: var(--cta-green);
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.demo-order-button:hover .demo-order-button__arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Light Theme Adaptability */
+[data-theme="light"] .demo-order-button {
+  color: #102139;
+  background: linear-gradient(135deg, #ffffff, #e8f0f8);
+  border-color: rgba(21, 156, 73, 0.45);
+  box-shadow:
+    0 5px 18px rgba(12, 35, 60, 0.1),
+    inset 0 1px 0 #ffffff;
+}
+
+[data-theme="light"] .demo-order-button:hover {
+  border-color: #159c49;
+  box-shadow:
+    0 0 12px rgba(21, 156, 73, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .demo-order-button__icon {
+  color: #159c49;
+  border-color: rgba(21, 156, 73, 0.3);
+  background: rgba(57, 255, 120, 0.15);
+}
+
+[data-theme="light"] .demo-order-button:hover .demo-order-button__icon {
+  color: #ffffff;
+  background: #159c49;
+}
+
+[data-theme="light"] .demo-order-button__subtitle {
+  color: #53677e;
+}
+
+[data-theme="light"] .demo-order-button__arrow {
+  color: #159c49;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-order-button,
+  .demo-order-button * {
+    transition: none !important;
+  }
+}
