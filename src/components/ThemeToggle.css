@@ -38,6 +38,22 @@
     transform 0.25s ease;
 }
 
+.theme-toggle.is-icon-only {
+  width: 42px;
+  min-width: 42px;
+  max-width: 42px;
+  height: 42px;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+}
+
+.theme-toggle.is-icon-only .theme-toggle__status {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+
 .theme-toggle:hover {
   transform: translateY(-2px);
   border-color: var(--green);

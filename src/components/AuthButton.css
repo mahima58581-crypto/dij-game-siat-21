@@ -36,6 +36,16 @@
     box-shadow 0.3s ease;
 }
 
+.auth-button.is-icon-only {
+  width: 42px;
+  min-width: 42px;
+  max-width: 42px;
+  height: 42px;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+}
+
 .auth-button:hover {
   transform: translateY(-3px);
   border-color: var(--auth-green);

@@ -9,11 +9,15 @@ interface NavbarProps {
   onOpenOrderModal: (planId?: string) => void;
   onOpenAuthModal: () => void;
   onOpenManagementPanel?: () => void;
+  onNavigateToPurchase?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
   onOpenOrderModal, 
-  onOpenAuthModal, 
+  onOpenAuthModal,
+  onNavigateToPurchase,
+  onNavigateToSection,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
@@ -22,16 +26,25 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
         
         {/* Zone 1: Brand Wordmark */}
-        <a href="#" className="flex items-center gap-2.5 shrink-0 group">
+        <a href="#" className="brand-logo-link flex items-center gap-2.5 sm:gap-3 shrink-0 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
             <span className="font-outfit font-black text-slate-950 text-xl tracking-tighter">DG</span>
           </div>
+
           <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5 font-vazir">
-              دیجی‌گیم
-              <span className="text-[10px] font-outfit uppercase tracking-widest text-emerald-400 font-bold bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-500/30">VIP</span>
-            </span>
-            <span className="text-[10px] text-slate-400 font-medium">نرم‌افزار جامع گیم‌نت</span>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="brand-title text-lg sm:text-xl font-black tracking-tight font-vazir">
+                دیجی‌گیم
+              </span>
+              <span className="brand-vip-badge inline-flex items-center gap-1 text-[9.5px] font-outfit uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded-full border">
+                <span className="brand-vip-dot" />
+                VIP
+              </span>
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] text-slate-400 font-medium">
+              <span className="brand-status-dot" />
+              <span>نرم‌افزار جامع گیم‌نت</span>
+            </div>
           </div>
         </a>
 
@@ -39,38 +52,69 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Zone 2: Navigation Links */}
         <nav className="hidden xl:flex items-center nav-menu">
-          <a href="#special-features" className="nav-link">
+          <button
+            onClick={() => onNavigateToSection?.('special-features')}
+            className="nav-link"
+          >
             <span>01</span>
             ویژگی‌های اپلیکیشن
-          </a>
-          <a href="#pricing" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('pricing')}
+            className="nav-link"
+          >
             <span>02</span>
             تعرفه
-          </a>
-          <a href="#game-clubs" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('game-clubs')}
+            className="nav-link"
+          >
             <span>03</span>
             گیم‌نت‌ها
-          </a>
-          <a href="#installers" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('installers')}
+            className="nav-link"
+          >
             <span>04</span>
             نصاب‌ها
-          </a>
-          <a href="#blog" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('blog')}
+            className="nav-link"
+          >
             <span>05</span>
             بلاگ و مقالات
-          </a>
-          <a href="#tutorials" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('tutorials')}
+            className="nav-link"
+          >
             <span>06</span>
             آموزش
-          </a>
-          <a href="#downloads" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('downloads')}
+            className="nav-link"
+          >
             <span>07</span>
             دانلود
-          </a>
-          <a href="#about" className="nav-link">
+          </button>
+          <button
+            onClick={() => onNavigateToSection?.('about')}
+            className="nav-link"
+          >
             <span>08</span>
             درباره ما
-          </a>
+          </button>
+          <button
+            onClick={onNavigateToPurchase}
+            className="nav-link"
+          >
+            <span>09</span>
+            خرید
+          </button>
         </nav>
 
         {/* Zone 3: Interactive Controls & Portals */}
@@ -106,13 +150,14 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="xl:hidden bg-[#070e1c] border-b border-slate-800 p-4 space-y-3 text-xs font-bold">
           <div className="grid grid-cols-2 gap-2">
-            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">امکانات</a>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">تعرفه</a>
-            <a href="#game-clubs" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">گیم‌نت‌ها</a>
-            <a href="#installers" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">نصاب‌ها</a>
-            <a href="#blog" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">بلاگ و مقالات</a>
-            <a href="#tutorials" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">آموزش</a>
-            <a href="#downloads" onClick={() => setMobileMenuOpen(false)} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">دانلود</a>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('special-features'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">امکانات</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('pricing'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">تعرفه</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('game-clubs'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">گیم‌نت‌ها</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('installers'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">نصاب‌ها</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('blog'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">بلاگ و مقالات</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('tutorials'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">آموزش</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToSection?.('downloads'); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">دانلود</button>
+            <button onClick={() => { setMobileMenuOpen(false); onNavigateToPurchase?.(); }} className="p-2.5 bg-slate-900 rounded-lg text-slate-300 hover:text-white">خرید</button>
           </div>
 
           <div className="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2 items-center justify-between">

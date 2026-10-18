@@ -20,7 +20,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className={`theme-toggle ${darkMode ? "is-dark" : "is-light"}`}
+      className={`theme-toggle is-icon-only ${darkMode ? "is-dark" : "is-light"}`}
       onClick={toggleTheme}
       aria-label={darkMode ? "فعال کردن لایت مود" : "فعال کردن دارک مود"}
       title={darkMode ? "Light Mode" : "Dark Mode"}
@@ -39,10 +39,6 @@ export default function ThemeToggle() {
             <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
           </svg>
         )}
-      </span>
-
-      <span className="theme-toggle__label">
-        {darkMode ? "DARK MODE" : "LIGHT MODE"}
       </span>
 
       <span className="theme-toggle__status">

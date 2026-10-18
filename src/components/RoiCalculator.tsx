@@ -146,10 +146,14 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenOrderModal }
 
             <button
               onClick={onOpenOrderModal}
-              className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-black py-3.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 transition-all cursor-pointer"
+              type="button"
+              className="cyber-action-btn cyber-action-btn--primary"
             >
+              <span className="cyber-action-btn__shine" />
               <span>جلوگیری از ضرر و خرید دیجی‌گیم</span>
-              <ArrowUpLeft className="w-4 h-4" />
+              <span className="cyber-action-btn__icon">
+                <ArrowUpLeft className="w-4 h-4" />
+              </span>
             </button>
           </div>
 

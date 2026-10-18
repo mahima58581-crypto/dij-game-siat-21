@@ -91,15 +91,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenOrderModal
               {/* Action Button */}
               <div className="pt-6 border-t border-slate-800/80">
                 <button
+                  type="button"
                   onClick={() => onOpenOrderModal(plan.id)}
-                  className={`w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                    plan.popular
-                      ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-500/25'
-                      : 'bg-slate-800 hover:bg-slate-700 text-white'
-                  }`}
+                  className={`cyber-action-btn ${plan.popular ? 'cyber-action-btn--primary' : ''}`}
                 >
+                  <span className="cyber-action-btn__shine" />
                   <span>ثبت سفارش {plan.name}</span>
-                  <ArrowUpLeft className="w-4 h-4" />
+                  <span className="cyber-action-btn__icon">
+                    <ArrowUpLeft className="w-4 h-4" />
+                  </span>
                 </button>
 
                 <div className="text-[11px] text-slate-500 text-center mt-2.5 flex items-center justify-center gap-1">

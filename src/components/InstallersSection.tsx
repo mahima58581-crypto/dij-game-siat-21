@@ -65,11 +65,15 @@ export const InstallersSection: React.FC<InstallersSectionProps> = ({ onRequestI
               </div>
 
               <button
+                type="button"
                 onClick={() => onRequestInstaller(inst.name)}
-                className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="cyber-action-btn"
               >
+                <span className="cyber-action-btn__shine" />
                 <span>درخواست اعزام نصاب به گیم‌نت شما</span>
-                <ArrowUpLeft className="w-3.5 h-3.5" />
+                <span className="cyber-action-btn__icon">
+                  <ArrowUpLeft className="w-3.5 h-3.5" />
+                </span>
               </button>
             </div>
           </div>

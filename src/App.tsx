@@ -17,11 +17,14 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { OrderModal } from './components/OrderModal';
 import { AuthModal } from './components/AuthModal';
+import { PurchasePage } from './components/PurchasePage';
 import BackToTop from './components/BackToTop';
 
 export default function App() {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [showPurchasePage, setShowPurchasePage] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => localStorage.getItem('digigame_user_auth') === 'true');
   const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>('gold');
 
   const handleOpenOrderModal = (planId?: string) => {
@@ -38,22 +41,53 @@ export default function App() {
     }
   };
 
+  const navigateToSection = (sectionId: string) => {
+    setShowPurchasePage(false);
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
+  };
+
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-[#050a14] text-slate-100 flex flex-col font-['Vazirmatn',sans-serif] selection:bg-emerald-500 selection:text-slate-950 transition-colors">
         
-        {/* Navigation Bar */}
-        <Navbar
-          onOpenOrderModal={handleOpenOrderModal}
-          onOpenAuthModal={() => setAuthModalOpen(true)}
-        />
+        {showPurchasePage ? (
+          <>
+            <Navbar
+              onOpenOrderModal={handleOpenOrderModal}
+              onOpenAuthModal={() => setAuthModalOpen(true)}
+              onNavigateToPurchase={() => setShowPurchasePage(true)}
+              onNavigateToSection={navigateToSection}
+            />
+            <main className="flex-1">
+              <PurchasePage
+                onOpenAuth={() => setAuthModalOpen(true)}
+              />
+            </main>
+            <Footer onOpenOrderModal={() => handleOpenOrderModal('gold')} />
+          </>
+        ) : (
+          <>
+            {/* Navigation Bar */}
+            <Navbar
+              onOpenOrderModal={handleOpenOrderModal}
+              onOpenAuthModal={() => setAuthModalOpen(true)}
+              onNavigateToPurchase={() => setShowPurchasePage(true)}
+              onNavigateToSection={navigateToSection}
+            />
 
-        {/* Main Public & Interactive Sections */}
-        <main className="flex-1 space-y-16">
+            {/* Main Public & Interactive Sections */}
+            <main className="flex-1 space-y-16">
           {/* Hero Section based on reference image */}
           <HeroSection
             onOpenOrderModal={() => handleOpenOrderModal('gold')}
             onScrollToDemo={handleScrollToDemo}
+            onOpenAuthModal={() => setAuthModalOpen(true)}
+            isLoggedIn={isLoggedIn}
           />
 
           {/* ویژگی‌های اپلیکیشن مدیریتی گیم‌نت */}
@@ -107,10 +141,17 @@ export default function App() {
         <AuthModal
           isOpen={authModalOpen}
           onClose={() => setAuthModalOpen(false)}
+          onSuccessLogin={() => {
+            setIsLoggedIn(true);
+            localStorage.setItem('digigame_user_auth', 'true');
+          }}
         />
 
         {/* Back To Top Floating Cyber Button */}
         <BackToTop />
+
+          </>
+        )}
 
       </div>
     </ThemeProvider>
