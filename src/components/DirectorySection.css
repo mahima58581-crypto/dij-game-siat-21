@@ -1,0 +1,999 @@
+/* ===================================================
+   UNIFIED CYBERPUNK HUD PARTNER CLUBS DIRECTORY
+   DIGI-GAME EXCLUSIVE SIGNATURE EMERALD EDITION
+   MATCHES PRICING & SPECIAL FEATURES DESIGN SYSTEM
+   =================================================== */
+
+.directory-cyber-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.directory-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.directory-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* Header Chip & Hologram Title */
+.directory-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(6, 18, 28, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(57, 255, 120, 0.12);
+}
+
+.directory-chip-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(57, 255, 120, 0.18);
+  border: 1px solid #39ff78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.directory-chip-radar {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: directoryBeacon 1.8s infinite ease-in-out;
+}
+
+@keyframes directoryBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.directory-section-title {
+  color: #ffffff;
+}
+
+.directory-title-gradient {
+  background: linear-gradient(135deg, #ffffff 25%, #39ff78 65%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.25));
+}
+
+/* ===================================================
+   CYBER FILTER DECK & SEARCH WRAPPER
+   =================================================== */
+.directory-filter-deck {
+  background: linear-gradient(145deg, rgba(8, 18, 32, 0.9) 0%, rgba(5, 12, 22, 0.95) 100%);
+  border: 1px solid rgba(57, 255, 120, 0.22);
+  border-radius: 22px;
+  padding: 14px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 12px 30px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* City Filter Buttons Scrollable List */
+.directory-cities-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 2px 0;
+}
+
+.directory-cities-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.directory-city-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(4, 9, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.directory-city-btn:hover {
+  color: #ffffff;
+  border-color: rgba(57, 255, 120, 0.4);
+  background: rgba(57, 255, 120, 0.08);
+  transform: translateY(-1px);
+}
+
+.directory-city-btn.is-active {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  font-weight: 900;
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.45);
+  transform: translateY(-1px);
+}
+
+.city-active-beacon {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #031508;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+/* Search Box Container */
+.directory-search-wrapper {
+  position: relative;
+  min-width: 260px;
+  flex: 1;
+  max-width: 380px;
+}
+
+.directory-search-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #39ff78;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.directory-search-input {
+  width: 100%;
+  background: rgba(4, 9, 16, 0.7);
+  border: 1px solid rgba(57, 255, 120, 0.22);
+  border-radius: 14px;
+  padding: 10px 42px 10px 36px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.directory-search-input:focus {
+  border-color: #39ff78;
+  background: rgba(4, 9, 16, 0.95);
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.25);
+}
+
+.directory-search-input::placeholder {
+  color: #64748b;
+}
+
+.directory-search-clear {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.directory-search-clear:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Meta Count Strip */
+.directory-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.directory-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(6, 18, 28, 0.6);
+  border: 1px solid rgba(57, 255, 120, 0.15);
+  border-radius: 20px;
+  padding: 5px 14px;
+  backdrop-filter: blur(8px);
+}
+
+/* ===================================================
+   CYBER CARDS GRID
+   =================================================== */
+.directory-cyber-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .directory-cyber-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .directory-cyber-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ===================================================
+   DIRECTORY CYBER CARD CHASSIS
+   =================================================== */
+.directory-cyber-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  border-radius: 26px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Mouse-tracking Spotlight Glow */
+.directory-cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.directory-cyber-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Hover Elevation */
+.directory-cyber-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.28),
+    0 0 60px -15px rgba(0, 240, 255, 0.15),
+    inset 0 0 25px rgba(57, 255, 120, 0.04);
+}
+
+/* Glowing Flowing Top Border Beam */
+.directory-cyber-card .cyber-card-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 4;
+}
+
+.directory-cyber-card:hover .cyber-card-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Holographic Laser Sweep */
+.directory-cyber-card .cyber-card-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 26px;
+  z-index: 3;
+}
+
+.directory-cyber-card .cyber-card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.15) 45%,
+    rgba(0, 240, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.directory-cyber-card:hover .cyber-card-shimmer::after {
+  left: 150%;
+}
+
+/* Big Watermark Number */
+.directory-cyber-card .cyber-card-watermark {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 78px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.035);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.directory-cyber-card:hover .cyber-card-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(4px) scale(1.05);
+}
+
+/* HUD Corner Reticles */
+.directory-cyber-card .card-corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: all 0.35s ease;
+  z-index: 4;
+}
+
+.directory-cyber-card .bracket-tl {
+  top: 9px;
+  right: 9px;
+  border-top: 1.5px solid #39ff78;
+  border-right: 1.5px solid #39ff78;
+  border-top-right-radius: 4px;
+}
+
+.directory-cyber-card .bracket-br {
+  bottom: 9px;
+  left: 9px;
+  border-bottom: 1.5px solid #00f0ff;
+  border-left: 1.5px solid #00f0ff;
+  border-bottom-left-radius: 4px;
+}
+
+.directory-cyber-card:hover .card-corner-bracket {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   CLUB IMAGE POD WITH HUD OVERLAY
+   =================================================== */
+.club-image-pod {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(57, 255, 120, 0.15);
+  z-index: 2;
+}
+
+.club-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.directory-cyber-card:hover .club-image {
+  transform: scale(1.08);
+}
+
+.club-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 9, 16, 0.75) 0%,
+    rgba(4, 9, 16, 0.15) 45%,
+    rgba(4, 9, 16, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+/* Top bar on image */
+.club-image-top-bar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 3;
+}
+
+.club-vip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: rgba(57, 255, 120, 0.9);
+  color: #031508;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 14px rgba(57, 255, 120, 0.6);
+  animation: vipGlowPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes vipGlowPulse {
+  0% { box-shadow: 0 0 8px rgba(57, 255, 120, 0.4); }
+  100% { box-shadow: 0 0 20px rgba(57, 255, 120, 0.8); }
+}
+
+/* Bottom bar on image */
+.club-image-bottom-bar {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  z-index: 3;
+}
+
+.club-city-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(4, 9, 16, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+/* ===================================================
+   CLUB CARD BODY
+   =================================================== */
+.club-card-body {
+  position: relative;
+  padding: 20px 22px 14px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 3;
+}
+
+.club-card-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 17.5px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.directory-cyber-card:hover .club-card-title {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(57, 255, 120, 0.4);
+}
+
+.club-card-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1.6;
+  min-height: 38px;
+}
+
+/* Hardware Telemetry Specs */
+.club-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.club-telemetry-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(4, 9, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.consoles-pill {
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.2);
+}
+
+.pc-pill {
+  color: #39ff78;
+  border-color: rgba(57, 255, 120, 0.2);
+}
+
+.directory-cyber-card:hover .club-telemetry-pill {
+  background: rgba(4, 9, 16, 0.85);
+}
+
+/* Rating & Verified Tag */
+.club-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.club-rating-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.club-verified-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #39ff78;
+  opacity: 0.9;
+}
+
+/* ===================================================
+   CARD FOOTER: DIRECT DIAL CTA & IMPACT CAPSULE
+   =================================================== */
+.club-card-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 22px 20px 22px;
+  z-index: 3;
+}
+
+/* Cyber Dial Button */
+.club-dial-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: rgba(6, 18, 30, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.club-dial-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 25px rgba(57, 255, 120, 0.6);
+  transform: translateY(-2px);
+}
+
+.club-dial-btn:hover .club-call-label {
+  color: #031508;
+}
+
+.club-dial-btn:hover svg {
+  color: #031508;
+}
+
+.club-phone-text {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.club-call-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-right: auto;
+  transition: color 0.3s ease;
+}
+
+.club-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.club-dial-btn:hover .club-btn-shine {
+  left: 200%;
+}
+
+/* Empty State */
+.directory-empty-state {
+  background: rgba(6, 18, 28, 0.6);
+  border: 1px dashed rgba(57, 255, 120, 0.25);
+  border-radius: 20px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ===================================================
+   LIGHT THEME: CRISP CERAMIC WITH HIGH CONTRAST
+   =================================================== */
+:root[data-theme="light"] .directory-ambient-glow,
+html.light .directory-ambient-glow,
+.light-theme .directory-ambient-glow {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 70%);
+}
+
+:root[data-theme="light"] .directory-chip-badge,
+html.light .directory-chip-badge,
+.light-theme .directory-chip-badge {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .directory-chip-badge span,
+html.light .directory-chip-badge span,
+.light-theme .directory-chip-badge span {
+  color: #047857;
+}
+
+:root[data-theme="light"] .directory-section-title,
+html.light .directory-section-title,
+.light-theme .directory-section-title {
+  color: #0f172a !important;
+}
+
+:root[data-theme="light"] .directory-title-gradient,
+html.light .directory-title-gradient,
+.light-theme .directory-title-gradient {
+  background: linear-gradient(135deg, #047857 0%, #059669 45%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)) !important;
+}
+
+:root[data-theme="light"] .club-vip-badge,
+html.light .club-vip-badge,
+.light-theme .club-vip-badge {
+  background: #059669 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.35) !important;
+}
+
+:root[data-theme="light"] .directory-subtitle,
+html.light .directory-subtitle,
+.light-theme .directory-subtitle {
+  color: #475569;
+}
+
+/* Filter Deck in Light Mode */
+:root[data-theme="light"] .directory-filter-deck,
+html.light .directory-filter-deck,
+.light-theme .directory-filter-deck {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .directory-city-btn,
+html.light .directory-city-btn,
+.light-theme .directory-city-btn {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+:root[data-theme="light"] .directory-city-btn:hover,
+html.light .directory-city-btn:hover,
+.light-theme .directory-city-btn:hover {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #047857;
+}
+
+:root[data-theme="light"] .directory-city-btn.is-active,
+html.light .directory-city-btn.is-active,
+.light-theme .directory-city-btn.is-active {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+}
+
+:root[data-theme="light"] .city-active-beacon,
+html.light .city-active-beacon,
+.light-theme .city-active-beacon {
+  background: #ffffff;
+}
+
+:root[data-theme="light"] .directory-search-input,
+html.light .directory-search-input,
+.light-theme .directory-search-input {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .directory-search-input:focus,
+html.light .directory-search-input:focus,
+.light-theme .directory-search-input:focus {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .directory-search-icon,
+html.light .directory-search-icon,
+.light-theme .directory-search-icon {
+  color: #059669;
+}
+
+:root[data-theme="light"] .directory-meta-pill,
+html.light .directory-meta-pill,
+.light-theme .directory-meta-pill {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #475569;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* Light Mode Cards */
+:root[data-theme="light"] .directory-cyber-card,
+html.light .directory-cyber-card,
+.light-theme .directory-cyber-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .directory-cyber-card:hover,
+html.light .directory-cyber-card:hover,
+.light-theme .directory-cyber-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .directory-cyber-card::before,
+html.light .directory-cyber-card::before,
+.light-theme .directory-cyber-card::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+}
+
+:root[data-theme="light"] .directory-cyber-card .cyber-card-watermark,
+html.light .directory-cyber-card .cyber-card-watermark,
+.light-theme .directory-cyber-card .cyber-card-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .directory-cyber-card:hover .cyber-card-watermark,
+html.light .directory-cyber-card:hover .cyber-card-watermark,
+.light-theme .directory-cyber-card:hover .cyber-card-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .club-card-title,
+html.light .club-card-title,
+.light-theme .club-card-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .directory-cyber-card:hover .club-card-title,
+html.light .directory-cyber-card:hover .club-card-title,
+.light-theme .directory-cyber-card:hover .club-card-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .club-card-address,
+html.light .club-card-address,
+.light-theme .club-card-address {
+  color: #475569;
+}
+
+:root[data-theme="light"] .club-telemetry-pill,
+html.light .club-telemetry-pill,
+.light-theme .club-telemetry-pill {
+  background: #f8fafc;
+}
+
+:root[data-theme="light"] .consoles-pill,
+html.light .consoles-pill,
+.light-theme .consoles-pill {
+  border-color: #bae6fd;
+  color: #0369a1;
+}
+
+:root[data-theme="light"] .pc-pill,
+html.light .pc-pill,
+.light-theme .pc-pill {
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .club-rating-chip,
+html.light .club-rating-chip,
+.light-theme .club-rating-chip {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+:root[data-theme="light"] .club-verified-chip,
+html.light .club-verified-chip,
+.light-theme .club-verified-chip {
+  color: #047857;
+}
+
+:root[data-theme="light"] .club-dial-btn,
+html.light .club-dial-btn,
+.light-theme .club-dial-btn {
+  background: #f8fafc;
+  border-color: #059669;
+  color: #047857;
+}
+
+:root[data-theme="light"] .club-dial-btn:hover,
+html.light .club-dial-btn:hover,
+.light-theme .club-dial-btn:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.35);
+}
+
+:root[data-theme="light"] .club-dial-btn:hover .club-call-label,
+html.light .club-dial-btn:hover .club-call-label,
+.light-theme .club-dial-btn:hover .club-call-label {
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .club-dial-btn:hover svg,
+html.light .club-dial-btn:hover svg,
+.light-theme .club-dial-btn:hover svg {
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .club-call-label,
+html.light .club-call-label,
+.light-theme .club-call-label {
+  color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .directory-filter-deck {
+    padding: 12px;
+  }
+
+  .directory-search-wrapper {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .directory-cyber-card {
+    border-radius: 20px;
+  }
+
+  .club-card-body {
+    padding: 16px 18px 12px 18px;
+  }
+
+  .club-card-footer {
+    padding: 0 18px 16px 18px;
+  }
+}

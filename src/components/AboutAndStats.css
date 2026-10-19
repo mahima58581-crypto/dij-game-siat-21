@@ -1,0 +1,840 @@
+/* ===================================================
+   UNIFIED CYBERPUNK HUD ABOUT & ECOSYSTEM ARCHITECTURE
+   DIGI-GAME EXCLUSIVE SIGNATURE EMERALD EDITION
+   MATCHES PRICING, INSTALLERS & DIRECTORY SYSTEMS
+   =================================================== */
+
+.about-cyber-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.about-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.about-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* Header Chip & Hologram Title */
+.about-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(6, 18, 28, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(57, 255, 120, 0.12);
+}
+
+.about-chip-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(57, 255, 120, 0.18);
+  border: 1px solid #39ff78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-chip-radar {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: aboutBeacon 1.8s infinite ease-in-out;
+}
+
+@keyframes aboutBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.about-section-title {
+  color: #ffffff;
+}
+
+.about-title-gradient {
+  background: linear-gradient(135deg, #ffffff 25%, #39ff78 65%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.25));
+}
+
+/* Master Chassis Container */
+.about-master-chassis {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(150deg, #091322 0%, #060d18 70%, #030810 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.25);
+  border-radius: 32px;
+  padding: 32px 24px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px -15px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 640px) {
+  .about-master-chassis {
+    padding: 44px 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-master-chassis {
+    padding: 56px 48px;
+  }
+}
+
+/* Corner Reticles for Master Chassis */
+.about-master-chassis .card-corner-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 4;
+}
+
+.about-master-chassis .bracket-tl {
+  top: 14px;
+  right: 14px;
+  border-top: 2px solid #39ff78;
+  border-right: 2px solid #39ff78;
+  border-top-right-radius: 6px;
+}
+
+.about-master-chassis .bracket-br {
+  bottom: 14px;
+  left: 14px;
+  border-bottom: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+  border-bottom-left-radius: 6px;
+}
+
+/* ===================================================
+   LEFT COLUMN: BADASS TECH STORY & PILLARS
+   =================================================== */
+.about-story-text {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #cbd5e1;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+.about-story-highlight {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #94a3b8;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+/* Core Architectural Pillars */
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 6px;
+}
+
+@media (min-width: 640px) {
+  .about-pillars-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+.about-pillar-pod {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(4, 9, 16, 0.65);
+  border: 1px solid rgba(57, 255, 120, 0.16);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-pillar-pod:hover {
+  background: rgba(4, 9, 16, 0.9);
+  border-color: rgba(57, 255, 120, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(57, 255, 120, 0.15);
+}
+
+.about-pillar-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 35%, #0d2238 0%, #06111e 65%, #02070e 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.35);
+  color: #39ff78;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(57, 255, 120, 0.15);
+}
+
+.about-pillar-pod:hover .about-pillar-icon-box {
+  border-color: #39ff78;
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.4);
+}
+
+.about-pillar-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.about-pillar-desc {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-top: 2px;
+}
+
+/* ===================================================
+   RIGHT COLUMN: DIGIGAME 3D ESPORTS LOGO SHOWCASE
+   =================================================== */
+.about-logo-showcase-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(150deg, #091322 0%, #060d18 70%, #030810 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.3);
+  border-radius: 26px;
+  padding: 22px 24px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 45px -10px rgba(0, 0, 0, 0.85),
+    0 0 30px rgba(57, 255, 120, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.about-logo-showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.about-logo-showcase-card:hover::before {
+  opacity: 1;
+}
+
+.about-logo-showcase-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.3),
+    0 0 50px -10px rgba(0, 240, 255, 0.2);
+}
+
+.about-logo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  color: #39ff78;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.15);
+}
+
+.about-logo-emblem-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.about-logo-halo-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.26) 0%, rgba(0, 240, 255, 0.18) 45%, transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  animation: haloBreath 4s infinite alternate ease-in-out;
+}
+
+@keyframes haloBreath {
+  0% { transform: scale(0.95); opacity: 0.6; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+.about-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 24px;
+  filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.45)) drop-shadow(0 0 45px rgba(0, 240, 255, 0.3));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.about-logo-showcase-card:hover .about-logo-img {
+  transform: scale(1.04) translateY(-3px);
+  filter: drop-shadow(0 0 35px rgba(57, 255, 120, 0.65)) drop-shadow(0 0 60px rgba(0, 240, 255, 0.45));
+}
+
+.about-logo-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+  z-index: 2;
+}
+
+/* ===================================================
+   RIGHT COLUMN: CYBER METRIC CARDS
+   =================================================== */
+.about-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .about-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.about-cyber-metric-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  border-radius: 22px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 30px -10px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Spotlight Glow */
+.about-cyber-metric-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    340px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.about-cyber-metric-card:hover::before {
+  opacity: 1;
+}
+
+.about-cyber-metric-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 20px 45px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px -5px rgba(57, 255, 120, 0.25);
+}
+
+/* Top Laser Beam on Metric Card */
+.about-cyber-metric-card .cyber-card-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 3;
+}
+
+.about-cyber-metric-card:hover .cyber-card-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Laser Shimmer Sweep */
+.about-cyber-metric-card .cyber-card-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 22px;
+  z-index: 2;
+}
+
+.about-cyber-metric-card .cyber-card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.15) 45%,
+    rgba(0, 240, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about-cyber-metric-card:hover .cyber-card-shimmer::after {
+  left: 150%;
+}
+
+/* Watermark Number */
+.about-cyber-metric-card .cyber-card-watermark {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.035);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.about-cyber-metric-card:hover .cyber-card-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(3px) scale(1.05);
+}
+
+/* Metric Numbers Styling */
+.metric-value-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.metric-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 7px;
+  font-family: 'Outfit', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.tag-emerald {
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  color: #39ff78;
+}
+
+.tag-cyan {
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: #00f0ff;
+}
+
+.tag-gold {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+}
+
+.metric-label-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.metric-desc-text {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* Special High-Tech Warranty Card (Card 4 from screenshot) */
+.about-cyber-metric-card.warranty-card {
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.about-cyber-metric-card.warranty-card:hover {
+  border-color: #fbbf24;
+  box-shadow:
+    0 20px 45px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px -5px rgba(245, 158, 11, 0.28);
+}
+
+/* Master Certification Ribbon Bar */
+.about-cert-ribbon {
+  grid-column: span 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(6, 28, 18, 0.8) 0%, rgba(4, 18, 28, 0.8) 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .about-cert-ribbon {
+    grid-column: span 2;
+  }
+}
+
+.about-cert-text {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+/* ===================================================
+   LIGHT THEME: CRISP CERAMIC WITH HIGH CONTRAST
+   =================================================== */
+:root[data-theme="light"] .about-ambient-glow,
+html.light .about-ambient-glow,
+.light-theme .about-ambient-glow {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 70%);
+}
+
+:root[data-theme="light"] .about-chip-badge,
+html.light .about-chip-badge,
+.light-theme .about-chip-badge {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .about-chip-badge span,
+html.light .about-chip-badge span,
+.light-theme .about-chip-badge span {
+  color: #047857;
+}
+
+:root[data-theme="light"] .about-section-title,
+html.light .about-section-title,
+.light-theme .about-section-title {
+  color: #0f172a !important;
+}
+
+:root[data-theme="light"] .about-title-gradient,
+html.light .about-title-gradient,
+.light-theme .about-title-gradient {
+  background: linear-gradient(135deg, #047857 0%, #059669 45%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)) !important;
+}
+
+/* Master Chassis in Light Mode */
+:root[data-theme="light"] .about-master-chassis,
+html.light .about-master-chassis,
+.light-theme .about-master-chassis {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 14px 40px -8px rgba(15, 23, 42, 0.09);
+}
+
+:root[data-theme="light"] .about-story-text,
+html.light .about-story-text,
+.light-theme .about-story-text {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .about-story-highlight,
+html.light .about-story-highlight,
+.light-theme .about-story-highlight {
+  color: #475569;
+}
+
+/* Pillars in Light Mode */
+:root[data-theme="light"] .about-pillar-pod,
+html.light .about-pillar-pod,
+.light-theme .about-pillar-pod {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .about-pillar-pod:hover,
+html.light .about-pillar-pod:hover,
+.light-theme .about-pillar-pod:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .about-pillar-icon-box,
+html.light .about-pillar-icon-box,
+.light-theme .about-pillar-icon-box {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .about-pillar-title,
+html.light .about-pillar-title,
+.light-theme .about-pillar-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .about-pillar-desc,
+html.light .about-pillar-desc,
+.light-theme .about-pillar-desc {
+  color: #475569;
+}
+
+/* Metric Cards in Light Mode */
+:root[data-theme="light"] .about-cyber-metric-card,
+html.light .about-cyber-metric-card,
+.light-theme .about-cyber-metric-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .about-cyber-metric-card:hover,
+html.light .about-cyber-metric-card:hover,
+.light-theme .about-cyber-metric-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .about-cyber-metric-card.warranty-card,
+html.light .about-cyber-metric-card.warranty-card,
+.light-theme .about-cyber-metric-card.warranty-card {
+  border-color: #fde68a;
+}
+
+:root[data-theme="light"] .about-cyber-metric-card.warranty-card:hover,
+html.light .about-cyber-metric-card.warranty-card:hover,
+.light-theme .about-cyber-metric-card.warranty-card:hover {
+  border-color: #d97706;
+}
+
+:root[data-theme="light"] .about-cyber-metric-card::before,
+html.light .about-cyber-metric-card::before,
+.light-theme .about-cyber-metric-card::before {
+  background: radial-gradient(
+    340px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+}
+
+:root[data-theme="light"] .about-cyber-metric-card .cyber-card-watermark,
+html.light .about-cyber-metric-card .cyber-card-watermark,
+.light-theme .about-cyber-metric-card .cyber-card-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .about-cyber-metric-card:hover .cyber-card-watermark,
+html.light .about-cyber-metric-card:hover .cyber-card-watermark,
+.light-theme .about-cyber-metric-card:hover .cyber-card-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .metric-label-title,
+html.light .metric-label-title,
+.light-theme .metric-label-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .metric-desc-text,
+html.light .metric-desc-text,
+.light-theme .metric-desc-text {
+  color: #475569;
+}
+
+:root[data-theme="light"] .tag-emerald,
+html.light .tag-emerald,
+.light-theme .tag-emerald {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .tag-cyan,
+html.light .tag-cyan,
+.light-theme .tag-cyan {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+  color: #0d9488;
+}
+
+:root[data-theme="light"] .tag-gold,
+html.light .tag-gold,
+.light-theme .tag-gold {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+:root[data-theme="light"] .about-cert-ribbon,
+html.light .about-cert-ribbon,
+.light-theme .about-cert-ribbon {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+:root[data-theme="light"] .about-cert-text,
+html.light .about-cert-text,
+.light-theme .about-cert-text {
+  color: #064e3b;
+}
+
+/* Logo Showcase in Light Mode */
+:root[data-theme="light"] .about-logo-showcase-card,
+html.light .about-logo-showcase-card,
+.light-theme .about-logo-showcase-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .about-logo-showcase-card:hover,
+html.light .about-logo-showcase-card:hover,
+.light-theme .about-logo-showcase-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .about-logo-tag,
+html.light .about-logo-tag,
+.light-theme .about-logo-tag {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .about-logo-caption span:first-child,
+html.light .about-logo-caption span:first-child,
+.light-theme .about-logo-caption span:first-child {
+  color: #047857;
+}
+
+:root[data-theme="light"] .about-logo-caption span:last-child,
+html.light .about-logo-caption span:last-child,
+.light-theme .about-logo-caption span:last-child {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .about-logo-showcase-card::before,
+html.light .about-logo-showcase-card::before,
+.light-theme .about-logo-showcase-card::before {
+  background: radial-gradient(
+    360px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.1),
+    transparent 65%
+  );
+}

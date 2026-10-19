@@ -1,0 +1,694 @@
+/* ===================================================
+   UNIFIED CYBERPUNK HUD SPECIAL FEATURES
+   DIGI-GAME EXCLUSIVE SIGNATURE EMERALD EDITION
+   =================================================== */
+
+.special-features-section {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.special-features-ambient-orb {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.special-features-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* ===================================================
+   UNIFIED CYBER CARD (SIGNATURE EMERALD & CYAN)
+   =================================================== */
+.cyber-feature-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+  --card-glow: rgba(57, 255, 120, 0.35);
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.18);
+  border-radius: 26px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+/* Interactive Mouse-Tracking Spotlight Glow */
+.cyber-feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.cyber-feature-card:hover::before {
+  opacity: 1;
+}
+
+/* Hover Elevation & Unified Neon Aura */
+.cyber-feature-card:hover {
+  transform: translateY(-8px) scale(1.018);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.28),
+    0 0 60px -15px rgba(0, 240, 255, 0.15),
+    inset 0 0 25px rgba(57, 255, 120, 0.04);
+}
+
+/* Glowing Flowing Top Border Beam */
+.cyber-card-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 3;
+}
+
+.cyber-feature-card:hover .cyber-card-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Holographic Laser Sweep */
+.cyber-card-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 26px;
+  z-index: 2;
+}
+
+.cyber-card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.15) 45%,
+    rgba(0, 240, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cyber-feature-card:hover .cyber-card-shimmer::after {
+  left: 150%;
+}
+
+/* Stylized Big Background Number Watermark */
+.cyber-card-watermark {
+  position: absolute;
+  top: -12px;
+  left: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.cyber-feature-card:hover .cyber-card-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(4px) scale(1.05);
+}
+
+/* ===================================================
+   HUD CORNER BRACKETS
+   =================================================== */
+.card-corner-bracket {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  opacity: 0.4;
+  transition: all 0.35s ease;
+  z-index: 3;
+}
+
+.bracket-tl {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid #39ff78;
+  border-right: 1.5px solid #39ff78;
+  border-top-right-radius: 3px;
+}
+
+.bracket-br {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid #00f0ff;
+  border-left: 1.5px solid #00f0ff;
+  border-bottom-left-radius: 3px;
+}
+
+.cyber-feature-card:hover .card-corner-bracket {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   CARD HEADER: MODULE ID & REACTOR POD
+   =================================================== */
+.cyber-card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+/* Module ID Badge */
+.module-id-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(4, 9, 16, 0.7);
+  border: 1px solid rgba(57, 255, 120, 0.22);
+  border-radius: 12px;
+  font-family: 'Outfit', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: #a7f3d0;
+  letter-spacing: 0.8px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.module-id-badge .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.cyber-feature-card:hover .module-id-badge {
+  border-color: #39ff78;
+  background: rgba(4, 9, 16, 0.9);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.25);
+}
+
+/* Reactor Icon Pod */
+.icon-reactor-pod {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 35%, #0d2238 0%, #06111e 65%, #02070e 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.45);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(57, 255, 120, 0.2),
+    inset 0 0 12px rgba(57, 255, 120, 0.12);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #39ff78;
+}
+
+.cyber-feature-card:hover .icon-reactor-pod {
+  transform: scale(1.12) rotate(-4deg);
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(57, 255, 120, 0.5),
+    0 0 45px rgba(0, 240, 255, 0.25),
+    inset 0 0 16px rgba(57, 255, 120, 0.25);
+}
+
+.icon-reactor-pod svg {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.cyber-feature-card:hover .icon-reactor-pod svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px #39ff78);
+}
+
+/* ===================================================
+   CARD BODY: TITLE, DESCRIPTION & ANIMATED WIDGETS
+   =================================================== */
+.cyber-card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3;
+}
+
+.cyber-card-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+.cyber-feature-card:hover .cyber-card-title {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(57, 255, 120, 0.4);
+}
+
+.cyber-card-desc {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1.75;
+  text-align: justify;
+  transition: color 0.3s ease;
+}
+
+.cyber-feature-card:hover .cyber-card-desc {
+  color: #cbd5e1;
+}
+
+/* ===================================================
+   CUSTOM HUD MICRO-INTERACTIONS
+   =================================================== */
+.card-interactive-widget {
+  margin-top: 2px;
+}
+
+/* Audio Visualizer & Test Button (Card 2) */
+.audio-visualizer-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audio-test-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.4);
+  border-radius: 20px;
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.audio-test-btn:hover {
+  background: rgba(57, 255, 120, 0.25);
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(57, 255, 120, 0.5);
+  transform: scale(1.03);
+}
+
+.audio-test-btn:active {
+  transform: scale(0.96);
+}
+
+.audio-test-btn.is-playing {
+  background: #39ff78;
+  color: #04140b;
+  border-color: #39ff78;
+  box-shadow: 0 0 20px rgba(57, 255, 120, 0.8);
+}
+
+/* Spectrum Wave Bars */
+.audio-spectrum-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.spectrum-bar {
+  width: 3px;
+  height: 4px;
+  background: #39ff78;
+  border-radius: 3px;
+  transition: height 0.2s ease;
+}
+
+.is-playing .spectrum-bar:nth-child(1) { animation: soundJump 0.4s infinite alternate ease-in-out; }
+.is-playing .spectrum-bar:nth-child(2) { animation: soundJump 0.35s infinite alternate ease-in-out 0.1s; }
+.is-playing .spectrum-bar:nth-child(3) { animation: soundJump 0.45s infinite alternate ease-in-out 0.2s; }
+.is-playing .spectrum-bar:nth-child(4) { animation: soundJump 0.3s infinite alternate ease-in-out 0.05s; }
+
+@keyframes soundJump {
+  0% { height: 3px; }
+  100% { height: 18px; }
+}
+
+/* Ping Live Telemetry Tag (Card 3) */
+.ping-telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #00f0ff;
+  letter-spacing: 0.5px;
+}
+
+.ping-beacon {
+  position: relative;
+  width: 7px;
+  height: 7px;
+}
+
+.ping-beacon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 8px #00f0ff;
+}
+
+.ping-beacon-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid #00f0ff;
+  animation: pingRing 1.5s infinite ease-out;
+}
+
+@keyframes pingRing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Unified VIP Rank Chips (Card 4) */
+.unified-vip-chips {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.vip-badge-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: rgba(57, 255, 120, 0.08);
+  border: 1px solid rgba(57, 255, 120, 0.25);
+  color: #a7f3d0;
+  letter-spacing: 0.4px;
+}
+
+.vip-badge-tag.highlight-vip {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.5);
+  color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
+}
+
+/* Feature Tech Spec Pill */
+.feature-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', 'Vazirmatn', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #39ff78;
+  background: rgba(57, 255, 120, 0.08);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(57, 255, 120, 0.2);
+}
+
+/* ===================================================
+   CARD FOOTER: IMPACT CAPSULE
+   =================================================== */
+.cyber-card-footer {
+  position: relative;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.impact-capsule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 12px;
+  background: rgba(5, 12, 22, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.25);
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  width: 100%;
+  transition: all 0.35s ease;
+}
+
+.impact-capsule svg {
+  color: #39ff78;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 5px rgba(57, 255, 120, 0.6));
+}
+
+.cyber-feature-card:hover .impact-capsule {
+  background: rgba(5, 15, 28, 0.95);
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(57, 255, 120, 0.3);
+}
+
+.cyber-feature-card:hover .impact-capsule svg {
+  filter: drop-shadow(0 0 8px #39ff78);
+  transform: scale(1.1);
+}
+
+/* ===================================================
+   LIGHT THEME: CRISP CERAMIC WITH UNIFIED EMERALD
+   =================================================== */
+:root[data-theme="light"] .cyber-feature-card,
+html.light .cyber-feature-card,
+.light-theme .cyber-feature-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .cyber-feature-card:hover,
+html.light .cyber-feature-card:hover,
+.light-theme .cyber-feature-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .cyber-feature-card::before,
+html.light .cyber-feature-card::before,
+.light-theme .cyber-feature-card::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+}
+
+:root[data-theme="light"] .cyber-card-title,
+html.light .cyber-card-title,
+.light-theme .cyber-card-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .cyber-feature-card:hover .cyber-card-title,
+html.light .cyber-feature-card:hover .cyber-card-title,
+.light-theme .cyber-feature-card:hover .cyber-card-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .cyber-card-desc,
+html.light .cyber-card-desc,
+.light-theme .cyber-card-desc {
+  color: #475569;
+}
+
+:root[data-theme="light"] .cyber-card-watermark,
+html.light .cyber-card-watermark,
+.light-theme .cyber-card-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .cyber-feature-card:hover .cyber-card-watermark,
+html.light .cyber-feature-card:hover .cyber-card-watermark,
+.light-theme .cyber-feature-card:hover .cyber-card-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .module-id-badge,
+html.light .module-id-badge,
+.light-theme .module-id-badge {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .icon-reactor-pod,
+html.light .icon-reactor-pod,
+.light-theme .icon-reactor-pod {
+  background: #f8fafc;
+  border-color: #059669;
+  color: #059669;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .cyber-card-footer,
+html.light .cyber-card-footer,
+.light-theme .cyber-card-footer {
+  border-top-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .impact-capsule,
+html.light .impact-capsule,
+.light-theme .impact-capsule {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #047857;
+}
+
+:root[data-theme="light"] .audio-test-btn,
+html.light .audio-test-btn,
+.light-theme .audio-test-btn {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #047857;
+}
+
+:root[data-theme="light"] .ping-telemetry-pill,
+html.light .ping-telemetry-pill,
+.light-theme .ping-telemetry-pill {
+  background: #f0fdfa;
+  border-color: #0d9488;
+  color: #0f766e;
+}
+
+:root[data-theme="light"] .feature-spec-pill,
+html.light .feature-spec-pill,
+.light-theme .feature-spec-pill {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .vip-badge-tag,
+html.light .vip-badge-tag,
+.light-theme .vip-badge-tag {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+:root[data-theme="light"] .vip-badge-tag.highlight-vip,
+html.light .vip-badge-tag.highlight-vip,
+.light-theme .vip-badge-tag.highlight-vip {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #047857;
+}
+
+/* ===================================================
+   RESPONSIVE TUNING
+   =================================================== */
+@media (max-width: 768px) {
+  .cyber-feature-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .cyber-card-watermark {
+    font-size: 54px;
+  }
+
+  .icon-reactor-pod {
+    width: 46px;
+    height: 46px;
+  }
+}

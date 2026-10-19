@@ -1,0 +1,293 @@
+/* =========================================================
+   INTERACTIVE DIGIGAME TEXT (DRAGGABLE BRAND PLAYGROUND)
+   Inspired by contemporary display typography with neon green accents
+   ========================================================= */
+
+.digigame-interactive-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 36px 0 24px;
+  padding: 24px 20px 32px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(57, 255, 120, 0.05) 0%, rgba(7, 11, 20, 0.7) 100%),
+              rgba(11, 20, 38, 0.6);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 0 30px rgba(57, 255, 120, 0.08);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Ambient glow & grid */
+.digigame-interactive-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.digigame-interactive-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Header Controls */
+.digigame-interactive-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.digigame-interactive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(57, 255, 120, 0.08);
+  border: 1px solid rgba(57, 255, 120, 0.25);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #39ff78;
+}
+
+.digigame-interactive-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.digigame-interactive-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.digigame-interactive-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.digigame-interactive-reset-btn:hover {
+  background: rgba(57, 255, 120, 0.18);
+  border-color: #39ff78;
+  color: #39ff78;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.3);
+}
+
+/* Playground Stage */
+.digigame-letters-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  touch-action: none;
+}
+
+.digigame-letters-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(4px, 1.2vw, 14px);
+  flex-wrap: nowrap;
+}
+
+/* Individual Draggable Letter Box */
+.digigame-letter-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  padding: 6px 4px;
+  outline: none;
+  touch-action: none;
+}
+
+.digigame-letter-box:active,
+.digigame-letter-box.is-dragging {
+  cursor: grabbing !important;
+}
+
+/* The Typography Character */
+.digigame-char {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.8rem, 8.5vw, 7.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(255, 255, 255, 0.25);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.digigame-letter-box:hover .digigame-char {
+  color: #ffffff;
+  text-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(57, 255, 120, 0.6),
+    0 0 50px rgba(57, 255, 120, 0.3);
+}
+
+.digigame-letter-box.is-dragging .digigame-char {
+  color: #ffffff;
+  text-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(57, 255, 120, 0.9),
+    0 0 70px rgba(0, 255, 204, 0.6);
+}
+
+/* =========================================================
+   CYBER GREEN ACCENT SHAPES (Inspired by Debaqesign style)
+   ========================================================= */
+.digigame-accent {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(135deg, #39ff78 0%, #00ffcc 100%);
+  box-shadow: 0 0 12px #39ff78, 0 0 24px rgba(0, 255, 204, 0.5);
+  z-index: 3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.digigame-letter-box:hover .digigame-accent {
+  box-shadow: 0 0 18px #39ff78, 0 0 35px #00ffcc;
+  transform: scale(1.15);
+}
+
+/* Accent Variations */
+.digigame-accent--foot-left {
+  bottom: 12px;
+  left: 6px;
+  width: 16px;
+  height: 14px;
+  border-radius: 0 4px 6px 4px;
+}
+
+.digigame-accent--foot-right {
+  bottom: 12px;
+  right: 6px;
+  width: 16px;
+  height: 14px;
+  border-radius: 4px 0 4px 6px;
+}
+
+.digigame-accent--dot {
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.digigame-letter-box:hover .digigame-accent--dot {
+  transform: translateX(-50%) scale(1.2);
+}
+
+.digigame-accent--top-right {
+  top: 14px;
+  right: 6px;
+  width: 15px;
+  height: 13px;
+  border-radius: 0 5px 0 4px;
+}
+
+.digigame-accent--top-left {
+  top: 12px;
+  left: 6px;
+  width: 15px;
+  height: 13px;
+  border-radius: 5px 0 4px 0;
+}
+
+.digigame-accent--loop {
+  bottom: 6px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.digigame-accent--eye {
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.digigame-letter-box:hover .digigame-accent--eye {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Light Theme Adaptations */
+:root[data-theme="light"] .digigame-interactive-wrapper,
+html.light .digigame-interactive-wrapper,
+.light-theme .digigame-interactive-wrapper {
+  background: #ffffff;
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+:root[data-theme="light"] .digigame-char,
+html.light .digigame-char,
+.light-theme .digigame-char {
+  color: #0f172a;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .digigame-interactive-header,
+html.light .digigame-interactive-header,
+.light-theme .digigame-interactive-header {
+  border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .digigame-interactive-reset-btn,
+html.light .digigame-interactive-reset-btn,
+.light-theme .digigame-interactive-reset-btn {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}

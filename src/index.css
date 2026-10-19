@@ -15,40 +15,6 @@
 .hero-chassis {
   position: relative;
   isolation: isolate;
-  background-color: #060d1a;
-}
-
-.hero-chassis::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: var(--hero-bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: contrast(1.14) saturate(1.18) brightness(1.05);
-  pointer-events: none;
-  transition: filter 0.35s ease;
-}
-
-/* RTL Directional Text Protection: Leaves 75% of the DG emblem and crown 100% crystal-clear */
-.hero-chassis::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to left,
-    rgba(5, 10, 20, 0.85) 0%,
-    rgba(5, 10, 20, 0.50) 30%,
-    rgba(5, 10, 20, 0.08) 55%,
-    transparent 75%
-  );
-  pointer-events: none;
-  transition: background 0.35s ease;
 }
 
 /* =========================================================
@@ -634,4 +600,46 @@ html.light body,
   0% { transform: translateX(-130%); }
   60% { transform: translateX(130%); }
   100% { transform: translateX(130%); }
+}
+
+/* ===================================================
+   AUTH MODAL: CYBER PASSCODE KEY BUTTON
+   =================================================== */
+.auth-send-otp-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-send-icon-pod {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.4);
+  box-shadow: 0 0 10px rgba(57, 255, 120, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-send-otp-btn:hover .auth-send-icon-pod {
+  background: #39ff78;
+  border-color: #39ff78;
+  box-shadow: 0 0 20px rgba(57, 255, 120, 0.6);
+  transform: scale(1.08);
+}
+
+/* Cyber Laser Flow along button on hover */
+.auth-send-key-beam {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 120, 0.3), transparent);
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.auth-send-otp-btn:hover .auth-send-key-beam {
+  left: 200%;
+  transition: 0.75s ease;
 }

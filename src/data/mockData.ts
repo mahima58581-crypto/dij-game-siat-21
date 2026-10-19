@@ -214,6 +214,17 @@ export const INSTALLERS: Installer[] = [
     rating: 4.8,
     certifiedRelay: true,
     status: 'available'
+  },
+  {
+    id: 'inst-6',
+    name: 'مهندس آرش کریمی',
+    city: 'مازندران و گیلان (رشت، ساری، بابل)',
+    experienceYears: 6,
+    projectsCompleted: 71,
+    phone: '۰۹۱۱۸۸۸۹۹۰۰',
+    rating: 4.9,
+    certifiedRelay: true,
+    status: 'available'
   }
 ];
 
@@ -296,6 +307,14 @@ export const TUTORIALS: TutorialVideo[] = [
     category: 'امنیت و پرسنل',
     level: 'پیشرفته',
     stepsCount: 5
+  },
+  {
+    id: 'tut-6',
+    title: 'سیستم ثبت نام باشگاه مشتریان، پیامک خودکار و کدهای تخفیف وفاداری',
+    duration: '۰۹:۳۰',
+    category: 'باشگاه مشتریان',
+    level: 'متوسط',
+    stepsCount: 4
   }
 ];
 

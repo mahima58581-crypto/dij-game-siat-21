@@ -1,143 +1,758 @@
-/* CYBER DOWNLOAD BUTTON - MATCHING THEME TOGGLE & AUTH BUTTON */
-.download-cyber-btn {
-  --btn-green: #39ff78;
+/* ===================================================
+   UNIFIED CYBERPUNK HUD DOWNLOADS CENTER
+   DIGI-GAME EXCLUSIVE SIGNATURE EMERALD EDITION
+   MATCHES PRICING, INSTALLERS & DIRECTORY SYSTEMS
+   =================================================== */
 
+.downloads-cyber-wrapper {
   position: relative;
   isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.downloads-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.downloads-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* Header Chip & Hologram Title */
+.downloads-chip-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-
-  height: 42px;
-  padding: 0 15px;
-  overflow: hidden;
-
-  color: #f4fff7;
-  background: linear-gradient(
-    135deg,
-    #10243b 0%,
-    #071426 65%,
-    #0b1d30 100%
-  );
-
-  border: 1px solid rgba(57, 255, 120, 0.55);
-  border-radius: 11px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 14px rgba(57, 255, 120, 0.08);
-
-  font-family: inherit;
-  font-size: 11.5px;
-  font-weight: 800;
-  cursor: pointer;
-  white-space: nowrap;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.35s ease,
-    color 0.35s ease;
+  padding: 6px 16px;
+  background: rgba(6, 18, 28, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(57, 255, 120, 0.12);
 }
 
-.download-cyber-btn:hover {
-  transform: translateY(-2px);
-  border-color: var(--btn-green);
-  box-shadow:
-    0 0 14px rgba(57, 255, 120, 0.32),
-    0 6px 20px rgba(0, 0, 0, 0.3),
-    inset 0 0 15px rgba(57, 255, 120, 0.07);
-}
-
-.download-cyber-btn:active {
-  transform: scale(0.97);
-}
-
-.download-cyber-btn:focus-visible {
-  outline: 2px solid var(--btn-green);
-  outline-offset: 3px;
-}
-
-.download-cyber-btn__shine {
-  position: absolute;
-  z-index: -1;
-  top: -80%;
-  left: -65%;
-  width: 40%;
-  height: 260%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(57, 255, 120, 0.22),
-    transparent
-  );
-  transform: rotate(25deg);
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
-
-.download-cyber-btn:hover .download-cyber-btn__shine {
-  left: 130%;
-}
-
-.download-cyber-btn__icon {
+.downloads-chip-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(57, 255, 120, 0.18);
+  border: 1px solid #39ff78;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: var(--btn-green);
-  border: 1px solid rgba(57, 255, 120, 0.3);
-  border-radius: 7px;
-  background: rgba(57, 255, 120, 0.08);
-  box-shadow: 0 0 10px rgba(57, 255, 120, 0.08);
-  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
 }
 
-.download-cyber-btn:hover .download-cyber-btn__icon {
-  color: #071426;
-  background: var(--btn-green);
-  transform: translateY(1px);
+.downloads-chip-radar {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: downloadBeacon 1.8s infinite ease-in-out;
 }
 
-.download-cyber-btn__icon svg {
-  width: 14px;
-  height: 14px;
+@keyframes downloadBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* Light Theme Adaptability */
-[data-theme="light"] .download-cyber-btn {
-  color: #102139;
-  background: linear-gradient(135deg, #ffffff, #e8f0f8);
-  border-color: rgba(21, 156, 73, 0.45);
-  box-shadow:
-    0 4px 16px rgba(12, 35, 60, 0.1),
-    inset 0 1px 0 #ffffff;
-}
-
-[data-theme="light"] .download-cyber-btn:hover {
-  border-color: #159c49;
-  box-shadow:
-    0 0 12px rgba(21, 156, 73, 0.25),
-    0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="light"] .download-cyber-btn__icon {
-  color: #159c49;
-  border-color: rgba(21, 156, 73, 0.3);
-  background: rgba(57, 255, 120, 0.15);
-}
-
-[data-theme="light"] .download-cyber-btn:hover .download-cyber-btn__icon {
+.downloads-section-title {
   color: #ffffff;
-  background: #159c49;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .download-cyber-btn,
-  .download-cyber-btn * {
-    transition: none !important;
+.downloads-title-gradient {
+  background: linear-gradient(135deg, #ffffff 25%, #39ff78 65%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.25));
+}
+
+/* Trust Guarantee Strip Above Cards */
+.downloads-guarantee-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 22px;
+  background: rgba(5, 12, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  width: fit-content;
+  margin: 0 auto 48px auto;
+  backdrop-filter: blur(12px);
+}
+
+.downloads-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+/* Download Success Toast */
+.downloads-success-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background: rgba(6, 24, 16, 0.9);
+  border: 1.5px solid #39ff78;
+  border-radius: 18px;
+  color: #a7f3d0;
+  font-size: 13px;
+  font-weight: 700;
+  max-width: 680px;
+  margin: 0 auto 32px auto;
+  box-shadow: 0 0 30px rgba(57, 255, 120, 0.35);
+  animation: toastSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================================================
+   DOWNLOADS CYBER GRID (2 COLUMNS)
+   =================================================== */
+.downloads-cyber-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .downloads-cyber-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ===================================================
+   CYBER DOWNLOAD CARD CHASSIS
+   =================================================== */
+.download-cyber-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  border-radius: 26px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Featured / Primary Server Card */
+.download-cyber-card.is-primary {
+  background: linear-gradient(145deg, #0d1e34 0%, #081424 60%, #040c16 100%);
+  border: 1.5px solid #39ff78;
+  box-shadow:
+    0 20px 48px -10px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(57, 255, 120, 0.25),
+    inset 0 0 20px rgba(57, 255, 120, 0.06);
+}
+
+/* Interactive Spotlight Glow */
+.download-cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.download-cyber-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Hover Elevation */
+.download-cyber-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.28),
+    0 0 60px -15px rgba(0, 240, 255, 0.15),
+    inset 0 0 25px rgba(57, 255, 120, 0.04);
+}
+
+/* Glowing Top Border Beam */
+.download-cyber-card .cyber-card-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 3;
+}
+
+.download-cyber-card:hover .cyber-card-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Holographic Laser Shimmer */
+.download-cyber-card .cyber-card-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 26px;
+  z-index: 2;
+}
+
+.download-cyber-card .cyber-card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.15) 45%,
+    rgba(0, 240, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.download-cyber-card:hover .cyber-card-shimmer::after {
+  left: 150%;
+}
+
+/* Big Watermark Number */
+.download-cyber-card .cyber-card-watermark {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.035);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.download-cyber-card:hover .cyber-card-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(4px) scale(1.05);
+}
+
+/* HUD Corner Reticles */
+.download-cyber-card .card-corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: all 0.35s ease;
+  z-index: 3;
+}
+
+.download-cyber-card .bracket-tl {
+  top: 9px;
+  right: 9px;
+  border-top: 1.5px solid #39ff78;
+  border-right: 1.5px solid #39ff78;
+  border-top-right-radius: 4px;
+}
+
+.download-cyber-card .bracket-br {
+  bottom: 9px;
+  left: 9px;
+  border-bottom: 1.5px solid #00f0ff;
+  border-left: 1.5px solid #00f0ff;
+  border-bottom-left-radius: 4px;
+}
+
+.download-cyber-card:hover .card-corner-bracket {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   CARD HEADER: MODULE ID, BADGES & REACTOR POD
+   =================================================== */
+.download-card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.download-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  color: #39ff78;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.15);
+}
+
+.download-cyber-card.is-primary .download-tag-badge {
+  background: #39ff78;
+  color: #031508;
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(57, 255, 120, 0.5);
+}
+
+/* ===================================================
+   CARD BODY: TITLE, DESC & SPECS POD
+   =================================================== */
+.download-card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 3;
+}
+
+.download-card-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.download-cyber-card:hover .download-card-title {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(57, 255, 120, 0.4);
+}
+
+.download-card-desc {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1.7;
+  text-align: justify;
+  min-height: 42px;
+}
+
+/* Telemetry Specs Pod */
+.download-specs-pod {
+  background: rgba(4, 9, 16, 0.65);
+  border: 1px solid rgba(57, 255, 120, 0.18);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.download-cyber-card:hover .download-specs-pod {
+  border-color: rgba(57, 255, 120, 0.35);
+  background: rgba(4, 9, 16, 0.85);
+}
+
+.download-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.download-spec-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.download-spec-value {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.download-spec-value.highlight-version {
+  color: #39ff78;
+}
+
+.download-spec-value.highlight-size {
+  color: #00f0ff;
+}
+
+/* ===================================================
+   CARD FOOTER: HIGH TECH ACTION BUTTON & GUARANTEE
+   =================================================== */
+.download-card-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 3;
+}
+
+/* Unified Cyber Action Button (Replaces Old Small Button) */
+.download-action-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(6, 18, 30, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.download-action-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 25px rgba(57, 255, 120, 0.6);
+  transform: translateY(-2px);
+}
+
+.download-action-btn.btn-primary {
+  background: linear-gradient(135deg, #39ff78 0%, #10b981 100%);
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 4px 20px rgba(57, 255, 120, 0.35);
+}
+
+.download-action-btn.btn-primary:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 0 30px rgba(57, 255, 120, 0.8);
+}
+
+.download-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.download-action-btn:hover .download-btn-shine {
+  left: 200%;
+}
+
+/* ===================================================
+   LIGHT THEME: CRISP CERAMIC WITH HIGH CONTRAST
+   =================================================== */
+:root[data-theme="light"] .downloads-ambient-glow,
+html.light .downloads-ambient-glow,
+.light-theme .downloads-ambient-glow {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 70%);
+}
+
+:root[data-theme="light"] .downloads-chip-badge,
+html.light .downloads-chip-badge,
+.light-theme .downloads-chip-badge {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .downloads-chip-badge span,
+html.light .downloads-chip-badge span,
+.light-theme .downloads-chip-badge span {
+  color: #047857;
+}
+
+:root[data-theme="light"] .downloads-section-title,
+html.light .downloads-section-title,
+.light-theme .downloads-section-title {
+  color: #0f172a !important;
+}
+
+:root[data-theme="light"] .downloads-title-gradient,
+html.light .downloads-title-gradient,
+.light-theme .downloads-title-gradient {
+  background: linear-gradient(135deg, #047857 0%, #059669 45%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)) !important;
+}
+
+:root[data-theme="light"] .downloads-subtitle,
+html.light .downloads-subtitle,
+.light-theme .downloads-subtitle {
+  color: #475569;
+}
+
+:root[data-theme="light"] .downloads-guarantee-strip,
+html.light .downloads-guarantee-strip,
+.light-theme .downloads-guarantee-strip {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .downloads-guarantee-item,
+html.light .downloads-guarantee-item,
+.light-theme .downloads-guarantee-item {
+  color: #334155;
+}
+
+:root[data-theme="light"] .downloads-guarantee-item svg,
+html.light .downloads-guarantee-item svg,
+.light-theme .downloads-guarantee-item svg {
+  color: #059669;
+}
+
+/* Light Mode Cards */
+:root[data-theme="light"] .download-cyber-card,
+html.light .download-cyber-card,
+.light-theme .download-cyber-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .download-cyber-card:hover,
+html.light .download-cyber-card:hover,
+.light-theme .download-cyber-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .download-cyber-card.is-primary,
+html.light .download-cyber-card.is-primary,
+.light-theme .download-cyber-card.is-primary {
+  background: #ffffff;
+  border: 2px solid #059669;
+  box-shadow:
+    0 14px 32px -4px rgba(16, 185, 129, 0.18),
+    0 0 20px rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .download-cyber-card::before,
+html.light .download-cyber-card::before,
+.light-theme .download-cyber-card::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+}
+
+:root[data-theme="light"] .download-cyber-card .cyber-card-watermark,
+html.light .download-cyber-card .cyber-card-watermark,
+.light-theme .download-cyber-card .cyber-card-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .download-cyber-card:hover .cyber-card-watermark,
+html.light .download-cyber-card:hover .cyber-card-watermark,
+.light-theme .download-cyber-card:hover .cyber-card-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .download-tag-badge,
+html.light .download-tag-badge,
+.light-theme .download-tag-badge {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .download-cyber-card.is-primary .download-tag-badge,
+html.light .download-cyber-card.is-primary .download-tag-badge,
+.light-theme .download-cyber-card.is-primary .download-tag-badge {
+  background: #059669;
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .download-card-title,
+html.light .download-card-title,
+.light-theme .download-card-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .download-cyber-card:hover .download-card-title,
+html.light .download-cyber-card:hover .download-card-title,
+.light-theme .download-cyber-card:hover .download-card-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .download-card-desc,
+html.light .download-card-desc,
+.light-theme .download-card-desc {
+  color: #475569;
+}
+
+:root[data-theme="light"] .download-specs-pod,
+html.light .download-specs-pod,
+.light-theme .download-specs-pod {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .download-spec-label,
+html.light .download-spec-label,
+.light-theme .download-spec-label {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .download-spec-value,
+html.light .download-spec-value,
+.light-theme .download-spec-value {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .download-spec-value.highlight-version,
+html.light .download-spec-value.highlight-version,
+.light-theme .download-spec-value.highlight-version {
+  color: #059669;
+}
+
+:root[data-theme="light"] .download-spec-value.highlight-size,
+html.light .download-spec-value.highlight-size,
+.light-theme .download-spec-value.highlight-size {
+  color: #0284c7;
+}
+
+:root[data-theme="light"] .download-card-footer,
+html.light .download-card-footer,
+.light-theme .download-card-footer {
+  border-top-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .download-action-btn,
+html.light .download-action-btn,
+.light-theme .download-action-btn {
+  background: #f8fafc;
+  border-color: #059669;
+  color: #047857;
+}
+
+:root[data-theme="light"] .download-action-btn:hover,
+html.light .download-action-btn:hover,
+.light-theme .download-action-btn:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.35);
+}
+
+:root[data-theme="light"] .download-action-btn.btn-primary,
+html.light .download-action-btn.btn-primary,
+.light-theme .download-action-btn.btn-primary {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .download-action-btn.btn-primary:hover,
+html.light .download-action-btn.btn-primary:hover,
+.light-theme .download-action-btn.btn-primary:hover {
+  background: #047857;
+  border-color: #047857;
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .downloads-success-toast,
+html.light .downloads-success-toast,
+.light-theme .downloads-success-toast {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #047857;
+  box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .download-cyber-card {
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+  .download-specs-pod {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 8px;
   }
 }

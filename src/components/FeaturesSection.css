@@ -1,0 +1,480 @@
+/* ===================================================
+   FEATURES SECTION — CYBERPUNK HUD BENTO GRID
+   DIGI-GAME EXCLUSIVE HIGH-TECH AESTHETIC
+   =================================================== */
+
+.features-section-container {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.features-ambient-glow {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.09) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ===================================================
+   EPIC CYBER HEADER STYLING
+   =================================================== */
+.features-header-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 60px auto;
+  gap: 20px;
+}
+
+/* Holographic Microchip Badge */
+.cyber-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px;
+  background: rgba(6, 15, 26, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  border-radius: 30px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(57, 255, 120, 0.2),
+    inset 0 0 12px rgba(0, 240, 255, 0.1);
+  transition: all 0.35s ease;
+  user-select: none;
+}
+
+.cyber-chip-badge:hover {
+  transform: translateY(-2px);
+  border-color: #39ff78;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 25px rgba(57, 255, 120, 0.45);
+}
+
+.chip-icon-spin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #39ff78;
+  filter: drop-shadow(0 0 6px #39ff78);
+}
+
+.chip-status-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: pulseBeacon 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.chip-text {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #d1fae5;
+  letter-spacing: -0.2px;
+}
+
+.chip-code {
+  font-family: 'Outfit', monospace;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.12);
+  padding: 2px 7px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+/* Section Main Heading with Radiant Gradient */
+.features-main-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: clamp(30px, 4.2vw, 54px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+.features-title-glow {
+  background: linear-gradient(135deg, #ffffff 20%, #39ff78 60%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px rgba(57, 255, 120, 0.35));
+}
+
+.features-vip-tag {
+  display: inline-block;
+  padding: 0 10px;
+  background: linear-gradient(135deg, rgba(57, 255, 120, 0.15), rgba(0, 240, 255, 0.15));
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  border-radius: 12px;
+  color: #39ff78;
+  -webkit-text-fill-color: #39ff78;
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Subtitle Presentation */
+.features-subtitle {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: clamp(14px, 1.3vw, 16.5px);
+  font-weight: 400;
+  color: #94a3b8;
+  line-height: 1.8;
+  max-width: 680px;
+}
+
+.features-subtitle strong {
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+/* Floating HUD Key Pillars Under Header */
+.features-pillars-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pillar-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: rgba(7, 16, 28, 0.7);
+  border: 1px solid rgba(57, 255, 120, 0.22);
+  border-radius: 20px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #cbd5e1;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.pillar-item svg {
+  color: #39ff78;
+  filter: drop-shadow(0 0 6px #39ff78);
+}
+
+.pillar-item:hover {
+  border-color: #39ff78;
+  color: #ffffff;
+  background: rgba(7, 20, 36, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(57, 255, 120, 0.25);
+}
+
+/* ===================================================
+   BENTO GRID CYBER CARDS (UNIFIED STYLING)
+   =================================================== */
+.bento-cyber-card {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.18);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+/* Mouse Spotlight */
+.bento-cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.13),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.bento-cyber-card:hover::before {
+  opacity: 1;
+}
+
+.bento-cyber-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px -5px rgba(57, 255, 120, 0.28),
+    0 0 60px -15px rgba(0, 240, 255, 0.15),
+    inset 0 0 25px rgba(57, 255, 120, 0.04);
+}
+
+/* Top Flowing Laser Beam */
+.bento-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 4;
+}
+
+.bento-cyber-card:hover .bento-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Holographic Laser Shimmer */
+.bento-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 28px;
+  z-index: 2;
+}
+
+.bento-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.14) 45%,
+    rgba(0, 240, 255, 0.18) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bento-cyber-card:hover .bento-shimmer::after {
+  left: 150%;
+}
+
+/* Big Stylized Background Watermark */
+.bento-watermark {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 76px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.bento-cyber-card:hover .bento-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(4px) scale(1.05);
+}
+
+/* Corner HUD Brackets */
+.bento-corner-bracket {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  opacity: 0.4;
+  transition: all 0.35s ease;
+  z-index: 4;
+}
+
+.bento-bracket-tl {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid #39ff78;
+  border-right: 1.5px solid #39ff78;
+  border-top-right-radius: 3px;
+}
+
+.bento-bracket-br {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid #00f0ff;
+  border-left: 1.5px solid #00f0ff;
+  border-bottom-left-radius: 3px;
+}
+
+.bento-cyber-card:hover .bento-corner-bracket {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Reactor Pod */
+.bento-icon-pod {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 35%, #0d2238 0%, #06111e 65%, #02070e 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.45);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(57, 255, 120, 0.2),
+    inset 0 0 12px rgba(57, 255, 120, 0.12);
+  color: #39ff78;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bento-cyber-card:hover .bento-icon-pod {
+  transform: scale(1.12) rotate(-4deg);
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(57, 255, 120, 0.5),
+    0 0 45px rgba(0, 240, 255, 0.25);
+}
+
+/* ===================================================
+   LIGHT THEME ADAPTATION
+   =================================================== */
+:root[data-theme="light"] .bento-cyber-card,
+html.light .bento-cyber-card,
+.light-theme .bento-cyber-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .bento-cyber-card:hover,
+html.light .bento-cyber-card:hover,
+.light-theme .bento-cyber-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .features-main-title,
+html.light .features-main-title,
+.light-theme .features-main-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .features-title-glow,
+html.light .features-title-glow,
+.light-theme .features-title-glow {
+  background: linear-gradient(135deg, #0f172a 30%, #059669 70%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+}
+
+:root[data-theme="light"] .features-vip-tag,
+html.light .features-vip-tag,
+.light-theme .features-vip-tag {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #047857;
+  -webkit-text-fill-color: #047857;
+}
+
+:root[data-theme="light"] .cyber-chip-badge,
+html.light .cyber-chip-badge,
+.light-theme .cyber-chip-badge {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .chip-text,
+html.light .chip-text,
+.light-theme .chip-text {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .chip-code,
+html.light .chip-code,
+.light-theme .chip-code {
+  color: #0284c7;
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+:root[data-theme="light"] .pillar-item,
+html.light .pillar-item,
+.light-theme .pillar-item {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #334155;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .pillar-item:hover,
+html.light .pillar-item:hover,
+.light-theme .pillar-item:hover {
+  background: #ffffff;
+  border-color: #059669;
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .bento-watermark,
+html.light .bento-watermark,
+.light-theme .bento-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .bento-cyber-card:hover .bento-watermark,
+html.light .bento-cyber-card:hover .bento-watermark,
+.light-theme .bento-cyber-card:hover .bento-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .bento-icon-pod,
+html.light .bento-icon-pod,
+.light-theme .bento-icon-pod {
+  background: #f8fafc;
+  border-color: #059669;
+  color: #059669;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}

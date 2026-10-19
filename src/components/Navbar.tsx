@@ -2,7 +2,6 @@ import React from 'react';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import AuthButton from './AuthButton';
-import DemoOrderButton from './DemoOrderButton';
 import './Navbar.css';
 
 interface NavbarProps {
@@ -11,6 +10,7 @@ interface NavbarProps {
   onOpenManagementPanel?: () => void;
   onNavigateToPurchase?: () => void;
   onNavigateToSection?: (sectionId: string) => void;
+  onNavigateHome?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
@@ -18,30 +18,65 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAuthModal,
   onNavigateToPurchase,
   onNavigateToSection,
+  onNavigateHome,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [isScrolledPastHero, setIsScrolledPastHero] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Hero section height is roughly 650-700px. Once scrolled past 250px (heading to slide 2), morph navbar to expanded full mode!
+      const scrollPos = window.scrollY;
+      if (scrollPos > 240) {
+        setIsScrolledPastHero(true);
+      } else {
+        setIsScrolledPastHero(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#050a14]/90 border-b border-slate-800/80 transition-colors">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
+    <header className={`sticky top-0 z-50 transition-all duration-500 ease-out ${
+      isScrolledPastHero 
+        ? 'navbar-expanded' 
+        : 'navbar-compact'
+    }`}>
+      <div className="navbar-inner-container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4 transition-all duration-500">
         
-        {/* Zone 1: Brand Wordmark */}
-        <a href="#" className="brand-logo-link flex items-center gap-2.5 sm:gap-3 shrink-0 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-            <span className="font-outfit font-black text-slate-950 text-xl tracking-tighter">DG</span>
+        {/* Zone 1: Pro Brand Hologram Badge (As in Screenshot) */}
+        <a 
+          href="#" 
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigateHome) onNavigateHome();
+            else window.location.hash = '';
+          }}
+          className="brand-logo-link flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer"
+        >
+          {/* 3D Glowing DG Emblem Avatar */}
+          <div className="brand-icon-pod relative flex items-center justify-center shrink-0">
+            <span className="brand-icon-pulse-glow" aria-hidden="true" />
+            <div className="brand-icon-box">
+              <span className="brand-icon-text">DG</span>
+            </div>
           </div>
 
+          {/* Typography & VIP Live Radar */}
           <div className="flex flex-col">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="brand-title text-lg sm:text-xl font-black tracking-tight font-vazir">
+            <div className="flex items-center gap-2">
+              <span className="brand-title">
                 دیجی‌گیم
               </span>
-              <span className="brand-vip-badge inline-flex items-center gap-1 text-[9.5px] font-outfit uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded-full border">
+              <span className="brand-vip-badge">
                 <span className="brand-vip-dot" />
                 VIP
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-[10px] text-slate-400 font-medium">
+            <div className="brand-subtext-row">
               <span className="brand-status-dot" />
               <span>نرم‌افزار جامع گیم‌نت</span>
             </div>
@@ -129,11 +164,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Login / Register Button */}
           <AuthButton onClick={onOpenAuthModal} />
-
-          {/* Primary Action Button */}
-          <div className="hidden sm:block">
-            <DemoOrderButton onClick={() => onOpenOrderModal()} />
-          </div>
 
           {/* Mobile hamburger menu toggle */}
           <button

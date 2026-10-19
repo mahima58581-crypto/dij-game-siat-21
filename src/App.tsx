@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -23,9 +23,36 @@ import BackToTop from './components/BackToTop';
 export default function App() {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [showPurchasePage, setShowPurchasePage] = useState(false);
+  const [purchaseInitialMode, setPurchaseInitialMode] = useState<'new' | 'renewal'>('new');
+  const [showPurchasePage, setShowPurchasePage] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      return hash.includes('purchase') || hash.includes('renew');
+    }
+    return false;
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(() => localStorage.getItem('digigame_user_auth') === 'true');
   const [selectedPlanId, setSelectedPlanId] = useState<string | undefined>('gold');
+
+  useEffect(() => {
+    const handleHashSync = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('purchase') || hash.includes('renew')) {
+        setPurchaseInitialMode(hash.includes('renew') ? 'renewal' : 'new');
+        setShowPurchasePage(true);
+      } else if (hash === '' || hash.startsWith('#features') || hash.startsWith('#pricing') || hash.startsWith('#about') || hash.startsWith('#faq') || hash.startsWith('#downloads') || hash.startsWith('#blog')) {
+        setShowPurchasePage(false);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashSync);
+    window.addEventListener('popstate', handleHashSync);
+    handleHashSync();
+    return () => {
+      window.removeEventListener('hashchange', handleHashSync);
+      window.removeEventListener('popstate', handleHashSync);
+    };
+  }, []);
 
   const handleOpenOrderModal = (planId?: string) => {
     if (planId) {
@@ -33,6 +60,26 @@ export default function App() {
     }
     setOrderModalOpen(true);
   };
+
+  const handleNavigateToPurchase = (modeOrPlanId: 'new' | 'renewal' | string = 'new') => {
+    const mode = modeOrPlanId === 'renewal' ? 'renewal' : 'new';
+    setPurchaseInitialMode(mode);
+    window.location.hash = mode === 'renewal' ? 'purchase-renewal' : 'purchase';
+    setShowPurchasePage(true);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
+
+  const handleNavigateHome = () => {
+    if (window.location.hash.includes('purchase') || window.location.hash.includes('renew')) {
+      history.pushState(null, '', window.location.pathname);
+    }
+    setShowPurchasePage(false);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [showPurchasePage]);
 
   const handleScrollToDemo = () => {
     const el = document.getElementById('special-features');
@@ -42,7 +89,7 @@ export default function App() {
   };
 
   const navigateToSection = (sectionId: string) => {
-    setShowPurchasePage(false);
+    handleNavigateHome();
     setTimeout(() => {
       const el = document.getElementById(sectionId);
       if (el) {
@@ -60,15 +107,21 @@ export default function App() {
             <Navbar
               onOpenOrderModal={handleOpenOrderModal}
               onOpenAuthModal={() => setAuthModalOpen(true)}
-              onNavigateToPurchase={() => setShowPurchasePage(true)}
+              onNavigateToPurchase={handleNavigateToPurchase}
               onNavigateToSection={navigateToSection}
+              onNavigateHome={handleNavigateHome}
             />
             <main className="flex-1">
               <PurchasePage
+                onBack={handleNavigateHome}
                 onOpenAuth={() => setAuthModalOpen(true)}
+                initialMode={purchaseInitialMode}
               />
             </main>
-            <Footer onOpenOrderModal={() => handleOpenOrderModal('gold')} />
+            <Footer 
+              onOpenOrderModal={() => handleOpenOrderModal('gold')} 
+              onNavigateToPurchase={handleNavigateToPurchase}
+            />
           </>
         ) : (
           <>
@@ -76,8 +129,9 @@ export default function App() {
             <Navbar
               onOpenOrderModal={handleOpenOrderModal}
               onOpenAuthModal={() => setAuthModalOpen(true)}
-              onNavigateToPurchase={() => setShowPurchasePage(true)}
+              onNavigateToPurchase={handleNavigateToPurchase}
               onNavigateToSection={navigateToSection}
+              onNavigateHome={handleNavigateHome}
             />
 
             {/* Main Public & Interactive Sections */}
@@ -100,7 +154,10 @@ export default function App() {
           <RoiCalculator onOpenOrderModal={() => handleOpenOrderModal('gold')} />
 
           {/* Pricing Plans (تعرفه) */}
-          <PricingSection onOpenOrderModal={handleOpenOrderModal} />
+          <PricingSection 
+            onOpenOrderModal={handleOpenOrderModal} 
+            onNavigateToPurchase={handleNavigateToPurchase}
+          />
 
           {/* Partner Game Clubs Directory (گیم‌نت‌ها) */}
           <DirectorySection />
@@ -128,7 +185,10 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <Footer onOpenOrderModal={() => handleOpenOrderModal('gold')} />
+        <Footer 
+          onOpenOrderModal={() => handleOpenOrderModal('gold')} 
+          onNavigateToPurchase={handleNavigateToPurchase}
+        />
 
         {/* Order & Demo Consultation Modal */}
         <OrderModal

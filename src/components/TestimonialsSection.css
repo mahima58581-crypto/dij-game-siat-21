@@ -1,0 +1,941 @@
+/* ==========================================================================
+   DIGIGAME CYBER HUD: TESTIMONIALS & REVIEWS SECTION
+   Enterprise Esports Ecosystem Theme (Neon Emerald #39ff78 & Cyan #00f0ff)
+   ========================================================================== */
+
+.testimonials-cyber-wrapper {
+  position: relative;
+  isolation: isolate;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+/* Background Ambient Glow & Grid */
+.testimonials-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.05) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header Chip Badge */
+.testimonials-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(4, 9, 16, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  box-shadow: 0 0 20px rgba(57, 255, 120, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.testimonials-chip-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials-chip-radar {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #39ff78;
+  box-shadow: 0 0 10px #39ff78;
+  animation: testimonialsPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes testimonialsPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.testimonials-section-title {
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.testimonials-title-gradient {
+  background: linear-gradient(135deg, #39ff78 0%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-shadow: 0 0 35px rgba(57, 255, 120, 0.4);
+}
+
+.testimonials-subtitle {
+  line-height: 1.8;
+}
+
+/* ===================================================
+   TELEMETRY STATS & ACTION BAR
+   =================================================== */
+.testimonials-telemetry-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 22px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(7, 16, 30, 0.85) 0%, rgba(3, 8, 18, 0.95) 100%);
+  border: 1px solid rgba(57, 255, 120, 0.22);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials-stats-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.testimonials-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonials-stat-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #39ff78;
+  flex-shrink: 0;
+}
+
+.testimonials-stat-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.testimonials-stat-label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Action Button: Submit Review */
+.submit-review-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1.5px solid rgba(57, 255, 120, 0.5);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.submit-review-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #39ff78;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(57, 255, 120, 0.5), 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================================
+   FILTER PILLS
+   =================================================== */
+.testimonials-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+  scrollbar-width: none;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials-filters-row::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(11, 20, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.testimonial-filter-pill:hover {
+  background: rgba(16, 28, 50, 0.9);
+  color: #ffffff;
+  border-color: rgba(57, 255, 120, 0.3);
+}
+
+.testimonial-filter-pill.active {
+  background: rgba(57, 255, 120, 0.15);
+  border-color: #39ff78;
+  color: #39ff78;
+  box-shadow: 0 0 15px rgba(57, 255, 120, 0.2);
+}
+
+/* ===================================================
+   TESTIMONIALS CARDS GRID
+   =================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Card Chassis */
+.testimonial-cyber-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(150deg, #091322 0%, #060d18 70%, #030810 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.2);
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(57, 255, 120, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.testimonial-cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.12),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.testimonial-cyber-card:hover::before {
+  opacity: 1;
+}
+
+.testimonial-cyber-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(57, 255, 120, 0.55);
+  box-shadow:
+    0 22px 48px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px -5px rgba(57, 255, 120, 0.25),
+    0 0 40px -10px rgba(0, 240, 255, 0.15);
+}
+
+/* User-submitted Card Special Ring */
+.testimonial-cyber-card.is-user-created {
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+}
+
+/* Top Laser Beam & Shimmer */
+.testimonial-top-beam {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.75;
+  transition: opacity 0.3s ease, left 0.3s ease, right 0.3s ease;
+  pointer-events: none;
+}
+
+.testimonial-cyber-card:hover .testimonial-top-beam {
+  opacity: 1;
+  left: 2%;
+  right: 2%;
+}
+
+/* Corner Reticle Brackets */
+.testimonial-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(57, 255, 120, 0.45);
+  pointer-events: none;
+  transition: border-color 0.3s ease;
+}
+
+.testimonial-bracket-tl {
+  top: 8px;
+  right: 8px;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+.testimonial-bracket-bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.testimonial-cyber-card:hover .testimonial-bracket {
+  border-color: #39ff78;
+}
+
+/* Card Header Meta */
+.testimonial-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-author-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar-pod {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffffff;
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  box-shadow: 0 0 14px rgba(57, 255, 120, 0.2);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-author-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.testimonial-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #39ff78;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  padding: 1px 6px;
+  border-radius: 20px;
+}
+
+.testimonial-club-line {
+  font-size: 11.5px;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.testimonial-stations-line {
+  font-size: 10.5px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Rating Stars Pod */
+.testimonial-rating-pod {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.testimonial-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.testimonial-rating-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+/* Card Body / Quote */
+.testimonial-quote-box {
+  position: relative;
+  z-index: 2;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(4, 9, 16, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.testimonial-quote-watermark {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: rgba(57, 255, 120, 0.1);
+  pointer-events: none;
+}
+
+.testimonial-quote-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  line-height: 1.85;
+  text-align: justify;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card Footer */
+.testimonial-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(57, 255, 120, 0.1);
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  color: #39ff78;
+}
+
+.testimonial-highlight-pill.cyan {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+}
+
+.testimonial-date-tag {
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ===================================================
+   MODAL: SUBMIT NEW REVIEW
+   =================================================== */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 12, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.review-modal-chassis {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: linear-gradient(155deg, #0a1526 0%, #060e1b 60%, #03070f 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  border-radius: 26px;
+  padding: 28px 24px 24px 24px;
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(57, 255, 120, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-modal-close-btn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.review-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ef4444;
+}
+
+.review-modal-header {
+  margin-bottom: 20px;
+}
+
+.review-modal-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-modal-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+/* Modal Form Controls */
+.review-modal-form {
+  overflow-y: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-modal-form::-webkit-scrollbar {
+  width: 5px;
+}
+.review-modal-form::-webkit-scrollbar-track {
+  background: rgba(4, 9, 16, 0.5);
+}
+.review-modal-form::-webkit-scrollbar-thumb {
+  background: rgba(57, 255, 120, 0.3);
+  border-radius: 4px;
+}
+
+.form-group-cyber {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label-cyber {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-input-cyber,
+.form-textarea-cyber,
+.form-select-cyber {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(4, 9, 16, 0.8);
+  border: 1px solid rgba(57, 255, 120, 0.25);
+  color: #ffffff;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.form-input-cyber:focus,
+.form-textarea-cyber:focus,
+.form-select-cyber:focus {
+  border-color: #39ff78;
+  background: rgba(4, 9, 16, 0.95);
+  box-shadow: 0 0 15px rgba(57, 255, 120, 0.25);
+}
+
+.form-textarea-cyber {
+  min-height: 85px;
+  resize: vertical;
+}
+
+/* Interactive Star Picker */
+.star-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(4, 9, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: fit-content;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.2s ease;
+}
+
+.star-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Submit Modal Button */
+.review-submit-action-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.6);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.review-submit-action-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #39ff78;
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(57, 255, 120, 0.6);
+}
+
+/* Success Toast / Notification */
+.review-success-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  color: #39ff78;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  animation: modalFadeIn 0.3s ease;
+}
+
+/* ===================================================
+   LIGHT MODE OVERRIDES
+   =================================================== */
+:root[data-theme="light"] .testimonials-cyber-wrapper,
+html.light .testimonials-cyber-wrapper,
+.light-theme .testimonials-cyber-wrapper {
+  background: transparent;
+}
+
+:root[data-theme="light"] .testimonials-section-title,
+html.light .testimonials-section-title,
+.light-theme .testimonials-section-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .testimonials-title-gradient,
+html.light .testimonials-title-gradient,
+.light-theme .testimonials-title-gradient {
+  background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .testimonials-subtitle,
+html.light .testimonials-subtitle,
+.light-theme .testimonials-subtitle {
+  color: #475569;
+}
+
+:root[data-theme="light"] .testimonials-chip-badge,
+html.light .testimonials-chip-badge,
+.light-theme .testimonials-chip-badge {
+  background: #ffffff;
+  border-color: #a7f3d0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .testimonials-telemetry-bar,
+html.light .testimonials-telemetry-bar,
+.light-theme .testimonials-telemetry-bar {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .testimonials-stat-val,
+html.light .testimonials-stat-val,
+.light-theme .testimonials-stat-val {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .testimonials-stat-label,
+html.light .testimonials-stat-label,
+.light-theme .testimonials-stat-label {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .testimonials-stat-icon-wrap,
+html.light .testimonials-stat-icon-wrap,
+.light-theme .testimonials-stat-icon-wrap {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+:root[data-theme="light"] .testimonial-filter-pill,
+html.light .testimonial-filter-pill,
+.light-theme .testimonial-filter-pill {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+:root[data-theme="light"] .testimonial-filter-pill:hover,
+html.light .testimonial-filter-pill:hover,
+.light-theme .testimonial-filter-pill:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .testimonial-filter-pill.active,
+html.light .testimonial-filter-pill.active,
+.light-theme .testimonial-filter-pill.active {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #059669;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.15);
+}
+
+:root[data-theme="light"] .testimonial-cyber-card,
+html.light .testimonial-cyber-card,
+.light-theme .testimonial-cyber-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.07);
+}
+
+:root[data-theme="light"] .testimonial-cyber-card:hover,
+html.light .testimonial-cyber-card:hover,
+.light-theme .testimonial-cyber-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 18px 35px -8px rgba(15, 23, 42, 0.12), 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+:root[data-theme="light"] .testimonial-author-name,
+html.light .testimonial-author-name,
+.light-theme .testimonial-author-name {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .testimonial-club-line,
+html.light .testimonial-club-line,
+.light-theme .testimonial-club-line {
+  color: #0284c7;
+}
+
+:root[data-theme="light"] .testimonial-stations-line,
+html.light .testimonial-stations-line,
+.light-theme .testimonial-stations-line {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .testimonial-quote-box,
+html.light .testimonial-quote-box,
+.light-theme .testimonial-quote-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .testimonial-quote-text,
+html.light .testimonial-quote-text,
+.light-theme .testimonial-quote-text {
+  color: #334155;
+}
+
+:root[data-theme="light"] .testimonial-quote-watermark,
+html.light .testimonial-quote-watermark,
+.light-theme .testimonial-quote-watermark {
+  color: rgba(5, 150, 105, 0.12);
+}
+
+:root[data-theme="light"] .testimonial-card-footer,
+html.light .testimonial-card-footer,
+.light-theme .testimonial-card-footer {
+  border-color: #f1f5f9;
+}
+
+:root[data-theme="light"] .testimonial-highlight-pill,
+html.light .testimonial-highlight-pill,
+.light-theme .testimonial-highlight-pill {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .testimonial-highlight-pill.cyan,
+html.light .testimonial-highlight-pill.cyan,
+.light-theme .testimonial-highlight-pill.cyan {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+  color: #0f766e;
+}
+
+:root[data-theme="light"] .testimonial-date-tag,
+html.light .testimonial-date-tag,
+.light-theme .testimonial-date-tag {
+  color: #94a3b8;
+}
+
+:root[data-theme="light"] .review-modal-chassis,
+html.light .review-modal-chassis,
+.light-theme .review-modal-chassis {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+}
+
+:root[data-theme="light"] .review-modal-title,
+html.light .review-modal-title,
+.light-theme .review-modal-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .form-label-cyber,
+html.light .form-label-cyber,
+.light-theme .form-label-cyber {
+  color: #334155;
+}
+
+:root[data-theme="light"] .form-input-cyber,
+:root[data-theme="light"] .form-textarea-cyber,
+:root[data-theme="light"] .form-select-cyber,
+html.light .form-input-cyber,
+html.light .form-textarea-cyber,
+html.light .form-select-cyber,
+.light-theme .form-input-cyber,
+.light-theme .form-textarea-cyber,
+.light-theme .form-select-cyber {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}

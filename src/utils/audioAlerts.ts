@@ -114,6 +114,42 @@ class SoundManager {
       // Ignored
     }
   }
+
+  // Cyber rocket launch / hyperspace warp effect
+  playRocketLaunch() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    try {
+      const now = ctx.currentTime;
+      // Ignition thruster rumble
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(110, now);
+      osc.frequency.exponentialRampToValueAtTime(700, now + 0.45);
+      gain.gain.setValueAtTime(0.09, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.5);
+
+      // Sci-fi warp riser
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(520, now + 0.05);
+      osc2.frequency.exponentialRampToValueAtTime(1480, now + 0.38);
+      gain2.gain.setValueAtTime(0.12, now + 0.05);
+      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.42);
+      osc2.connect(gain2);
+      gain2.connect(ctx.destination);
+      osc2.start(now + 0.05);
+      osc2.stop(now + 0.42);
+    } catch {
+      // Audio autoplay policy handled silently
+    }
+  }
 }
 
 export const soundManager = new SoundManager();

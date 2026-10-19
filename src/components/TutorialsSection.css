@@ -1,0 +1,881 @@
+/* ===================================================
+   UNIFIED CYBERPUNK HUD TUTORIALS ACADEMY
+   DIGI-GAME EXCLUSIVE SIGNATURE EMERALD EDITION
+   MATCHES PRICING, DIRECTORY & SPECIAL FEATURES
+   =================================================== */
+
+.tutorials-cyber-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.tutorials-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 850px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.tutorials-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(57, 255, 120, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 120, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+/* Header Chip & Hologram Title */
+.tutorials-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(6, 18, 28, 0.85);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), inset 0 0 12px rgba(57, 255, 120, 0.12);
+}
+
+.tutorials-chip-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: rgba(57, 255, 120, 0.18);
+  border: 1px solid #39ff78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorials-chip-radar {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: tutorialBeacon 1.8s infinite ease-in-out;
+}
+
+@keyframes tutorialBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.tutorials-section-title {
+  color: #ffffff;
+}
+
+.tutorials-title-gradient {
+  background: linear-gradient(135deg, #ffffff 25%, #39ff78 65%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.25));
+}
+
+/* Trust Guarantee Strip Above Cards */
+.tutorials-guarantee-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 22px;
+  background: rgba(5, 12, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  width: fit-content;
+  margin: 0 auto 48px auto;
+  backdrop-filter: blur(12px);
+}
+
+.tutorials-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+/* ===================================================
+   TUTORIALS CYBER GRID (3 COLUMNS)
+   =================================================== */
+.tutorials-cyber-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .tutorials-cyber-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .tutorials-cyber-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ===================================================
+   CYBER TUTORIAL CARD CHASSIS
+   =================================================== */
+.tutorial-cyber-card {
+  --neon-green: #39ff78;
+  --neon-cyan: #00f0ff;
+
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  border-radius: 26px;
+  padding: 22px 22px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 16px 40px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Interactive Spotlight Glow */
+.tutorial-cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.tutorial-cyber-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Hover Elevation */
+.tutorial-cyber-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(57, 255, 120, 0.65);
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.28),
+    0 0 60px -15px rgba(0, 240, 255, 0.15),
+    inset 0 0 25px rgba(57, 255, 120, 0.04);
+}
+
+/* Glowing Flowing Top Border Beam */
+.tutorial-cyber-card .cyber-card-top-beam {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.5;
+  transition: all 0.4s ease;
+  z-index: 4;
+}
+
+.tutorial-cyber-card:hover .cyber-card-top-beam {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+  box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
+}
+
+/* Holographic Laser Shimmer */
+.tutorial-cyber-card .cyber-card-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 26px;
+  z-index: 3;
+}
+
+.tutorial-cyber-card .cyber-card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -80%;
+  width: 50%;
+  height: 260%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(57, 255, 120, 0.15) 45%,
+    rgba(0, 240, 255, 0.2) 55%,
+    transparent 100%
+  );
+  transform: rotate(32deg);
+  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tutorial-cyber-card:hover .cyber-card-shimmer::after {
+  left: 150%;
+}
+
+/* Big Watermark Number */
+.tutorial-cyber-card .cyber-card-watermark {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 78px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.035);
+  letter-spacing: -2px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.tutorial-cyber-card:hover .cyber-card-watermark {
+  color: rgba(57, 255, 120, 0.08);
+  transform: translateY(4px) scale(1.05);
+}
+
+/* HUD Corner Reticles */
+.tutorial-cyber-card .card-corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  opacity: 0.45;
+  transition: all 0.35s ease;
+  z-index: 4;
+}
+
+.tutorial-cyber-card .bracket-tl {
+  top: 9px;
+  right: 9px;
+  border-top: 1.5px solid #39ff78;
+  border-right: 1.5px solid #39ff78;
+  border-top-right-radius: 4px;
+}
+
+.tutorial-cyber-card .bracket-br {
+  bottom: 9px;
+  left: 9px;
+  border-bottom: 1.5px solid #00f0ff;
+  border-left: 1.5px solid #00f0ff;
+  border-bottom-left-radius: 4px;
+}
+
+.tutorial-cyber-card:hover .card-corner-bracket {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* ===================================================
+   VIDEO PREVIEW CHASSIS (CYBER CRT / GLASS)
+   =================================================== */
+.tutorial-video-chassis {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 50%, #0d2238 0%, #06111e 65%, #02070e 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.25);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.tutorial-cyber-card:hover .tutorial-video-chassis {
+  border-color: rgba(57, 255, 120, 0.6);
+  box-shadow:
+    inset 0 0 30px rgba(57, 255, 120, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+/* Cyber CRT Scanline Overlay */
+.video-scanline-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+/* Play Button Pod in Center */
+.tutorial-play-pod {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(4, 9, 16, 0.8);
+  border: 2px solid #39ff78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #39ff78;
+  box-shadow:
+    0 0 20px rgba(57, 255, 120, 0.35),
+    inset 0 0 12px rgba(57, 255, 120, 0.2);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+
+.tutorial-play-ripple {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  animation: ripplePulse 2s infinite ease-out;
+}
+
+@keyframes ripplePulse {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.tutorial-cyber-card:hover .tutorial-play-pod {
+  transform: scale(1.15);
+  background: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 30px rgba(57, 255, 120, 0.8);
+}
+
+/* Top bar on video container */
+.video-top-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.tutorial-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
+.level-beginner {
+  background: rgba(57, 255, 120, 0.15);
+  border: 1px solid rgba(57, 255, 120, 0.4);
+  color: #39ff78;
+}
+
+.level-intermediate {
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+}
+
+.level-advanced {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+
+/* Bottom bar on video container */
+.video-bottom-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.video-duration-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(4, 9, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: 'Outfit', monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.video-resolution-pill {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: rgba(57, 255, 120, 0.15);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  color: #a7f3d0;
+  letter-spacing: 0.5px;
+}
+
+/* ===================================================
+   CARD BODY: CATEGORY, TITLE & TELEMETRY
+   =================================================== */
+.tutorial-card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3;
+}
+
+.tutorial-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(57, 255, 120, 0.1);
+  border: 1px solid rgba(57, 255, 120, 0.25);
+  color: #39ff78;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.tutorial-card-title {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 48px;
+  transition: color 0.3s ease;
+}
+
+.tutorial-cyber-card:hover .tutorial-card-title {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(57, 255, 120, 0.4);
+}
+
+/* Telemetry Row */
+.tutorial-telemetry-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(4, 9, 16, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tutorial-steps-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.tutorial-tag-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #39ff78;
+}
+
+/* ===================================================
+   CARD FOOTER: WATCH CTA & IMPACT CAPSULE
+   =================================================== */
+.tutorial-card-footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 3;
+}
+
+.tutorial-watch-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(6, 18, 30, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.tutorial-watch-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 25px rgba(57, 255, 120, 0.6);
+  transform: translateY(-2px);
+}
+
+.tutorial-watch-btn:hover svg {
+  color: #031508;
+}
+
+.tutorial-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.tutorial-watch-btn:hover .tutorial-btn-shine {
+  left: 200%;
+}
+
+/* ===================================================
+   CYBER VIDEO MODAL
+   =================================================== */
+.tutorial-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(2, 6, 14, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.tutorial-modal-window {
+  position: relative;
+  background: linear-gradient(150deg, #091322 0%, #060d18 70%, #030810 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  border-radius: 28px;
+  max-width: 680px;
+  width: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(57, 255, 120, 0.25);
+  overflow: hidden;
+}
+
+.tutorial-modal-close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.tutorial-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+.modal-player-screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  background: #02070e;
+  border: 1.5px solid rgba(57, 255, 120, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ===================================================
+   LIGHT THEME: CRISP CERAMIC WITH HIGH CONTRAST
+   =================================================== */
+:root[data-theme="light"] .tutorials-ambient-glow,
+html.light .tutorials-ambient-glow,
+.light-theme .tutorials-ambient-glow {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 70%);
+}
+
+:root[data-theme="light"] .tutorials-chip-badge,
+html.light .tutorials-chip-badge,
+.light-theme .tutorials-chip-badge {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .tutorials-chip-badge span,
+html.light .tutorials-chip-badge span,
+.light-theme .tutorials-chip-badge span {
+  color: #047857;
+}
+
+:root[data-theme="light"] .tutorials-section-title,
+html.light .tutorials-section-title,
+.light-theme .tutorials-section-title {
+  color: #0f172a !important;
+}
+
+:root[data-theme="light"] .tutorials-title-gradient,
+html.light .tutorials-title-gradient,
+.light-theme .tutorials-title-gradient {
+  background: linear-gradient(135deg, #047857 0%, #059669 45%, #0284c7 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(5, 150, 105, 0.25)) !important;
+}
+
+:root[data-theme="light"] .tutorials-subtitle,
+html.light .tutorials-subtitle,
+.light-theme .tutorials-subtitle {
+  color: #475569;
+}
+
+:root[data-theme="light"] .tutorials-guarantee-strip,
+html.light .tutorials-guarantee-strip,
+.light-theme .tutorials-guarantee-strip {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .tutorials-guarantee-item,
+html.light .tutorials-guarantee-item,
+.light-theme .tutorials-guarantee-item {
+  color: #334155;
+}
+
+:root[data-theme="light"] .tutorials-guarantee-item svg,
+html.light .tutorials-guarantee-item svg,
+.light-theme .tutorials-guarantee-item svg {
+  color: #059669;
+}
+
+/* Light Mode Cards */
+:root[data-theme="light"] .tutorial-cyber-card,
+html.light .tutorial-cyber-card,
+.light-theme .tutorial-cyber-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+:root[data-theme="light"] .tutorial-cyber-card:hover,
+html.light .tutorial-cyber-card:hover,
+.light-theme .tutorial-cyber-card:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 20px 40px -8px rgba(15, 23, 42, 0.14),
+    0 0 25px rgba(16, 185, 129, 0.25);
+}
+
+:root[data-theme="light"] .tutorial-cyber-card::before,
+html.light .tutorial-cyber-card::before,
+.light-theme .tutorial-cyber-card::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+}
+
+:root[data-theme="light"] .tutorial-cyber-card .cyber-card-watermark,
+html.light .tutorial-cyber-card .cyber-card-watermark,
+.light-theme .tutorial-cyber-card .cyber-card-watermark {
+  color: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme="light"] .tutorial-cyber-card:hover .cyber-card-watermark,
+html.light .tutorial-cyber-card:hover .cyber-card-watermark,
+.light-theme .tutorial-cyber-card:hover .cyber-card-watermark {
+  color: rgba(16, 185, 129, 0.12);
+}
+
+:root[data-theme="light"] .tutorial-video-chassis,
+html.light .tutorial-video-chassis,
+.light-theme .tutorial-video-chassis {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+:root[data-theme="light"] .tutorial-card-title,
+html.light .tutorial-card-title,
+.light-theme .tutorial-card-title {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .tutorial-cyber-card:hover .tutorial-card-title,
+html.light .tutorial-cyber-card:hover .tutorial-card-title,
+.light-theme .tutorial-cyber-card:hover .tutorial-card-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .tutorial-category-pill,
+html.light .tutorial-category-pill,
+.light-theme .tutorial-category-pill {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+:root[data-theme="light"] .tutorial-telemetry-row,
+html.light .tutorial-telemetry-row,
+.light-theme .tutorial-telemetry-row {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .tutorial-steps-info,
+html.light .tutorial-steps-info,
+.light-theme .tutorial-steps-info {
+  color: #334155;
+}
+
+:root[data-theme="light"] .tutorial-steps-info svg,
+html.light .tutorial-steps-info svg,
+.light-theme .tutorial-steps-info svg {
+  color: #059669;
+}
+
+:root[data-theme="light"] .tutorial-tag-badge,
+html.light .tutorial-tag-badge,
+.light-theme .tutorial-tag-badge {
+  color: #047857;
+}
+
+:root[data-theme="light"] .tutorial-card-footer,
+html.light .tutorial-card-footer,
+.light-theme .tutorial-card-footer {
+  border-top-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .tutorial-watch-btn,
+html.light .tutorial-watch-btn,
+.light-theme .tutorial-watch-btn {
+  background: #f8fafc;
+  border-color: #059669;
+  color: #047857;
+}
+
+:root[data-theme="light"] .tutorial-watch-btn:hover,
+html.light .tutorial-watch-btn:hover,
+.light-theme .tutorial-watch-btn:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.35);
+}
+
+/* Modal in Light Mode */
+:root[data-theme="light"] .tutorial-modal-window,
+html.light .tutorial-modal-window,
+.light-theme .tutorial-modal-window {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+}
+
+:root[data-theme="light"] .tutorial-modal-close-btn,
+html.light .tutorial-modal-close-btn,
+.light-theme .tutorial-modal-close-btn {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tutorial-cyber-card {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+
+  .tutorial-card-title {
+    font-size: 14px;
+    min-height: auto;
+  }
+
+  .tutorial-play-pod {
+    width: 50px;
+    height: 50px;
+  }
+}

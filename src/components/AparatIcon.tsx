@@ -1,0 +1,1 @@
+export { AparatIcon } from './CyberSocialIcons';
