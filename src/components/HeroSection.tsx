@@ -43,6 +43,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     setTrialModalOpen(true);
   };
 
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Normalized tilt (-1 to 1)
+    const tiltX = (x - centerX) / centerX;
+    const tiltY = (y - centerY) / centerY;
+    
+    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+    e.currentTarget.style.setProperty('--tilt-x', `${tiltX.toFixed(3)}`);
+    e.currentTarget.style.setProperty('--tilt-y', `${tiltY.toFixed(3)}`);
+  };
+
+  const handleHeroMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--tilt-x', '0');
+    e.currentTarget.style.setProperty('--tilt-y', '0');
+  };
+
   return (
     <section id="home" className="hero-arena-wrapper relative pt-6 pb-16 px-3 sm:px-6 lg:px-8 max-w-[1440px] mx-auto overflow-hidden scroll-mt-24">
       {/* Ambient Lighting Orbs */}
@@ -51,6 +73,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Main Master Chassis */}
       <div
         className="hero-master-chassis hero-chassis relative text-slate-100 p-6 sm:p-8 md:p-12 transition-all overflow-hidden"
+        onMouseMove={handleHeroMouseMove}
+        onMouseLeave={handleHeroMouseLeave}
         style={{
           ['--hero-bg' as any]: `url(${heroBg})`
         }}
@@ -101,14 +125,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
 
-            {/* 2. Giant Brand Typography: DIGI GAME */}
-            <div className="hero-brand-group">
-              <span className="hero-brand-digi">
-                DIGI
-              </span>
-              <span className="hero-brand-game">
-                GAME
-              </span>
+            {/* 2. Giant Brand Typography: DIGI GAME with 3D Cyber Glitch & Hologram */}
+            <div 
+              className="hero-brand-group group cursor-pointer"
+              onMouseEnter={() => {
+                try {
+                  soundManager.playCashierSuccess();
+                } catch {}
+              }}
+              title="دیجی‌گیم - نسل جدید مدیریت گیم‌نت"
+            >
+              <div className="hero-brand-cyber-badge">
+                <span className="brand-badge-dot" />
+                <span>ESPORTS SYSTEM CORE</span>
+                <span className="brand-badge-line" />
+                <span className="brand-badge-rev">REV.2026</span>
+              </div>
+              <div className="hero-brand-title-box">
+                <span className="hero-brand-digi" data-text="DIGI">
+                  DIGI
+                </span>
+                <span className="hero-brand-game" data-text="GAME">
+                  GAME
+                </span>
+              </div>
             </div>
 
             {/* 3. Symmetrical, Neat 5-Day Free Trial Launch Pod: "اول تست کن" */}
@@ -195,8 +235,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* Left Column: Kept completely open for the 3D Controller & Crown Emblem (5 Cols) */}
-          <div className="hidden lg:block lg:col-span-5" aria-hidden="true" />
+          {/* Left Column: Holographic Cyber HUD & Scanner over Controller */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative pointer-events-none select-none min-h-[480px]">
+            {/* Cyber Scanning Laser Beam */}
+            <div className="hero-scanner-laser" aria-hidden="true" />
+
+            {/* Rotating Cyber HUD Rings */}
+            <div className="cyber-hud-reactor-pod">
+              <div className="cyber-ring ring-outer" />
+              <div className="cyber-ring ring-middle" />
+              <div className="cyber-ring ring-inner" />
+              <div className="cyber-reactor-core" />
+              <div className="cyber-target-crosshairs" />
+              
+              {/* Micro Telemetry HUD Floating Badges */}
+              <div className="cyber-telemetry-tag tag-top">
+                <span className="telemetry-dot" />
+                <span>OVERCLOCK // 2026</span>
+              </div>
+              <div className="cyber-telemetry-tag tag-bottom">
+                <span>AI CLOUD RELAY : 0.4ms</span>
+              </div>
+            </div>
+
+            {/* Floating Cyber Particle Moters */}
+            <div className="cyber-sparks-field" aria-hidden="true">
+              <span className="spark-particle p1" />
+              <span className="spark-particle p2" />
+              <span className="spark-particle p3" />
+              <span className="spark-particle p4" />
+              <span className="spark-particle p5" />
+            </div>
+          </div>
 
         </div>
 
