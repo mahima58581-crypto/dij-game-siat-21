@@ -190,6 +190,12 @@
 /* ===================================================
    BENTO GRID CYBER CARDS (UNIFIED STYLING)
    =================================================== */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .bento-cyber-card {
   position: relative;
   isolation: isolate;
@@ -197,15 +203,52 @@
   border: 1px solid rgba(57, 255, 120, 0.18);
   border-radius: 28px;
   overflow: hidden;
+  perspective: 1200px;
+  transform-style: preserve-3d;
   box-shadow:
     0 16px 40px -12px rgba(0, 0, 0, 0.75),
     0 0 0 1px rgba(255, 255, 255, 0.03),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.4s ease,
     box-shadow 0.4s ease;
   cursor: pointer;
+}
+
+/* Continuous Perimeter Rotating Laser Tracer */
+.bento-cyber-card::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 29px;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    transparent 0%,
+    transparent 70%,
+    rgba(57, 255, 120, 0.85) 86%,
+    rgba(0, 240, 255, 0.95) 96%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 5;
+  animation: bentoBorderRotate 3.2s linear infinite;
+}
+
+.bento-cyber-card:hover::after {
+  opacity: 1;
+}
+
+@keyframes bentoBorderRotate {
+  to {
+    --border-angle: 360deg;
+  }
 }
 
 /* Mouse Spotlight */
@@ -228,14 +271,19 @@
   opacity: 1;
 }
 
+/* Dynamic 3D Tilt & Elevation */
 .bento-cyber-card:hover {
-  transform: translateY(-6px) scale(1.012);
-  border-color: rgba(57, 255, 120, 0.65);
+  transform: 
+    translate3d(0, -8px, 15px)
+    rotateX(calc(var(--card-tilt-y, 0) * -7.5deg))
+    rotateY(calc(var(--card-tilt-x, 0) * 8.5deg))
+    scale(1.02);
+  border-color: rgba(57, 255, 120, 0.75);
   box-shadow:
-    0 24px 50px -10px rgba(0, 0, 0, 0.9),
-    0 0 30px -5px rgba(57, 255, 120, 0.28),
-    0 0 60px -15px rgba(0, 240, 255, 0.15),
-    inset 0 0 25px rgba(57, 255, 120, 0.04);
+    0 26px 60px -10px rgba(0, 0, 0, 0.95),
+    0 0 40px -5px rgba(57, 255, 120, 0.32),
+    0 0 65px -15px rgba(0, 240, 255, 0.2),
+    inset 0 0 25px rgba(57, 255, 120, 0.06);
 }
 
 /* Top Flowing Laser Beam */
@@ -255,39 +303,42 @@
   left: 5%;
   right: 5%;
   opacity: 1;
+  transform: translateZ(15px);
   box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
 }
 
-/* Holographic Laser Shimmer */
-.bento-shimmer {
+/* Vertical Cyber Laser Scanline */
+.bento-scanline {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #39ff78 30%, #00f0ff 70%, transparent 100%);
+  box-shadow: 0 0 10px #39ff78, 0 0 20px #00f0ff;
+  opacity: 0;
   pointer-events: none;
-  border-radius: 28px;
-  z-index: 2;
+  z-index: 4;
 }
 
-.bento-shimmer::after {
-  content: "";
-  position: absolute;
-  top: -80%;
-  left: -80%;
-  width: 50%;
-  height: 260%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(57, 255, 120, 0.14) 45%,
-    rgba(0, 240, 255, 0.18) 55%,
-    transparent 100%
-  );
-  transform: rotate(32deg);
-  transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+.bento-cyber-card:hover .bento-scanline {
+  animation: bentoScanlineSweep 2.2s ease-in-out infinite;
 }
 
-.bento-cyber-card:hover .bento-shimmer::after {
-  left: 150%;
+@keyframes bentoScanlineSweep {
+  0% {
+    top: 2%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 98%;
+    opacity: 0;
+  }
 }
 
 /* Big Stylized Background Watermark */
@@ -309,7 +360,7 @@
 
 .bento-cyber-card:hover .bento-watermark {
   color: rgba(57, 255, 120, 0.08);
-  transform: translateY(4px) scale(1.05);
+  transform: translateZ(12px) translateY(4px) scale(1.05);
 }
 
 /* Corner HUD Brackets */
@@ -341,7 +392,7 @@
 
 .bento-cyber-card:hover .bento-corner-bracket {
   opacity: 1;
-  transform: scale(1.15);
+  transform: translateZ(20px) scale(1.15);
 }
 
 /* Reactor Pod */
@@ -363,7 +414,7 @@
 }
 
 .bento-cyber-card:hover .bento-icon-pod {
-  transform: scale(1.12) rotate(-4deg);
+  transform: translateZ(30px) scale(1.12) rotate(-4deg);
   border-color: #39ff78;
   color: #ffffff;
   box-shadow:

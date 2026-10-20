@@ -10,12 +10,26 @@ interface FeaturesSectionProps {
 }
 
 export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Normalized tilt (-1 to 1) with smooth clamping
+    const tiltX = Math.max(-1, Math.min(1, (x - centerX) / centerX));
+    const tiltY = Math.max(-1, Math.min(1, (y - centerY) / centerY));
+    
     e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
     e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+    e.currentTarget.style.setProperty('--card-tilt-x', `${tiltX.toFixed(3)}`);
+    e.currentTarget.style.setProperty('--card-tilt-y', `${tiltY.toFixed(3)}`);
+  };
+
+  const handleCardMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--card-tilt-x', '0');
+    e.currentTarget.style.setProperty('--card-tilt-y', '0');
   };
 
   return (
@@ -74,11 +88,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 1: Large Showcase with Monitor Asset (8 Cols) */}
         <div 
           className="lg:col-span-8 bento-cyber-card p-6 sm:p-8 flex flex-col justify-between group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">01</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
@@ -107,11 +122,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 2: Smart IoT Hardware Relay (4 Cols) */}
         <div 
           className="lg:col-span-4 bento-cyber-card p-6 sm:p-8 flex flex-col justify-between group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">02</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
@@ -146,11 +162,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 3: PC Client Lockdown (4 Cols) */}
         <div 
           className="lg:col-span-4 bento-cyber-card p-6 sm:p-8 space-y-4 group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">03</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
@@ -171,11 +188,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 4: Buffet & POS (4 Cols) */}
         <div 
           className="lg:col-span-4 bento-cyber-card p-6 sm:p-8 space-y-4 group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">04</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
@@ -196,11 +214,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 5: Customer Loyalty & SMS Club (4 Cols) */}
         <div 
           className="lg:col-span-4 bento-cyber-card p-6 sm:p-8 space-y-4 group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">05</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
@@ -221,11 +240,12 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
         {/* Feature 6: Tournament Engine (Full Width 12 Cols Banner) */}
         <div 
           className="lg:col-span-12 bento-cyber-card p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 group"
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleCardMouseMove}
+          onMouseLeave={handleCardMouseLeave}
         >
           <span className="bento-watermark" aria-hidden="true">06</span>
           <span className="bento-top-beam" aria-hidden="true" />
-          <span className="bento-shimmer" aria-hidden="true" />
+          <span className="bento-scanline" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
           <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
