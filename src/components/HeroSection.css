@@ -42,10 +42,10 @@
 .hero-master-chassis::before {
   content: "";
   position: absolute;
-  top: -14px;
-  bottom: -14px;
-  right: -50px;
-  left: -140px;
+  top: -36px;
+  bottom: -36px;
+  right: -75px;
+  left: -180px;
   z-index: 0;
   background-image: var(--hero-bg);
   background-size: cover;
@@ -56,10 +56,11 @@
   filter: contrast(1.18) saturate(1.25) brightness(1.08);
   pointer-events: none;
   transform: perspective(1200px) 
-    rotateX(calc(var(--tilt-y, 0) * 3.8deg)) 
-    rotateY(calc(var(--tilt-x, 0) * -5.5deg)) 
-    scale(1.02);
-  transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1);
+    translate3d(calc(var(--tilt-x, 0) * -45px), calc(var(--tilt-y, 0) * -30px), 0px)
+    rotateX(calc(var(--tilt-y, 0) * 6.5deg)) 
+    rotateY(calc(var(--tilt-x, 0) * -9.5deg)) 
+    scale(1.08);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
   animation: cyberArtworkNeonSurge 6s ease-in-out infinite alternate;
   will-change: transform, filter;
 }
@@ -78,21 +79,26 @@
 
 @media (min-width: 1024px) {
   .hero-master-chassis::before {
-    top: -14px;
-    bottom: -14px;
-    right: -50px;
-    left: -140px;
+    top: -36px;
+    bottom: -36px;
+    right: -75px;
+    left: -180px;
     background-position: left center;
   }
 }
 
 @media (max-width: 1023px) {
   .hero-master-chassis::before {
-    top: -10px;
-    bottom: -10px;
-    right: -20px;
-    left: -20px;
+    top: -24px;
+    bottom: -24px;
+    right: -30px;
+    left: -30px;
     background-position: center center;
+    transform: perspective(1200px) 
+      translate3d(calc(var(--tilt-x, 0) * -20px), calc(var(--tilt-y, 0) * -15px), 0px)
+      rotateX(calc(var(--tilt-y, 0) * 4deg)) 
+      rotateY(calc(var(--tilt-x, 0) * -5deg)) 
+      scale(1.06);
   }
 }
 
@@ -308,64 +314,15 @@
 }
 
 /* ===================================================
-   GIANT BRAND TYPOGRAPHY: DIGI GAME (CYBER GLITCH & HOLOGRAPHIC SURGE)
+   GIANT BRAND TYPOGRAPHY: DIGI GAME
    =================================================== */
 .hero-brand-group {
   position: relative;
   display: flex;
   flex-direction: column;
+  line-height: 0.88;
   user-select: none;
   margin: 6px 0;
-}
-
-/* Brand Cyber Kicker Badge */
-.hero-brand-cyber-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #39ff78;
-  text-transform: uppercase;
-}
-
-.brand-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #39ff78;
-  box-shadow: 0 0 8px #39ff78;
-  animation: beaconPulse 1.6s infinite ease-in-out;
-}
-
-.brand-badge-line {
-  width: 24px;
-  height: 1px;
-  background: linear-gradient(90deg, #39ff78, transparent);
-}
-
-.brand-badge-rev {
-  padding: 1px 7px;
-  border-radius: 4px;
-  background: rgba(57, 255, 120, 0.14);
-  border: 1px solid rgba(57, 255, 120, 0.4);
-  font-size: 9.5px;
-  color: #a7f3d0;
-  box-shadow: 0 0 10px rgba(57, 255, 120, 0.2);
-}
-
-.hero-brand-title-box {
-  display: flex;
-  flex-direction: column;
-  line-height: 0.88;
-  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
-}
-
-.hero-brand-group:hover .hero-brand-title-box {
-  transform: scale(1.025) translateY(-2px);
 }
 
 .hero-brand-digi {
@@ -376,16 +333,6 @@
   color: #ffffff;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-  animation: digiGlowPulse 4s ease-in-out infinite alternate;
-}
-
-@keyframes digiGlowPulse {
-  0% {
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
-  }
-  100% {
-    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.45));
-  }
 }
 
 .hero-brand-game {
@@ -398,49 +345,6 @@
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 25px rgba(57, 255, 120, 0.5));
   position: relative;
-  animation: cyberGameGlowPulse 4.5s ease-in-out infinite alternate, cyberBrandGlitch 7.5s infinite;
-}
-
-@keyframes cyberGameGlowPulse {
-  0% {
-    filter: drop-shadow(0 0 20px rgba(57, 255, 120, 0.4));
-  }
-  100% {
-    filter: drop-shadow(0 0 45px rgba(57, 255, 120, 0.85)) drop-shadow(0 0 25px rgba(0, 240, 255, 0.5));
-  }
-}
-
-@keyframes cyberBrandGlitch {
-  0%, 93%, 100% {
-    transform: none;
-  }
-  94% {
-    transform: translate(-3px, 1.5px) skewX(-1.5deg);
-  }
-  96% {
-    transform: translate(3px, -1.5px) skewX(1.5deg);
-  }
-  98% {
-    transform: none;
-  }
-}
-
-/* Shimmer Sweep over Brand */
-.hero-brand-game::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-  animation: brandShimmer 4s infinite ease-in-out;
-  pointer-events: none;
-}
-
-@keyframes brandShimmer {
-  0% { left: -100%; }
-  30%, 100% { left: 180%; }
 }
 
 /* ===================================================
@@ -494,6 +398,8 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+  transform: translate3d(calc(var(--tilt-x, 0) * 26px), calc(var(--tilt-y, 0) * 18px), 30px);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cyber-ring {

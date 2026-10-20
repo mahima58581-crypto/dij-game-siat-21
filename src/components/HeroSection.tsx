@@ -50,9 +50,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Normalized tilt (-1 to 1)
-    const tiltX = (x - centerX) / centerX;
-    const tiltY = (y - centerY) / centerY;
+    // Normalized tilt (-1 to 1) with smooth clamping
+    const tiltX = Math.max(-1, Math.min(1, (x - centerX) / centerX));
+    const tiltY = Math.max(-1, Math.min(1, (y - centerY) / centerY));
     
     e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
     e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
@@ -125,30 +125,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </div>
 
-            {/* 2. Giant Brand Typography: DIGI GAME with 3D Cyber Glitch & Hologram */}
-            <div 
-              className="hero-brand-group group cursor-pointer"
-              onMouseEnter={() => {
-                try {
-                  soundManager.playCashierSuccess();
-                } catch {}
-              }}
-              title="دیجی‌گیم - نسل جدید مدیریت گیم‌نت"
-            >
-              <div className="hero-brand-cyber-badge">
-                <span className="brand-badge-dot" />
-                <span>ESPORTS SYSTEM CORE</span>
-                <span className="brand-badge-line" />
-                <span className="brand-badge-rev">REV.2026</span>
-              </div>
-              <div className="hero-brand-title-box">
-                <span className="hero-brand-digi" data-text="DIGI">
-                  DIGI
-                </span>
-                <span className="hero-brand-game" data-text="GAME">
-                  GAME
-                </span>
-              </div>
+            {/* 2. Giant Brand Typography: DIGI GAME */}
+            <div className="hero-brand-group">
+              <span className="hero-brand-digi">
+                DIGI
+              </span>
+              <span className="hero-brand-game">
+                GAME
+              </span>
             </div>
 
             {/* 3. Symmetrical, Neat 5-Day Free Trial Launch Pod: "اول تست کن" */}
