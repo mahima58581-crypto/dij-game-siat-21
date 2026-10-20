@@ -400,9 +400,6 @@ export const AppSpecialFeaturesSection: React.FC = () => {
               {/* Glowing Flowing Top Border Beam */}
               <span className="cyber-card-top-beam" aria-hidden="true" />
 
-              {/* Holographic Laser Shimmer */}
-              <span className="cyber-card-shimmer" aria-hidden="true" />
-
               {/* Vertical Cyber Laser Scanline */}
               <span className="cyber-card-scanline" aria-hidden="true" />
 

@@ -209,38 +209,6 @@
   box-shadow: 0 0 15px #39ff78, 0 0 25px #00f0ff;
 }
 
-/* Holographic Laser Sweep */
-.cyber-card-shimmer {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  border-radius: 26px;
-  z-index: 2;
-}
-
-.cyber-card-shimmer::after {
-  content: "";
-  position: absolute;
-  top: -80%;
-  left: -80%;
-  width: 50%;
-  height: 260%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(57, 255, 120, 0.15) 45%,
-    rgba(0, 240, 255, 0.2) 55%,
-    transparent 100%
-  );
-  transform: rotate(32deg);
-  transition: left 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.cyber-feature-card:hover .cyber-card-shimmer::after {
-  left: 150%;
-}
-
 /* Stylized Big Background Number Watermark */
 .cyber-card-watermark {
   position: absolute;
