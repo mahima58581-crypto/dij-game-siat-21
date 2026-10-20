@@ -81,6 +81,40 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [showPurchasePage]);
 
+  // Dynamic Browser Tab Title & Interactive Away Effect
+  useEffect(() => {
+    let welcomeTimeout: ReturnType<typeof setTimeout>;
+
+    const getBaseTitle = () => {
+      if (showPurchasePage) {
+        return purchaseInitialMode === 'renewal'
+          ? '⚡ تمدید آنی لایسنس | دیجی‌گیم VIP'
+          : '💎 پرتال ثبت سفارش لایسنس | دیجی‌گیم VIP';
+      }
+      return '🎮 دیجی‌گیم ⚡ سامانه هوشمند مدیریت گیم‌نت VIP';
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = '👀 دلت برای دیجی‌گیم تنگ شد؟ منتظرتیم! 🎮';
+      } else {
+        document.title = '🔥 خوش برگشتی رئیس! ⚡ دیجی‌گیم';
+        clearTimeout(welcomeTimeout);
+        welcomeTimeout = setTimeout(() => {
+          document.title = getBaseTitle();
+        }, 2200);
+      }
+    };
+
+    document.title = getBaseTitle();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearTimeout(welcomeTimeout);
+    };
+  }, [showPurchasePage, purchaseInitialMode]);
+
   const handleScrollToDemo = () => {
     const el = document.getElementById('special-features');
     if (el) {
