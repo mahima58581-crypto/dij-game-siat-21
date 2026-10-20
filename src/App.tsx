@@ -88,21 +88,21 @@ export default function App() {
     const getBaseTitle = () => {
       if (showPurchasePage) {
         return purchaseInitialMode === 'renewal'
-          ? '⚡ تمدید آنی لایسنس | دیجی‌گیم VIP'
-          : '💎 پرتال ثبت سفارش لایسنس | دیجی‌گیم VIP';
+          ? 'دیجی گیم | تمدید آنی لایسنس و اشتراک'
+          : 'دیجی گیم | پرتال ثبت سفارش لایسنس VIP';
       }
-      return '🎮 دیجی‌گیم ⚡ سامانه هوشمند مدیریت گیم‌نت VIP';
+      return 'دیجی گیم | سامانه هوشمند مدیریت گیم‌نت و کلوپ‌های VIP';
     };
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = '👀 دلت برای دیجی‌گیم تنگ شد؟ منتظرتیم! 🎮';
+        document.title = 'دیجی گیم | منتظر بازگشت شما هستیم';
       } else {
-        document.title = '🔥 خوش برگشتی رئیس! ⚡ دیجی‌گیم';
+        document.title = 'دیجی گیم | خوش آمدید';
         clearTimeout(welcomeTimeout);
         welcomeTimeout = setTimeout(() => {
           document.title = getBaseTitle();
-        }, 2200);
+        }, 1800);
       }
     };
 
