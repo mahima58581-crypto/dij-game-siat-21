@@ -12,12 +12,26 @@ export const AppSpecialFeaturesSection: React.FC = () => {
   const [activeMode, setActiveMode] = useState<'management' | 'client'>('management');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Normalized tilt (-1 to 1) with smooth clamping
+    const tiltX = Math.max(-1, Math.min(1, (x - centerX) / centerX));
+    const tiltY = Math.max(-1, Math.min(1, (y - centerY) / centerY));
+    
     e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
     e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
+    e.currentTarget.style.setProperty('--card-tilt-x', `${tiltX.toFixed(3)}`);
+    e.currentTarget.style.setProperty('--card-tilt-y', `${tiltY.toFixed(3)}`);
+  };
+
+  const handleCardMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.setProperty('--card-tilt-x', '0');
+    e.currentTarget.style.setProperty('--card-tilt-y', '0');
   };
 
   const handlePlayWarningSound = (e: React.MouseEvent) => {
@@ -369,14 +383,16 @@ export const AppSpecialFeaturesSection: React.FC = () => {
       </div>
 
       {/* Grid of 8 Unified Cyber Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {currentFeatures.map((f) => {
+      <div key={activeMode} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentFeatures.map((f, index) => {
           const Icon = f.icon;
           return (
             <div
               key={f.id}
               className="cyber-feature-card"
-              onMouseMove={handleMouseMove}
+              onMouseMove={handleCardMouseMove}
+              onMouseLeave={handleCardMouseLeave}
+              style={{ animationDelay: `${index * 55}ms` } as React.CSSProperties}
             >
               {/* Background Large Stylized Watermark */}
               <span className="cyber-card-watermark" aria-hidden="true">{f.num}</span>
@@ -386,6 +402,9 @@ export const AppSpecialFeaturesSection: React.FC = () => {
 
               {/* Holographic Laser Shimmer */}
               <span className="cyber-card-shimmer" aria-hidden="true" />
+
+              {/* Vertical Cyber Laser Scanline */}
+              <span className="cyber-card-scanline" aria-hidden="true" />
 
               {/* HUD Corner Tech Reticles */}
               <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
