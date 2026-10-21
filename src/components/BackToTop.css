@@ -1,9 +1,15 @@
 /* ===================================================
-   ULTRA-PREMIUM CYBERPUNK VIP BACK-TO-TOP SYSTEM
-   DIGI-GAME EXCLUSIVE HYPERSPACE EDITION
+   DIGI-GAME 2026 APEX ELEVATION ORB
+   PRECISION CYBER TELEMETRY & ANTI-GRAVITY LAUNCHER
    =================================================== */
 
-.back-to-top-container {
+@property --apex-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.apex-elevator-wrapper {
   position: fixed;
   bottom: 30px;
   left: 30px;
@@ -14,14 +20,14 @@
   pointer-events: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(28px) scale(0.85);
+  transform: translateY(24px) scale(0.85);
   transition:
     opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.back-to-top-container.visible {
+.apex-elevator-wrapper.is-visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -29,24 +35,23 @@
 }
 
 /* ===================================================
-   CYBER HUD FLOATING TOOLTIP
+   FLOATING GLASS TELEMETRY TOOLTIP
    =================================================== */
-.cyber-tooltip {
+.apex-tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 14px);
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
   background: rgba(6, 14, 26, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(57, 255, 136, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.65),
-    0 0 15px rgba(57, 255, 136, 0.2),
-    inset 0 0 10px rgba(6, 182, 212, 0.15);
-  border-radius: 30px;
+    0 10px 30px rgba(0, 0, 0, 0.75),
+    0 0 16px rgba(57, 255, 120, 0.2);
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -54,601 +59,386 @@
   transition: all 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.cyber-tooltip.show-tooltip {
+.apex-tooltip.show-tooltip {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-.tooltip-indicator {
-  width: 7px;
-  height: 7px;
+.tooltip-beacon {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #39ff88;
-  box-shadow: 0 0 8px #39ff88, 0 0 14px #39ff88;
-  animation: pulseIndicator 1.5s infinite ease-in-out;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: apexPulse 1.6s infinite ease-in-out;
 }
 
-@keyframes pulseIndicator {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
+@keyframes apexPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
   50% { transform: scale(1.4); opacity: 1; }
 }
 
-.tooltip-text {
+.tooltip-label {
   font-family: 'Vazirmatn', sans-serif;
   font-size: 11.5px;
-  font-weight: 700;
+  font-weight: 800;
   color: #f1f5f9;
   letter-spacing: -0.2px;
 }
 
-.tooltip-pct {
+.tooltip-percentage {
   font-family: 'Outfit', sans-serif;
   font-size: 11px;
-  font-weight: 800;
-  color: #39ff88;
-  background: rgba(57, 255, 136, 0.12);
-  padding: 2px 6px;
+  font-weight: 900;
+  color: #39ff78;
+  background: rgba(57, 255, 120, 0.12);
+  padding: 1.5px 6px;
   border-radius: 8px;
-  border: 1px solid rgba(57, 255, 136, 0.25);
+  border: 1px solid rgba(57, 255, 120, 0.25);
 }
 
 /* ===================================================
-   MAIN CYBER LAUNCH BUTTON (DARK THEME DEFAULT)
+   MAIN APEX ELEVATION ORB (PERFECT CIRCULAR COCKPIT)
    =================================================== */
-.back-to-top-btn {
-  --neon-green: #39ff88;
-  --neon-cyan: #06b6d4;
-  --neon-glow: rgba(57, 255, 136, 0.5);
-
+.apex-elevator-btn {
   position: relative;
-  width: 66px;
-  height: 66px;
-  border-radius: 22px;
-  border: 1.5px solid rgba(57, 255, 136, 0.45);
-  background: radial-gradient(circle at 50% 25%, #0f243d 0%, #071526 55%, #02060e 100%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(57, 255, 120, 0.35);
+  background: radial-gradient(circle at 35% 30%, #0d2238 0%, #061324 55%, #02060e 100%);
   color: #ffffff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.75),
-    0 0 20px rgba(57, 255, 136, 0.22),
-    inset 0 0 20px rgba(6, 182, 212, 0.12);
+    0 14px 40px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(57, 255, 120, 0.2),
+    inset 0 0 15px rgba(0, 240, 255, 0.1);
   transition:
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
   overflow: visible;
   isolation: isolate;
 }
 
-/* Ambient Breathing Glow Aura */
-.core-ambient-aura {
+/* Perimeter Neon Laser Runner */
+.apex-elevator-btn::after {
+  content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(57, 255, 136, 0.3), rgba(6, 182, 212, 0.3));
-  filter: blur(8px);
-  opacity: 0.4;
+  inset: -1.5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from var(--apex-border-angle, 0deg),
+    transparent 0%,
+    transparent 70%,
+    rgba(57, 255, 120, 0.85) 86%,
+    rgba(0, 240, 255, 0.95) 96%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  pointer-events: none;
+  z-index: 5;
+  animation: apexBorderRotate 3.5s linear infinite;
+  opacity: 0.85;
+  transition: opacity 0.35s ease;
+}
+
+.apex-elevator-btn:hover::after {
+  opacity: 1;
+}
+
+@keyframes apexBorderRotate {
+  to {
+    --apex-border-angle: 360deg;
+  }
+}
+
+/* Ambient Radial Under-Glow */
+.apex-core-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.4) 0%, rgba(0, 240, 255, 0.2) 50%, transparent 75%);
+  filter: blur(10px);
+  opacity: 0.45;
   z-index: -1;
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-.back-to-top-btn:hover .core-ambient-aura {
-  opacity: 0.85;
-  filter: blur(12px);
+.apex-elevator-btn:hover .apex-core-glow {
+  opacity: 0.9;
+  filter: blur(14px);
 }
 
 /* Hover Dynamics */
-.back-to-top-btn:hover {
-  transform: translateY(-6px) scale(1.06);
-  border-color: #39ff88;
+.apex-elevator-btn:hover {
+  transform: translateY(-5px) scale(1.06);
+  border-color: #39ff78;
   box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.85),
-    0 0 35px rgba(57, 255, 136, 0.55),
-    0 0 70px rgba(6, 182, 212, 0.25),
-    inset 0 0 25px rgba(57, 255, 136, 0.22);
+    0 22px 50px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(57, 255, 120, 0.5),
+    0 0 60px rgba(0, 240, 255, 0.25),
+    inset 0 0 20px rgba(57, 255, 120, 0.2);
 }
 
-.back-to-top-btn:active {
+.apex-elevator-btn:active {
   transform: translateY(-2px) scale(0.96);
 }
 
 /* ===================================================
-   CIRCULAR SVG GAUGE HUD
+   CIRCULAR PRECISION SVG GAUGE
    =================================================== */
-.gauge-svg {
+.apex-gauge-svg {
   position: absolute;
   inset: -1px;
   width: calc(100% + 2px);
   height: calc(100% + 2px);
   transform: rotate(-90deg);
   pointer-events: none;
+  z-index: 2;
 }
 
 .gauge-track {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 2.6;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 2.5;
 }
 
 .gauge-fill {
   fill: none;
   stroke-width: 2.8;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 6px rgba(57, 255, 136, 0.85));
+  filter: drop-shadow(0 0 6px rgba(57, 255, 120, 0.85));
   transition: stroke-dashoffset 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===================================================
-   LASER SWEEP SHINE
-   =================================================== */
-.cyber-laser-sweep {
+/* Specular Sheen Sweep */
+.apex-specular-sheen {
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  border-radius: 50%;
   overflow: hidden;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
-.cyber-laser-sweep::after {
+.apex-specular-sheen::after {
   content: "";
   position: absolute;
   top: -60%;
   left: -70%;
-  width: 45%;
+  width: 50%;
   height: 220%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(57, 255, 136, 0.45) 50%,
+    rgba(57, 255, 120, 0.4) 50%,
     transparent 100%
   );
   transform: rotate(32deg);
   transition: left 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.back-to-top-btn:hover .cyber-laser-sweep::after {
+.apex-elevator-btn:hover .apex-specular-sheen::after {
   left: 140%;
 }
 
 /* ===================================================
-   HUD CORNER BRACKETS
+   CENTER AERODYNAMIC ARROW & TELEMETRY CLUSTER
    =================================================== */
-.hud-corner {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-color: rgba(57, 255, 136, 0.75);
-  pointer-events: none;
-  z-index: 3;
-}
-
-.hud-top-right {
-  top: 6px;
-  right: 6px;
-  border-top: 2px solid rgba(57, 255, 136, 0.85);
-  border-right: 2px solid rgba(57, 255, 136, 0.85);
-  border-top-right-radius: 4px;
-}
-
-.hud-bottom-left {
-  bottom: 6px;
-  left: 6px;
-  border-bottom: 2px solid rgba(6, 182, 212, 0.85);
-  border-left: 2px solid rgba(6, 182, 212, 0.85);
-  border-bottom-left-radius: 4px;
-}
-
-/* ===================================================
-   CRAFT & PROPULSION CORE
-   =================================================== */
-.craft-wrapper {
+.apex-center-pod {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 4;
-}
-
-.shuttle-cockpit {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 1px;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.shuttle-svg {
-  width: 26px;
-  height: 26px;
-  filter: drop-shadow(0 0 8px rgba(57, 255, 136, 0.7));
-  transition: filter 0.3s ease;
-}
-
-.back-to-top-btn:hover .shuttle-cockpit {
-  transform: translateY(-4px);
-}
-
-.back-to-top-btn:hover .shuttle-svg {
-  filter: drop-shadow(0 0 12px rgba(57, 255, 136, 0.95)) drop-shadow(0 0 20px rgba(6, 182, 212, 0.6));
-}
-
-/* Plasma Thruster Flames */
-.plasma-thruster {
-  position: absolute;
-  bottom: -4px;
+.apex-arrow-cluster {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 8px;
-  pointer-events: none;
+  color: #39ff78;
+  transition: transform 0.3s ease;
 }
 
-.flame-core {
-  width: 6px;
-  height: 6px;
-  border-radius: 50% 50% 60% 60%;
-  background: radial-gradient(circle, #ffffff 10%, #39ff88 50%, #06b6d4 100%);
-  filter: blur(1px);
-  animation: flickerCore 0.25s infinite alternate ease-in-out;
-  box-shadow: 0 0 10px #39ff88, 0 0 16px #06b6d4;
+.apex-arrow-icon {
+  filter: drop-shadow(0 0 6px #39ff78);
+  transition: all 0.3s ease;
 }
 
-.flame-flare {
-  position: absolute;
-  width: 3px;
-  height: 4px;
-  border-radius: 50%;
-  background: #39ff88;
-  opacity: 0.7;
-  filter: blur(1.5px);
+.apex-elevator-btn:hover .apex-arrow-icon {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 10px #39ff78) drop-shadow(0 0 16px #00f0ff);
+  color: #ffffff;
 }
 
-.flame-left {
-  left: 1px;
-  bottom: -1px;
-}
-
-.flame-right {
-  right: 1px;
-  bottom: -1px;
-}
-
-@keyframes flickerCore {
-  0% {
-    transform: scaleY(1) scaleX(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scaleY(1.4) scaleX(1.15) translateY(1.5px);
-    opacity: 1;
-  }
-}
-
-.back-to-top-btn:hover .flame-core {
-  transform: scaleY(1.7) scaleX(1.3) translateY(2px);
-  box-shadow: 0 0 14px #39ff88, 0 0 22px #06b6d4;
-}
-
-/* Real-time Telemetry Percentage Box */
-.telemetry-box {
-  margin-top: 1px;
+/* Telemetry Badge (Numbers strictly LTR: 12%) */
+.apex-telemetry-badge {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
   line-height: 1;
 }
 
-.telemetry-value {
+.badge-value {
   font-family: 'Outfit', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
   color: #d1fae5;
-  letter-spacing: 0.3px;
-  text-shadow: 0 0 8px rgba(57, 255, 136, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  letter-spacing: -0.2px;
 }
 
-.telemetry-unit {
-  font-size: 8px;
-  color: #39ff88;
-  margin-right: 1px;
-  opacity: 0.9;
+.badge-unit {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #39ff78;
+}
+
+.apex-elevator-btn:hover .badge-value {
+  color: #ffffff;
 }
 
 /* ===================================================
-   LAUNCH TAKEOFF SEQUENCE & SHOCKWAVE ANIMATION
+   WARP LAUNCH SEQUENCE ON CLICK
    =================================================== */
-.back-to-top-btn.is-launching {
-  border-color: #39ff88;
-  box-shadow:
-    0 0 45px rgba(57, 255, 136, 0.8),
-    0 0 80px rgba(6, 182, 212, 0.6),
-    inset 0 0 30px rgba(57, 255, 136, 0.4);
-  animation: launchRumble 0.3s ease-in-out;
+.pod-warp-exit {
+  animation: apexWarpLaunch 0.85s cubic-bezier(0.12, 0, 0.39, 0) forwards;
 }
 
-@keyframes launchRumble {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-2px) rotate(-1deg); }
-  50% { transform: translateY(2px) rotate(1deg); }
-  75% { transform: translateY(-1px) rotate(0.5deg); }
-}
-
-.shuttle-cockpit.shuttle-takeoff {
-  animation: shuttleHyperspace 0.95s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes shuttleHyperspace {
+@keyframes apexWarpLaunch {
   0% {
     transform: translateY(0) scale(1);
     opacity: 1;
   }
-  20% {
-    transform: translateY(4px) scale(0.92);
-    opacity: 1;
-  }
-  35% {
-    transform: translateY(-8px) scale(1.1);
-    opacity: 1;
-  }
-  60% {
-    transform: translateY(-45px) scale(1.15);
+  30% {
+    transform: translateY(6px) scale(0.92);
     opacity: 0.9;
   }
   100% {
-    transform: translateY(-110px) scale(0.5);
+    transform: translateY(-70px) scale(0.5);
     opacity: 0;
   }
 }
 
-.shuttle-cockpit.shuttle-takeoff .plasma-thruster .flame-core {
-  transform: scaleY(3.5) scaleX(1.8) translateY(5px);
-  background: radial-gradient(circle, #ffffff 20%, #fbbf24 50%, #ef4444 90%);
-  box-shadow: 0 0 25px #fbbf24, 0 0 40px #ef4444;
-}
-
-/* Hyperspace Shockwave Explosion Rings */
+/* Shockwave Rings Expanding on Launch */
 .launch-shockwave {
   position: absolute;
-  inset: -15px;
+  inset: -10px;
   pointer-events: none;
-  z-index: 0;
+  z-index: 10;
 }
 
 .shockwave-ring {
   position: absolute;
   inset: 0;
-  border-radius: 28px;
-  border: 2px solid #39ff88;
+  border-radius: 50%;
+  border: 2px solid #39ff78;
   opacity: 0;
+  animation: shockwaveExpand 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.shockwave-ring.ring-1 {
-  animation: shockwaveExpand 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-}
-
-.shockwave-ring.ring-2 {
-  border-color: #06b6d4;
-  animation: shockwaveExpand 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) 0.15s forwards;
+.ring-2 {
+  animation-delay: 0.15s;
+  border-color: #00f0ff;
 }
 
 @keyframes shockwaveExpand {
   0% {
-    transform: scale(0.7);
-    opacity: 0.9;
+    transform: scale(0.6);
+    opacity: 1;
   }
   100% {
-    transform: scale(1.9);
+    transform: scale(2.2);
     opacity: 0;
   }
 }
 
 /* ===================================================
-   LIGHT THEME: ULTRA-CRISP HIGH-CONTRAST DESIGN
+   LIGHT MODE ADAPTATION
    =================================================== */
-:root[data-theme="light"] .back-to-top-container,
-html.light .back-to-top-container,
-.light-theme .back-to-top-container,
-.back-to-top-container.theme-light {
-  color-scheme: light;
-}
-
-:root[data-theme="light"] .back-to-top-btn,
-html.light .back-to-top-btn,
-.light-theme .back-to-top-btn,
-.back-to-top-container.theme-light .back-to-top-btn {
-  background: radial-gradient(circle at 50% 25%, #ffffff 0%, #f4fbf7 60%, #e8f5ee 100%);
-  border: 2px solid #059669;
-  box-shadow:
-    0 12px 28px rgba(16, 33, 57, 0.16),
-    0 3px 10px rgba(5, 150, 105, 0.22),
-    0 0 0 1px rgba(5, 150, 105, 0.2);
-}
-
-:root[data-theme="light"] .back-to-top-btn:hover,
-html.light .back-to-top-btn:hover,
-.light-theme .back-to-top-btn:hover,
-.back-to-top-container.theme-light .back-to-top-btn:hover {
+.theme-light .apex-tooltip {
   background: #ffffff;
-  border-color: #047857;
-  box-shadow:
-    0 18px 40px rgba(16, 33, 57, 0.22),
-    0 0 25px rgba(5, 150, 105, 0.4),
-    0 0 50px rgba(2, 132, 199, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
 }
 
-:root[data-theme="light"] .core-ambient-aura,
-html.light .core-ambient-aura,
-.light-theme .core-ambient-aura,
-.back-to-top-container.theme-light .core-ambient-aura {
-  background: linear-gradient(135deg, rgba(5, 150, 105, 0.35), rgba(2, 132, 199, 0.3));
-  filter: blur(10px);
-  opacity: 0.6;
-}
-
-:root[data-theme="light"] .gauge-track,
-html.light .gauge-track,
-.light-theme .gauge-track,
-.back-to-top-container.theme-light .gauge-track {
-  stroke: rgba(16, 33, 57, 0.14);
-  stroke-width: 3;
-}
-
-:root[data-theme="light"] .gauge-fill,
-html.light .gauge-fill,
-.light-theme .gauge-fill,
-.back-to-top-container.theme-light .gauge-fill {
-  filter: drop-shadow(0 0 5px rgba(5, 150, 105, 0.6));
-}
-
-:root[data-theme="light"] .cyber-laser-sweep::after,
-html.light .cyber-laser-sweep::after,
-.light-theme .cyber-laser-sweep::after,
-.back-to-top-container.theme-light .cyber-laser-sweep::after {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(5, 150, 105, 0.35) 50%,
-    transparent 100%
-  );
-}
-
-:root[data-theme="light"] .hud-top-right,
-html.light .hud-top-right,
-.light-theme .hud-top-right,
-.back-to-top-container.theme-light .hud-top-right {
-  border-color: #059669;
-}
-
-:root[data-theme="light"] .hud-bottom-left,
-html.light .hud-bottom-left,
-.light-theme .hud-bottom-left,
-.back-to-top-container.theme-light .hud-bottom-left {
-  border-color: #0284c7;
-}
-
-:root[data-theme="light"] .shuttle-svg,
-html.light .shuttle-svg,
-.light-theme .shuttle-svg,
-.back-to-top-container.theme-light .shuttle-svg {
-  filter: drop-shadow(0 2px 7px rgba(5, 150, 105, 0.45));
-}
-
-:root[data-theme="light"] .flame-core,
-html.light .flame-core,
-.light-theme .flame-core,
-.back-to-top-container.theme-light .flame-core {
-  background: radial-gradient(circle, #fef08a 10%, #f59e0b 50%, #dc2626 100%);
-  box-shadow: 0 0 10px #f59e0b, 0 0 16px #dc2626;
-}
-
-:root[data-theme="light"] .flame-flare,
-html.light .flame-flare,
-.light-theme .flame-flare,
-.back-to-top-container.theme-light .flame-flare {
-  background: #f59e0b;
-}
-
-:root[data-theme="light"] .telemetry-value,
-html.light .telemetry-value,
-.light-theme .telemetry-value,
-.back-to-top-container.theme-light .telemetry-value {
+.theme-light .tooltip-label {
   color: #0f172a;
-  font-weight: 900;
-  text-shadow: none;
 }
 
-:root[data-theme="light"] .telemetry-unit,
-html.light .telemetry-unit,
-.light-theme .telemetry-unit,
-.back-to-top-container.theme-light .telemetry-unit {
+.theme-light .tooltip-percentage {
   color: #059669;
-  font-weight: 900;
-  opacity: 1;
-}
-
-:root[data-theme="light"] .cyber-tooltip,
-html.light .cyber-tooltip,
-.light-theme .cyber-tooltip,
-.back-to-top-container.theme-light .cyber-tooltip {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1.5px solid rgba(5, 150, 105, 0.45);
-  box-shadow:
-    0 10px 25px rgba(16, 33, 57, 0.16),
-    0 0 15px rgba(5, 150, 105, 0.15);
-}
-
-:root[data-theme="light"] .tooltip-indicator,
-html.light .tooltip-indicator,
-.light-theme .tooltip-indicator,
-.back-to-top-container.theme-light .tooltip-indicator {
-  background: #059669;
-  box-shadow: 0 0 8px #059669;
-}
-
-:root[data-theme="light"] .tooltip-text,
-html.light .tooltip-text,
-.light-theme .tooltip-text,
-.back-to-top-container.theme-light .tooltip-text {
-  color: #0f172a;
-  font-weight: 800;
-}
-
-:root[data-theme="light"] .tooltip-pct,
-html.light .tooltip-pct,
-.light-theme .tooltip-pct,
-.back-to-top-container.theme-light .tooltip-pct {
-  color: #047857;
   background: #ecfdf5;
-  border: 1px solid rgba(5, 150, 105, 0.35);
-  font-weight: 900;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
-:root[data-theme="light"] .shockwave-ring,
-html.light .shockwave-ring,
-.light-theme .shockwave-ring,
-.back-to-top-container.theme-light .shockwave-ring {
+.theme-light .apex-elevator-btn {
+  background: #ffffff;
   border-color: #059669;
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.14),
+    0 0 20px rgba(16, 185, 129, 0.2);
 }
 
-:root[data-theme="light"] .shockwave-ring.ring-2,
-html.light .shockwave-ring.ring-2,
-.light-theme .shockwave-ring.ring-2,
-.back-to-top-container.theme-light .shockwave-ring.ring-2 {
-  border-color: #0284c7;
+.theme-light .apex-elevator-btn:hover {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.18),
+    0 0 30px rgba(16, 185, 129, 0.35);
+}
+
+.theme-light .gauge-track {
+  stroke: rgba(15, 23, 42, 0.08);
+}
+
+.theme-light .apex-arrow-cluster {
+  color: #059669;
+}
+
+.theme-light .badge-value {
+  color: #0f172a;
+}
+
+.theme-light .badge-unit {
+  color: #059669;
 }
 
 /* ===================================================
-   MOBILE RESPONSIVENESS
+   MOBILE & ACCESSIBILITY
    =================================================== */
-@media (max-width: 768px) {
-  .back-to-top-container {
+@media (max-width: 640px) {
+  .apex-elevator-wrapper {
     bottom: 20px;
     left: 20px;
   }
 
-  .back-to-top-btn {
+  .apex-elevator-btn {
     width: 56px;
     height: 56px;
-    border-radius: 18px;
   }
+}
 
-  .shuttle-svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .telemetry-value {
-    font-size: 9px;
-  }
-
-  .cyber-tooltip {
-    display: none; /* Keep clean on small mobile viewports */
+@media (prefers-reduced-motion: reduce) {
+  .apex-elevator-btn::after,
+  .tooltip-beacon,
+  .apex-elevator-btn,
+  .apex-arrow-icon {
+    animation: none !important;
+    transition: none !important;
   }
 }
