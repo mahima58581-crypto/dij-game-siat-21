@@ -155,10 +155,6 @@ export const DownloadsSection: React.FC = () => {
               {/* Holographic Laser Shimmer */}
               <span className="cyber-card-shimmer" aria-hidden="true" />
 
-              {/* HUD Corner Tech Reticles */}
-              <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-              <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
               {/* Card Header: Module Badge, Badge & Reactor Pod */}
               <div className="download-card-header">
                 <div className="flex items-center gap-2">

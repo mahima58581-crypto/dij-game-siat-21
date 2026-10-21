@@ -101,10 +101,6 @@ export const InstallersSection: React.FC<InstallersSectionProps> = ({ onRequestI
               {/* Holographic Laser Shimmer */}
               <span className="cyber-card-shimmer" aria-hidden="true" />
 
-              {/* HUD Corner Tech Reticles */}
-              <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-              <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
               {/* Card Header: Module Badge, Verified Tag & Reactor Pod */}
               <div className="installer-card-header">
                 <div className="flex items-center gap-2">
@@ -201,10 +197,6 @@ export const InstallersSection: React.FC<InstallersSectionProps> = ({ onRequestI
             className="installer-modal-window"
             onClick={e => e.stopPropagation()}
           >
-            {/* Corner Tech Reticles */}
-            <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-            <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
             {/* Glowing Top Beam */}
             <span className="cyber-card-top-beam" aria-hidden="true" />
 

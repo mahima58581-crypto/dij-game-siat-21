@@ -643,3 +643,29 @@ html.light body,
   left: 200%;
   transition: 0.75s ease;
 }
+
+/* Permanently Disable All Corner Brackets Across All Slides and Cards */
+.card-corner-bracket,
+.bento-corner-bracket,
+.pricing-corner-bracket,
+.testimonial-bracket,
+.chassis-corner-bracket,
+.pod-corner,
+.hud-corner,
+.bracket-tl,
+.bracket-br,
+.bracket-bl,
+.bento-bracket-tl,
+.bento-bracket-br,
+.testimonial-bracket-tl,
+.testimonial-bracket-bl,
+.chassis-corner-tl,
+.chassis-corner-bl,
+.pod-corner-tl,
+.pod-corner-br,
+.hud-top-right,
+.hud-bottom-left {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

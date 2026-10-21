@@ -91,10 +91,6 @@ export const TutorialsSection: React.FC = () => {
               {/* Holographic Laser Shimmer */}
               <span className="cyber-card-shimmer" aria-hidden="true" />
 
-              {/* HUD Corner Tech Reticles */}
-              <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-              <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
               {/* Video Preview Chassis */}
               <div className="tutorial-video-chassis">
                 <div className="video-scanline-overlay" aria-hidden="true" />
@@ -178,10 +174,6 @@ export const TutorialsSection: React.FC = () => {
             className="tutorial-modal-window"
             onClick={e => e.stopPropagation()}
           >
-            {/* Corner Tech Reticles on Modal */}
-            <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-            <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
             <button
               type="button"
               onClick={() => setActiveTutorial(null)}

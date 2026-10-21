@@ -94,8 +94,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">01</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="space-y-3 z-10 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-outfit text-xs font-bold tracking-wider">
@@ -128,8 +126,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">02</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="space-y-4 z-10">
             <div className="bento-icon-pod">
@@ -168,8 +164,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">03</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="bento-icon-pod z-10">
             <Lock className="w-6 h-6" />
@@ -194,8 +188,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">04</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="bento-icon-pod z-10">
             <ShoppingCart className="w-6 h-6" />
@@ -220,8 +212,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">05</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="bento-icon-pod z-10">
             <MessageSquareText className="w-6 h-6" />
@@ -246,8 +236,6 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
           <span className="bento-watermark" aria-hidden="true">06</span>
           <span className="bento-top-beam" aria-hidden="true" />
           <span className="bento-scanline" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-tl" aria-hidden="true" />
-          <span className="bento-corner-bracket bento-bracket-br" aria-hidden="true" />
 
           <div className="flex items-center gap-4 z-10 w-full">
             <div className="bento-icon-pod shrink-0">

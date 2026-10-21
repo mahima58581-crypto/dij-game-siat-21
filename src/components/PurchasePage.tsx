@@ -569,8 +569,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
                     onClick={() => choosePlan(item.id)}
                   >
                     <span className="pricing-top-beam" aria-hidden="true" />
-                    <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-                    <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
                     <div className="pricing-header">
                       <div className="plan-badge-row">
@@ -700,8 +698,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
               {/* Order Summary Chassis */}
               <div className="order-summary" onMouseMove={handleMouseMove}>
                 <span className="pricing-top-beam" aria-hidden="true" />
-                <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-                <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
                 <div className="summary-top">
                   <div>
@@ -852,8 +848,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
           {/* Live Esports License Telemetry & Search Deck */}
           <section className="renewal-lookup-chassis" onMouseMove={handleMouseMove}>
             <span className="pricing-top-beam" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
             <div className="telemetry-top-bar flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-slate-700/40">
               <div className="flex items-center gap-2">
@@ -1014,10 +1008,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
 
                     {/* Holographic Laser Shimmer */}
                     <span className="cyber-card-shimmer" aria-hidden="true" />
-
-                    {/* HUD Corner Tech Reticles */}
-                    <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-                    <span className="card-corner-bracket bracket-br" aria-hidden="true" />
 
                     {/* Card Header: Module ID & Reactor Pod */}
                     <div className="cyber-card-header">
@@ -1202,8 +1192,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
               {/* Renewal Summary Chassis */}
               <div className="order-summary" onMouseMove={handleMouseMove}>
                 <span className="pricing-top-beam" aria-hidden="true" />
-                <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-                <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
                 <div className="summary-top">
                   <div>
@@ -1515,8 +1503,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
             onClick={(event) => event.stopPropagation()}
           >
             <span className="pricing-top-beam" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
             <button
               type="button"
@@ -1593,8 +1579,6 @@ export const PurchasePage: React.FC<PurchasePageProps> = ({ onBack, initialMode 
             onClick={(e) => e.stopPropagation()}
           >
             <span className="pricing-top-beam" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-tl" aria-hidden="true" />
-            <span className="pricing-corner-bracket bracket-br" aria-hidden="true" />
 
             <button
               type="button"

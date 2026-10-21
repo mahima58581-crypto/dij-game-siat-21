@@ -352,10 +352,6 @@ export const TestimonialsSection: React.FC = () => {
             {/* Top Laser Beam */}
             <span className="testimonial-top-beam" aria-hidden="true" />
 
-            {/* Corner Tech Reticles */}
-            <span className="testimonial-bracket testimonial-bracket-tl" aria-hidden="true" />
-            <span className="testimonial-bracket testimonial-bracket-bl" aria-hidden="true" />
-
             {/* Card Header */}
             <div className="testimonial-card-header">
               <div className="testimonial-author-group">
@@ -436,10 +432,6 @@ export const TestimonialsSection: React.FC = () => {
           >
             {/* Top Beam */}
             <span className="testimonial-top-beam" aria-hidden="true" />
-
-            {/* Corner Tech Reticles */}
-            <span className="testimonial-bracket testimonial-bracket-tl" aria-hidden="true" />
-            <span className="testimonial-bracket testimonial-bracket-bl" aria-hidden="true" />
 
             {/* Close Button */}
             <button

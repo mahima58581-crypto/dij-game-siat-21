@@ -403,10 +403,6 @@ export const AppSpecialFeaturesSection: React.FC = () => {
               {/* Vertical Cyber Laser Scanline */}
               <span className="cyber-card-scanline" aria-hidden="true" />
 
-              {/* HUD Corner Tech Reticles */}
-              <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-              <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
               {/* Card Header: Module ID & Reactor Pod */}
               <div className="cyber-card-header">
                 <div className="module-id-badge">

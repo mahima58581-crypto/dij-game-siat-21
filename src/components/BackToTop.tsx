@@ -151,10 +151,6 @@ export default function BackToTop() {
         {/* Ambient Core Aura */}
         <div className="core-ambient-aura" aria-hidden="true" />
 
-        {/* HUD Tech Corner Brackets */}
-        <span className="hud-corner hud-top-right" aria-hidden="true" />
-        <span className="hud-corner hud-bottom-left" aria-hidden="true" />
-
         {/* Central Spacecraft & Propulsion Content */}
         <div className="craft-wrapper">
           <div className={`shuttle-cockpit ${isLaunching ? "shuttle-takeoff" : ""}`}>

@@ -82,10 +82,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Cyber Emblem Pulsing Energy Aura (Behind Artwork) */}
         <div className="hero-emblem-aura" aria-hidden="true" />
 
-        {/* Master Chassis HUD Corners */}
-        <span className="chassis-corner-bracket chassis-corner-tl" aria-hidden="true" />
-        <span className="chassis-corner-bracket chassis-corner-bl" aria-hidden="true" />
-
         {/* Hero Grid Canvas: Right Column has the content, Left Column leaves the 3D Emblem completely clear! */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[580px]">
 
@@ -138,8 +134,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* 3. Symmetrical, Neat 5-Day Free Trial Launch Pod: "اول تست کن" */}
             <div className="hero-launch-card">
               <span className="hero-launch-top-beam" aria-hidden="true" />
-              <span className="pod-corner pod-corner-tl" aria-hidden="true" />
-              <span className="pod-corner pod-corner-br" aria-hidden="true" />
 
               {/* Pod Header */}
               <div className="hero-launch-header">

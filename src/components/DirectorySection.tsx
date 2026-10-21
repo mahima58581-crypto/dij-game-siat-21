@@ -145,10 +145,6 @@ export const DirectorySection: React.FC = () => {
                 {/* Holographic Laser Shimmer */}
                 <span className="cyber-card-shimmer" aria-hidden="true" />
 
-                {/* HUD Corner Tech Reticles */}
-                <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-                <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
                 {/* Club Visual Pod with Scanline & Status Badges */}
                 <div className="club-image-pod">
                   <img

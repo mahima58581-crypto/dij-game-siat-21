@@ -94,10 +94,6 @@ export const AboutAndStats: React.FC = () => {
 
       {/* Master Chassis Container */}
       <div className="about-master-chassis">
-        {/* HUD Corner Tech Reticles */}
-        <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-        <span className="card-corner-bracket bracket-br" aria-hidden="true" />
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Text Story & Engineering Highlights (7 Cols) */}
@@ -158,10 +154,6 @@ export const AboutAndStats: React.FC = () => {
 
               {/* Holographic Shimmer Sweep */}
               <span className="cyber-card-shimmer" aria-hidden="true" />
-
-              {/* HUD Corner Tech Reticles */}
-              <span className="card-corner-bracket bracket-tl" aria-hidden="true" />
-              <span className="card-corner-bracket bracket-br" aria-hidden="true" />
 
               {/* Top Meta Header */}
               <div className="flex items-center justify-between w-full z-10 relative">
