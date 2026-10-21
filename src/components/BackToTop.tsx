@@ -59,99 +59,51 @@ export default function BackToTop() {
 
     launchTimeoutRef.current = window.setTimeout(() => {
       setIsLaunching(false);
-    }, 900);
+    }, 800);
   };
-
-  const radius = 28;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
 
   return (
     <div
-      className={`apex-elevator-wrapper ${show ? "is-visible" : ""} ${isLight ? "theme-light" : "theme-dark"}`}
+      className={`btt-wrapper ${show ? "is-visible" : ""} ${isLight ? "theme-light" : "theme-dark"}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Sleek Floating Glass Telemetry Pill */}
-      <div className={`apex-tooltip ${isHovered && !isLaunching ? "show-tooltip" : ""}`}>
-        <span className="tooltip-beacon" />
-        <span className="tooltip-label">پرتاب به بالا</span>
-        <span className="tooltip-percentage" dir="ltr">{Math.round(scrollProgress)}%</span>
+      {/* Floating Cyber Tooltip */}
+      <div className={`btt-tooltip ${isHovered && !isLaunching ? "show-tooltip" : ""}`}>
+        <span className="btt-tooltip-beacon" />
+        <span className="btt-tooltip-text">پرتاب به بالا</span>
+        <span className="btt-tooltip-pct" dir="ltr">{Math.round(scrollProgress)}%</span>
       </div>
 
+      {/* Main Squircle Button (Matches ThemeToggle Style) */}
       <button
         id="backToTop"
         type="button"
-        className={`apex-elevator-btn ${isLaunching ? "is-launching" : ""}`}
+        className={`btt-squircle-btn ${isLaunching ? "is-launching" : ""}`}
         onClick={handleLaunch}
         aria-label="پرتاب به بالای صفحه"
-        title="بازگشت سریع به بالای صفحه"
+        title="بازگشت به بالای صفحه"
       >
-        {/* Hyperspace Shockwave Energy Rings */}
-        {isLaunching && (
-          <div className="launch-shockwave" aria-hidden="true">
-            <span className="shockwave-ring ring-1" />
-            <span className="shockwave-ring ring-2" />
-          </div>
-        )}
+        {/* Holographic Shine Sweep */}
+        <span className="btt-btn-glow" aria-hidden="true" />
 
-        {/* Precision Progress SVG Gauge */}
-        <svg className="apex-gauge-svg" viewBox="0 0 68 68" aria-hidden="true">
-          <defs>
-            <linearGradient id="apexGaugeGradDark" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#10b981" />
-              <stop offset="50%" stopColor="#00f0ff" />
-              <stop offset="100%" stopColor="#39ff78" />
-            </linearGradient>
+        {/* Live Status Beacon Dot (Matches ThemeToggle Top-Right Dot) */}
+        <span className="btt-status-beacon" aria-hidden="true">
+          <span />
+        </span>
 
-            <linearGradient id="apexGaugeGradLight" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#047857" />
-              <stop offset="50%" stopColor="#0284c7" />
-              <stop offset="100%" stopColor="#10b981" />
-            </linearGradient>
-          </defs>
+        {/* Inner Squircle Icon Pod */}
+        <span className={`btt-icon-pod ${isLaunching ? "icon-warp-up" : ""}`}>
+          <ArrowUp className="w-4 h-4 btt-arrow" />
+        </span>
 
-          {/* Background Track */}
-          <circle
-            className="gauge-track"
-            cx="34"
-            cy="34"
-            r={radius}
+        {/* Bottom Micro Precision Scroll Progress Line */}
+        <span className="btt-progress-track" aria-hidden="true">
+          <span 
+            className="btt-progress-bar"
+            style={{ width: `${scrollProgress}%` }}
           />
-
-          {/* Dynamic Fill Progress with Neon Glow */}
-          <circle
-            className="gauge-fill"
-            cx="34"
-            cy="34"
-            r={radius}
-            style={{
-              stroke: isLight ? "url(#apexGaugeGradLight)" : "url(#apexGaugeGradDark)",
-              strokeDasharray: circumference,
-              strokeDashoffset: strokeDashoffset
-            }}
-          />
-        </svg>
-
-        {/* Ambient Radial Under-Glow */}
-        <div className="apex-core-glow" aria-hidden="true" />
-
-        {/* Specular Prism Refraction */}
-        <span className="apex-specular-sheen" aria-hidden="true" />
-
-        {/* Center Aerodynamic Arrow & Telemetry Pod */}
-        <div className={`apex-center-pod ${isLaunching ? "pod-warp-exit" : ""}`}>
-          <div className="apex-arrow-cluster">
-            <ArrowUp className="w-5 h-5 apex-arrow-icon" />
-            <span className="apex-trail-beam" aria-hidden="true" />
-          </div>
-
-          {/* Precision Percentage Display with Correct LTR Alignment */}
-          <div className="apex-telemetry-badge" dir="ltr">
-            <span className="badge-value">{Math.round(scrollProgress)}</span>
-            <span className="badge-unit">%</span>
-          </div>
-        </div>
+        </span>
       </button>
     </div>
   );
