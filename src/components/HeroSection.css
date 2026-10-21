@@ -198,16 +198,16 @@
 }
 
 .hero-counter-num {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(32px, 3.5vw, 42px);
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: clamp(30px, 3.2vw, 38px);
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
 }
 
 .hero-counter-unit {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Vazirmatn', 'Outfit', sans-serif;
   color: #39ff78;
   font-weight: 900;
   margin-right: 2px;
