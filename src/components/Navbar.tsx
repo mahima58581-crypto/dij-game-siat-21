@@ -23,6 +23,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [isScrolledPastHero, setIsScrolledPastHero] = React.useState(false);
 
+  const handleNavMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty('--nav-x', `${x}px`);
+    e.currentTarget.style.setProperty('--nav-y', `${y}px`);
+  };
+
   React.useEffect(() => {
     const handleScroll = () => {
       // Hero section height is roughly 650-700px. Once scrolled past 250px (heading to slide 2), morph navbar to expanded full mode!
@@ -45,9 +53,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         ? 'navbar-expanded' 
         : 'navbar-compact'
     }`}>
-      <div className="navbar-inner-container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4 transition-all duration-500">
+      <div 
+        className="navbar-inner-container mx-auto flex items-center justify-between gap-3 sm:gap-4 transition-all duration-500 relative"
+        onMouseMove={handleNavMouseMove}
+      >
+        {/* Specular Top Accent Light Beam */}
+        <span className="nav-specular-beam" aria-hidden="true" />
         
-        {/* Zone 1: Pro Brand Hologram Badge (As in Screenshot) */}
+        {/* Zone 1: Pro Brand Hologram Badge */}
         <a 
           href="#" 
           onClick={(e) => {
@@ -83,84 +96,73 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </a>
 
-
-
         {/* Zone 2: Navigation Links */}
         <nav className="hidden xl:flex items-center nav-menu">
           <button
             onClick={() => onNavigateToSection?.('special-features')}
             className="nav-link"
           >
-            <span>01</span>
             ویژگی‌های اپلیکیشن
           </button>
           <button
             onClick={() => onNavigateToSection?.('pricing')}
             className="nav-link"
           >
-            <span>02</span>
             تعرفه
           </button>
           <button
             onClick={() => onNavigateToSection?.('game-clubs')}
             className="nav-link"
           >
-            <span>03</span>
             گیم‌نت‌ها
           </button>
           <button
             onClick={() => onNavigateToSection?.('installers')}
             className="nav-link"
           >
-            <span>04</span>
             نصاب‌ها
           </button>
           <button
             onClick={() => onNavigateToSection?.('blog')}
             className="nav-link"
           >
-            <span>05</span>
             بلاگ و مقالات
           </button>
           <button
             onClick={() => onNavigateToSection?.('tutorials')}
             className="nav-link"
           >
-            <span>06</span>
             آموزش
           </button>
           <button
             onClick={() => onNavigateToSection?.('downloads')}
             className="nav-link"
           >
-            <span>07</span>
             دانلود
           </button>
           <button
             onClick={() => onNavigateToSection?.('about')}
             className="nav-link"
           >
-            <span>08</span>
             درباره ما
           </button>
           <button
             onClick={onNavigateToPurchase}
-            className="nav-link"
+            className="nav-link nav-link-cta"
           >
-            <span>09</span>
-            خرید
+            <span className="nav-cta-beacon" />
+            <span>خرید اشتراک</span>
+            <span className="nav-cta-tag">VIP</span>
           </button>
         </nav>
 
         {/* Zone 3: Interactive Controls & Portals */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           
           {/* Custom Cyber Neon Light / Dark Mode Toggle */}
           <div className="hidden sm:block">
             <ThemeToggle />
           </div>
-          
-
 
           {/* Login / Register Button */}
           <AuthButton onClick={onOpenAuthModal} />

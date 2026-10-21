@@ -1,67 +1,25 @@
 /* ===================================================
-   DIGI GAME — AAA CINEMATIC GAMING NAVBAR
-   PRO ESPORTS & CYBERPUNK HUD EDITION
+   DIGI GAME — 2026 CYBER LUXURY GAMING NAVBAR
+   PRO ESPORTS HUD DOCK & GLASS ISLAND
    =================================================== */
 
-/* Entry Animation & Cinematic Glass Header */
+@property --nav-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* Base Header Dock */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
   isolation: isolate;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: navbarSlideIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: navSlideDown 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ===================================================
-   STATE 1: COMPACT / FLOATING HUD PILL ON SLIDE 1 (HERO)
-   =================================================== */
-header.navbar-compact {
-  padding: 10px 0 0 0;
-  background: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-header.navbar-compact .navbar-inner-container {
-  max-width: 900px;
-  height: 58px;
-  background: rgba(6, 14, 26, 0.82) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(57, 255, 120, 0.35) !important;
-  border-radius: 28px;
-  box-shadow:
-    0 16px 45px -8px rgba(0, 0, 0, 0.85),
-    0 0 25px -4px rgba(57, 255, 120, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-}
-
-/* ===================================================
-   STATE 2: EXPANDED FULL-WIDTH NAVBAR ON SCROLL TO SLIDE 2
-   =================================================== */
-header.navbar-expanded {
-  padding: 0;
-  background: rgba(5, 10, 20, 0.92) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border-bottom: 1px solid rgba(57, 255, 120, 0.22) !important;
-  box-shadow:
-    0 12px 40px -10px rgba(0, 0, 0, 0.85),
-    0 0 30px -5px rgba(57, 255, 120, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-header.navbar-expanded .navbar-inner-container {
-  max-width: 1440px;
-  height: 72px;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-@keyframes navbarSlideIn {
+@keyframes navSlideDown {
   0% {
     opacity: 0;
     transform: translateY(-24px);
@@ -72,7 +30,141 @@ header.navbar-expanded .navbar-inner-container {
   }
 }
 
-/* Continuous Animated Neon Laser Stream on Bottom Border in Expanded Mode */
+/* ===================================================
+   STATE 1: FLOATING CYBER GLASS ISLAND (HERO & COMPACT)
+   =================================================== */
+header.navbar-compact {
+  padding: 14px 20px 0 20px;
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+header.navbar-compact .navbar-inner-container {
+  max-width: 1300px;
+  width: 100%;
+  height: 66px;
+  padding: 0 18px 0 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 18, 34, 0.82) 0%,
+    rgba(5, 12, 22, 0.88) 55%,
+    rgba(3, 8, 16, 0.94) 100%
+  ) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1.5px solid rgba(57, 255, 120, 0.28) !important;
+  border-radius: 34px;
+  box-shadow:
+    0 20px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px -5px rgba(57, 255, 120, 0.18),
+    0 0 50px -15px rgba(0, 240, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Continuous Rotating Perimeter Neon Laser Tracer */
+header.navbar-compact .navbar-inner-container::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 35px;
+  background: conic-gradient(
+    from var(--nav-border-angle, 0deg),
+    transparent 0%,
+    transparent 72%,
+    rgba(57, 255, 120, 0.85) 86%,
+    rgba(0, 240, 255, 0.95) 96%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  pointer-events: none;
+  z-index: 5;
+  animation: navBorderRotate 4.2s linear infinite;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+header.navbar-compact:hover .navbar-inner-container::after {
+  opacity: 1;
+}
+
+@keyframes navBorderRotate {
+  to {
+    --nav-border-angle: 360deg;
+  }
+}
+
+/* Interactive Mouse Refraction Spotlight Glow */
+header.navbar-compact .navbar-inner-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 34px;
+  background: radial-gradient(
+    420px circle at var(--nav-x, 50%) var(--nav-y, 50%),
+    rgba(57, 255, 120, 0.14),
+    rgba(0, 240, 255, 0.06) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Specular Top Accent Light Beam */
+.nav-specular-beam {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(57, 255, 120, 0.6) 35%, 
+    rgba(0, 240, 255, 0.7) 65%, 
+    transparent 100%
+  );
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 6;
+  box-shadow: 0 0 10px rgba(57, 255, 120, 0.3);
+}
+
+/* ===================================================
+   STATE 2: EXPANDED FULL-WIDTH NAVBAR ON DEEP SCROLL
+   =================================================== */
+header.navbar-expanded {
+  padding: 0;
+  background: rgba(4, 9, 18, 0.94) !important;
+  backdrop-filter: blur(26px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(57, 255, 120, 0.22) !important;
+  box-shadow:
+    0 16px 45px -10px rgba(0, 0, 0, 0.92),
+    0 0 35px -5px rgba(57, 255, 120, 0.1);
+}
+
+header.navbar-expanded .navbar-inner-container {
+  max-width: 1440px;
+  width: 100%;
+  height: 70px;
+  padding: 0 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+header.navbar-expanded .navbar-inner-container::after,
+header.navbar-expanded .navbar-inner-container::before {
+  display: none;
+}
+
+/* Continuous Neon Laser Stream on Bottom Border in Expanded Mode */
 header.navbar-expanded::after {
   content: "";
   position: absolute;
@@ -83,19 +175,20 @@ header.navbar-expanded::after {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(57, 255, 136, 0.05) 15%,
-    rgba(57, 255, 136, 0.85) 50%,
-    rgba(57, 255, 136, 0.05) 85%,
+    rgba(57, 255, 120, 0.05) 15%,
+    rgba(57, 255, 120, 0.85) 50%,
+    rgba(0, 240, 255, 0.75) 65%,
+    rgba(57, 255, 120, 0.05) 85%,
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: laserFlow 6s linear infinite;
-  box-shadow: 0 0 10px rgba(57, 255, 136, 0.4), 0 0 25px rgba(57, 255, 136, 0.15);
+  animation: laserStream 5s linear infinite;
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.45);
   pointer-events: none;
   z-index: 10;
 }
 
-@keyframes laserFlow {
+@keyframes laserStream {
   0% {
     background-position: 200% 0;
   }
@@ -104,29 +197,9 @@ header.navbar-expanded::after {
   }
 }
 
-/* Ambient Top Accent Light Line */
-header.navbar-expanded::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.12),
-    rgba(57, 255, 136, 0.3),
-    rgba(255, 255, 255, 0.12),
-    transparent
-  );
-  pointer-events: none;
-}
-
 /* ===================================================
-   ZONE 1: BRAND LOGO CYBER HUD (AS IN SCREENSHOT)
+   ZONE 1: PRO BRAND HOLOGRAPHIC LOGO
    =================================================== */
-
 .brand-logo-link {
   position: relative;
   text-decoration: none;
@@ -135,59 +208,75 @@ header.navbar-expanded::before {
   display: flex;
   align-items: center;
   gap: 12px;
+  z-index: 10;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .brand-logo-link:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1.5px);
 }
 
-/* Rounded Square DG Icon matching screenshot */
+/* 3D Glowing DG Emblem Avatar */
 .brand-icon-pod {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .brand-icon-box {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 
-    0 4px 16px rgba(16, 185, 129, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    0 4px 18px rgba(16, 185, 129, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
   position: relative;
   z-index: 2;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .brand-logo-link:hover .brand-icon-box {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-3deg);
   box-shadow: 
-    0 6px 22px rgba(16, 185, 129, 0.6),
-    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    0 6px 26px rgba(16, 185, 129, 0.7),
+    0 0 30px rgba(57, 255, 120, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .brand-icon-pulse-glow {
   position: absolute;
   inset: -4px;
-  border-radius: 14px;
-  background: rgba(16, 185, 129, 0.4);
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.5) 0%, rgba(0, 240, 255, 0.2) 60%, transparent 75%);
   filter: blur(8px);
   z-index: 1;
-  animation: beaconPulse 2.8s infinite ease-in-out;
+  animation: brandBeaconPulse 2.6s infinite ease-in-out;
+}
+
+@keyframes brandBeaconPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.1);
+  }
 }
 
 .brand-icon-text {
   font-family: 'Outfit', sans-serif;
   font-weight: 900;
-  color: #03140b;
-  font-size: 20px;
+  color: #021a0e;
+  font-size: 21px;
   letter-spacing: -1px;
   line-height: 1;
 }
@@ -195,45 +284,65 @@ header.navbar-expanded::before {
 /* Typography Title */
 .brand-title {
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 900;
   color: #ffffff;
   letter-spacing: -0.5px;
   line-height: 1.1;
-  text-shadow: 0 0 14px rgba(57, 255, 120, 0.25);
+  background: linear-gradient(135deg, #ffffff 40%, #a7f3d0 80%, #39ff78 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 14px rgba(57, 255, 120, 0.3));
   transition: all 0.3s ease;
 }
 
 .brand-logo-link:hover .brand-title {
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(57, 255, 120, 0.6);
+  filter: drop-shadow(0 0 20px rgba(57, 255, 120, 0.6));
 }
 
-/* VIP Cyber Badge (Screenshot style) */
+/* VIP Radar Cyber Badge */
 .brand-vip-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 1.5px 7px;
+  padding: 2px 8px;
   border-radius: 12px;
-  background: rgba(5, 18, 14, 0.7);
-  border: 1px solid #10b981;
+  background: rgba(5, 22, 16, 0.75);
+  border: 1.5px solid #10b981;
   color: #34d399;
   font-family: 'Outfit', sans-serif;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 900;
   letter-spacing: 0.5px;
   line-height: 1;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+  transition: all 0.3s ease;
+}
+
+.brand-logo-link:hover .brand-vip-badge {
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(57, 255, 120, 0.5);
 }
 
 .brand-vip-dot {
-  width: 5px;
-  height: 5px;
+  width: 5.5px;
+  height: 5.5px;
   border-radius: 50%;
   background: #39ff78;
   box-shadow: 0 0 8px #39ff78;
-  animation: beaconPulse 1.8s infinite ease-in-out;
+  animation: vipPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes vipPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
 }
 
 /* Subtext row */
@@ -242,160 +351,169 @@ header.navbar-expanded::before {
   align-items: center;
   gap: 6px;
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #94a3b8;
   margin-top: 2px;
 }
 
 .brand-status-dot {
-  width: 5.5px;
-  height: 5.5px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #10b981;
   box-shadow: 0 0 8px #10b981;
-  display: inline-block;
 }
 
 /* ===================================================
-   NAVIGATION MENU & LINKS
+   ZONE 2: ELEGANT CYBER DOCK NAVIGATION LINKS
    =================================================== */
-
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 3px;
-  transition: all 0.4s ease;
+  gap: 4px;
+  position: relative;
+  z-index: 10;
 }
 
-header.navbar-compact .nav-menu {
-  gap: 2px;
-}
-
-header.navbar-compact .nav-menu .nav-link {
-  padding: 5px 8px;
-  font-size: 11px;
-}
-
-header.navbar-compact .nav-menu .nav-link span {
-  display: none;
-}
-
-/* لینکهای ناوبار */
 .nav-menu .nav-link {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-
-  padding: 6px 9px;
-  overflow: hidden;
-
-  color: #aebdc8;
-  font-family: inherit;
-  font-size: 11.5px;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 14px;
+  color: #cbd5e1;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12.5px;
   font-weight: 700;
-  letter-spacing: 0.2px;
+  letter-spacing: -0.2px;
   text-decoration: none;
   white-space: nowrap;
-
+  background: transparent;
   border: 1px solid transparent;
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    rgba(12, 27, 35, 0.35),
-    rgba(5, 13, 20, 0.15)
-  );
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-/* شمارههای کنار لینکها */
-.nav-menu .nav-link span {
-  color: #39ff88;
-  font-size: 9px;
-  font-weight: 900;
-  font-family: monospace;
-  opacity: 0.65;
-  transition: 0.25s ease;
-}
-
-/* خط نورانی زیر لینک */
+/* Glowing underline beam */
 .nav-menu .nav-link::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   left: 50%;
-
-  width: 0;
+  transform: translateX(-50%) scaleX(0);
+  width: 18px;
   height: 2px;
-
-  background: #39ff88;
-  box-shadow: 0 0 10px #39ff88;
-
-  transform: translateX(-50%);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(90deg, #39ff78, #00f0ff);
+  border-radius: 2px;
+  box-shadow: 0 0 10px #39ff78;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* افکت نور هنگام هاور */
 .nav-menu .nav-link:hover {
   color: #ffffff;
-  background: rgba(57, 255, 136, 0.08);
-  border-color: rgba(57, 255, 136, 0.24);
-  box-shadow:
-    0 0 20px rgba(57, 255, 136, 0.08),
-    inset 0 0 15px rgba(57, 255, 136, 0.04);
-
-  transform: translateY(-2px);
-}
-
-.nav-menu .nav-link:hover span {
-  opacity: 1;
-  text-shadow: 0 0 10px #39ff88;
+  background: rgba(57, 255, 120, 0.08);
+  border-color: rgba(57, 255, 120, 0.25);
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(57, 255, 120, 0.14);
+  transform: translateY(-1.5px);
 }
 
 .nav-menu .nav-link:hover::after {
-  width: 70%;
+  transform: translateX(-50%) scaleX(1);
 }
 
-/* لینک صفحه فعال */
-.nav-menu .nav-link.active {
-  color: #39ff88;
-  background: rgba(57, 255, 136, 0.09);
-  border-color: rgba(57, 255, 136, 0.25);
-  text-shadow: 0 0 12px rgba(57, 255, 136, 0.3);
-}
-
-.nav-menu .nav-link.active::after {
-  width: 70%;
-}
-
-/* افکت کلیک */
 .nav-menu .nav-link:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
+}
+
+/* ===================================================
+   STANDOUT VIP CTA BUTTON: خرید اشتراک
+   =================================================== */
+.nav-menu .nav-link.nav-link-cta {
+  background: linear-gradient(135deg, rgba(57, 255, 120, 0.16) 0%, rgba(0, 240, 255, 0.12) 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.45);
+  color: #39ff78;
+  font-weight: 800;
+  padding: 6px 14px;
+  margin-right: 4px;
+  box-shadow: 
+    0 0 16px rgba(57, 255, 120, 0.2),
+    inset 0 0 10px rgba(57, 255, 120, 0.08);
+}
+
+.nav-menu .nav-link.nav-link-cta:hover {
+  background: linear-gradient(135deg, rgba(57, 255, 120, 0.28) 0%, rgba(0, 240, 255, 0.22) 100%);
+  border-color: #39ff78;
+  color: #ffffff;
+  box-shadow: 
+    0 0 25px rgba(57, 255, 120, 0.5),
+    0 0 40px rgba(0, 240, 255, 0.25);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.nav-menu .nav-link.nav-link-cta::after {
+  display: none;
+}
+
+.nav-cta-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: ctaBeaconPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes ctaBeaconPulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.nav-cta-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 900;
+  padding: 1.5px 6px;
+  border-radius: 6px;
+  background: rgba(0, 240, 255, 0.18);
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  line-height: 1;
+}
+
+/* ===================================================
+   ZONE 3: CONTROLS & AUTH PORTAL
+   =================================================== */
+header .theme-toggle,
+header .auth-button {
+  border-radius: 13px;
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  background: linear-gradient(135deg, rgba(12, 28, 48, 0.85) 0%, rgba(5, 14, 26, 0.95) 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(57, 255, 120, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+header .theme-toggle:hover,
+header .auth-button:hover {
+  transform: translateY(-2px);
+  border-color: #39ff78;
+  box-shadow: 
+    0 6px 22px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(57, 255, 120, 0.35),
+    0 0 35px rgba(0, 240, 255, 0.15);
 }
 
 /* ===================================================
    LIGHT MODE ADAPTABILITY
    =================================================== */
-
-[data-theme="light"] header.navbar-compact,
-.light-theme header.navbar-compact {
-  background: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
 [data-theme="light"] header.navbar-compact .navbar-inner-container,
 .light-theme header.navbar-compact .navbar-inner-container {
   background: rgba(255, 255, 255, 0.94) !important;
-  border: 1.5px solid rgba(16, 185, 129, 0.45) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.4) !important;
   box-shadow:
     0 16px 40px -8px rgba(15, 23, 42, 0.12),
     0 0 25px rgba(16, 185, 129, 0.15),
@@ -404,24 +522,19 @@ header.navbar-compact .nav-menu .nav-link span {
 
 [data-theme="light"] header.navbar-expanded,
 .light-theme header.navbar-expanded {
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   border-bottom: 1.5px solid rgba(16, 185, 129, 0.3) !important;
   box-shadow:
     0 10px 30px -10px rgba(12, 35, 60, 0.1),
     0 1px 0 #ffffff inset !important;
 }
 
-[data-theme="light"] header.navbar-expanded .navbar-inner-container,
-.light-theme header.navbar-expanded .navbar-inner-container {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
 [data-theme="light"] .brand-title,
 .light-theme .brand-title {
   color: #0f172a !important;
-  text-shadow: none !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  filter: none !important;
 }
 
 [data-theme="light"] .brand-subtext-row,
@@ -434,90 +547,78 @@ header.navbar-compact .nav-menu .nav-link span {
   background: rgba(16, 185, 129, 0.12) !important;
   color: #059669 !important;
   border-color: rgba(16, 185, 129, 0.4) !important;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
-}
-
-[data-theme="light"] .brand-vip-dot,
-.light-theme .brand-vip-dot {
-  background: #059669 !important;
-  box-shadow: 0 0 6px #059669 !important;
-}
-
-[data-theme="light"] header::after,
-.light-theme header::after {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(16, 185, 129, 0.1) 15%,
-    rgba(16, 185, 129, 0.7) 50%,
-    rgba(16, 185, 129, 0.1) 85%,
-    transparent 100%
-  ) !important;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.35) !important;
-}
-
-[data-theme="light"] header::before,
-.light-theme header::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(16, 185, 129, 0.15),
-    transparent
-  ) !important;
 }
 
 [data-theme="light"] .nav-menu .nav-link,
 .light-theme .nav-menu .nav-link {
-  color: #1e293b !important;
-  font-weight: 800 !important;
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
 }
 
 [data-theme="light"] .nav-menu .nav-link:hover,
 .light-theme .nav-menu .nav-link:hover {
   color: #059669 !important;
+  background: #f1f5f9 !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+
+[data-theme="light"] .nav-menu .nav-link.nav-link-cta,
+.light-theme .nav-menu .nav-link.nav-link-cta {
+  background: #ecfdf5 !important;
+  border-color: #059669 !important;
+  color: #047857 !important;
+}
+
+[data-theme="light"] .nav-cta-tag,
+.light-theme .nav-cta-tag {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #bae6fd !important;
+}
+
+[data-theme="light"] header .theme-toggle,
+[data-theme="light"] header .auth-button,
+.light-theme header .theme-toggle,
+.light-theme header .auth-button {
   background: #ffffff !important;
-  border-color: transparent !important;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06) !important;
-  transform: translateY(-1px);
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
 }
 
-[data-theme="light"] .nav-menu .nav-link span,
-.light-theme .nav-menu .nav-link span {
-  color: #059669 !important;
-}
-
-[data-theme="light"] .nav-menu .nav-link::after,
-.light-theme .nav-menu .nav-link::after {
-  background: #10b981 !important;
-  box-shadow: 0 0 10px #10b981 !important;
+[data-theme="light"] header .theme-toggle:hover,
+[data-theme="light"] header .auth-button:hover,
+.light-theme header .theme-toggle:hover,
+.light-theme header .auth-button:hover {
+  border-color: #059669 !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2) !important;
 }
 
 /* ===================================================
    MOBILE RESPONSIVENESS & REDUCED MOTION
    =================================================== */
-
-@media (max-width: 768px) {
-  .nav-menu {
-    gap: 8px;
+@media (max-width: 1280px) {
+  header.navbar-compact {
+    padding: 10px 12px 0 12px;
   }
 
-  .nav-menu .nav-link {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 12px 14px;
-    font-size: 13px;
+  header.navbar-compact .navbar-inner-container {
+    height: 60px;
+    padding: 0 14px;
+    border-radius: 26px;
+  }
+
+  header.navbar-compact .navbar-inner-container::after {
+    border-radius: 27px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   header,
-  header::after,
-  .nav-menu .nav-link,
-  .nav-menu .nav-link::after,
-  .nav-menu .nav-link span {
+  header.navbar-compact .navbar-inner-container::after,
+  header.navbar-expanded::after,
+  .brand-icon-pulse-glow,
+  .brand-vip-dot,
+  .nav-cta-beacon {
     animation: none !important;
     transition: none !important;
   }
