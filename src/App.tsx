@@ -169,7 +169,7 @@ export default function App() {
             />
 
             {/* Main Public & Interactive Sections */}
-            <main className="flex-1 space-y-16">
+            <main className="flex-1 space-y-4 sm:space-y-6">
           {/* Hero Section based on reference image */}
           <HeroSection
             onOpenOrderModal={() => handleOpenOrderModal('gold')}

@@ -89,7 +89,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({
   };
 
   return (
-    <section id="roi-calculator" className="calc-section-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
+    <section id="roi-calculator" className="calc-section-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
       {/* Background Ambient Glow */}
       <div className="calc-ambient-glow" aria-hidden="true" />
 

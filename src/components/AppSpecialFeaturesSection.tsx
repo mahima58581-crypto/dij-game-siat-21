@@ -308,13 +308,13 @@ export const AppSpecialFeaturesSection: React.FC = () => {
   const currentFeatures = activeMode === 'management' ? managementFeatures : clientFeatures;
 
   return (
-    <section id="special-features" className="special-features-section py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <section id="special-features" className="special-features-section pt-2 pb-10 sm:pt-4 sm:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       {/* Background Lighting & Grid */}
       <div className="special-features-ambient-orb" aria-hidden="true" />
       <div className="special-features-grid-bg" aria-hidden="true" />
 
       {/* Mode Action Buttons (Designed in the Exact Theme of Light/Dark Toggle) */}
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-14">
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-8 sm:mb-10">
         {/* Button 1: نرم افزار مدیریتی */}
         <button
           type="button"

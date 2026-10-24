@@ -33,7 +33,7 @@ export const FeaturesSection: React.FC<FeaturesSectionProps> = () => {
   };
 
   return (
-    <section id="features" className="features-section-container py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <section id="features" className="features-section-container py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div id="games" className="absolute -top-24 pointer-events-none" />
       
       {/* Background Ambient Lighting */}

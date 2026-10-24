@@ -35,7 +35,7 @@ export const InstallersSection: React.FC<InstallersSectionProps> = ({ onRequestI
   };
 
   return (
-    <section id="installers" className="installers-cyber-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 relative">
+    <section id="installers" className="installers-cyber-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 relative">
       {/* Ambient Lighting & Grid */}
       <div className="installers-ambient-glow" aria-hidden="true" />
       <div className="installers-grid-bg" aria-hidden="true" />

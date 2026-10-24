@@ -207,7 +207,7 @@ export const TestimonialsSection: React.FC = () => {
   });
 
   return (
-    <section id="testimonials" className="testimonials-cyber-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
+    <section id="testimonials" className="testimonials-cyber-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
       {/* Background Ambient Glow & Grid */}
       <div className="testimonials-ambient-glow" aria-hidden="true" />
       <div className="testimonials-grid-bg" aria-hidden="true" />

@@ -25,7 +25,7 @@ export const TutorialsSection: React.FC = () => {
   };
 
   return (
-    <section id="tutorials" className="tutorials-cyber-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 relative">
+    <section id="tutorials" className="tutorials-cyber-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 relative">
       {/* Ambient Lighting & Grid */}
       <div className="tutorials-ambient-glow" aria-hidden="true" />
       <div className="tutorials-grid-bg" aria-hidden="true" />

@@ -58,7 +58,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
   };
 
   return (
-    <section id="pricing" className="pricing-cyber-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
+    <section id="pricing" className="pricing-cyber-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24">
       {/* Background Lighting & Grid */}
       <div className="pricing-ambient-glow" aria-hidden="true" />
       <div className="pricing-grid-bg" aria-hidden="true" />

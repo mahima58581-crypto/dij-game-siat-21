@@ -100,7 +100,7 @@ export const FaqSection: React.FC = () => {
   });
 
   return (
-    <section id="faq" className="faq-cyber-wrapper py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-24">
+    <section id="faq" className="faq-cyber-wrapper py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-24">
       {/* Background Ambient Glow & Grid */}
       <div className="faq-ambient-glow" aria-hidden="true" />
       <div className="faq-grid-bg" aria-hidden="true" />

@@ -66,7 +66,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section id="home" className="hero-arena-wrapper relative pt-6 pb-16 px-3 sm:px-6 lg:px-8 max-w-[1440px] mx-auto overflow-hidden scroll-mt-24">
+    <section id="home" className="hero-arena-wrapper relative pt-4 pb-4 sm:pb-6 px-3 sm:px-6 lg:px-8 max-w-[1440px] mx-auto overflow-hidden scroll-mt-24">
       {/* Ambient Lighting Orbs */}
       <div className="hero-ambient-beam-1" aria-hidden="true" />
 
