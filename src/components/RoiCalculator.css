@@ -1,0 +1,526 @@
+/* ===================================================
+   DIGI-GAME 2026 CYBER PRICING CALCULATOR
+   SMART CUSTOMER COST ESTIMATOR & INVOICE ENGINE
+   =================================================== */
+
+@property --calc-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.calc-section-wrapper {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient Backdrops */
+.calc-ambient-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(57, 255, 120, 0.08) 0%, rgba(0, 240, 255, 0.04) 40%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Main Chassis Container */
+.calc-master-chassis {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(145deg, #091322 0%, #060d18 60%, #040810 100%);
+  border: 1.5px solid rgba(57, 255, 120, 0.22);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px -15px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(57, 255, 120, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Rotating Perimeter Laser Runner */
+.calc-master-chassis::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 33px;
+  background: conic-gradient(
+    from var(--calc-border-angle, 0deg),
+    transparent 0%,
+    transparent 72%,
+    rgba(57, 255, 120, 0.85) 86%,
+    rgba(0, 240, 255, 0.95) 96%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  pointer-events: none;
+  z-index: 5;
+  animation: calcBorderRotate 4.5s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes calcBorderRotate {
+  to {
+    --calc-border-angle: 360deg;
+  }
+}
+
+/* Mouse Refraction Spotlight */
+.calc-master-chassis::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
+    rgba(57, 255, 120, 0.12),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.calc-master-chassis:hover::before {
+  opacity: 1;
+}
+
+/* Top Flowing Specular Beam */
+.calc-top-beam {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #39ff78, #00f0ff, transparent);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 6;
+  box-shadow: 0 0 14px #39ff78, 0 0 24px #00f0ff;
+}
+
+/* Badge Cluster */
+.calc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(6, 15, 26, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.35);
+  border-radius: 20px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #39ff78;
+  box-shadow: 0 0 16px rgba(57, 255, 120, 0.2);
+}
+
+.calc-beacon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: calcPulseBeacon 1.8s infinite ease-in-out;
+}
+
+@keyframes calcPulseBeacon {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* Step Cards */
+.calc-step-card {
+  background: rgba(7, 16, 28, 0.75);
+  border: 1px solid rgba(57, 255, 120, 0.18);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.calc-step-card:hover {
+  border-color: rgba(57, 255, 120, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(57, 255, 120, 0.04);
+}
+
+/* Preset Chips */
+.preset-chip-btn {
+  padding: 6px 14px;
+  border-radius: 12px;
+  background: rgba(12, 26, 44, 0.7);
+  border: 1px solid rgba(57, 255, 120, 0.2);
+  color: #cbd5e1;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.preset-chip-btn:hover {
+  background: rgba(57, 255, 120, 0.15);
+  border-color: #39ff78;
+  color: #ffffff;
+  transform: translateY(-1.5px);
+}
+
+.preset-chip-btn.active {
+  background: linear-gradient(135deg, rgba(57, 255, 120, 0.25), rgba(0, 240, 255, 0.2));
+  border-color: #39ff78;
+  color: #39ff78;
+  box-shadow: 0 0 14px rgba(57, 255, 120, 0.3);
+}
+
+/* Range Slider Styling */
+.calc-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: #0f2238;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.calc-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #39ff78;
+  border: 3px solid #06111e;
+  box-shadow: 0 0 12px #39ff78, 0 0 20px rgba(57, 255, 120, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 18px #39ff78, 0 0 30px #00f0ff;
+}
+
+.calc-range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #39ff78;
+  border: 3px solid #06111e;
+  box-shadow: 0 0 12px #39ff78;
+  cursor: pointer;
+}
+
+/* Plan Duration Cards */
+.plan-duration-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .plan-duration-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.duration-card {
+  position: relative;
+  background: rgba(9, 20, 36, 0.8);
+  border: 1.5px solid rgba(57, 255, 120, 0.18);
+  border-radius: 16px;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.duration-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(57, 255, 120, 0.5);
+  background: rgba(12, 28, 48, 0.9);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(57, 255, 120, 0.15);
+}
+
+.duration-card.is-selected {
+  background: linear-gradient(145deg, rgba(16, 36, 60, 0.95), rgba(7, 18, 32, 0.98));
+  border-color: #39ff78;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(57, 255, 120, 0.3),
+    inset 0 0 15px rgba(57, 255, 120, 0.08);
+}
+
+.duration-badge-popular {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.duration-badge-discount {
+  font-family: 'Outfit', 'Vazirmatn', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #39ff78;
+  background: rgba(57, 255, 120, 0.12);
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  padding: 2px 7px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* Hardware Toggle Card */
+.calc-toggle-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(8, 19, 34, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.22);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calc-toggle-card:hover {
+  border-color: rgba(57, 255, 120, 0.5);
+  background: rgba(10, 24, 42, 0.95);
+}
+
+.calc-toggle-card.active {
+  border-color: #39ff78;
+  box-shadow: 0 0 20px rgba(57, 255, 120, 0.2);
+}
+
+/* Switch UI */
+.switch-indicator {
+  width: 48px;
+  height: 26px;
+  border-radius: 20px;
+  background: #0e2034;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.switch-indicator.is-on {
+  background: #10b981;
+  border-color: #39ff78;
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.6);
+}
+
+.switch-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.switch-indicator.is-on .switch-thumb {
+  transform: translateX(22px);
+}
+
+/* ===================================================
+   RIGHT INVOICE SUMMARY CHASSIS
+   =================================================== */
+.calc-invoice-card {
+  position: relative;
+  background: linear-gradient(145deg, #091728 0%, #06111e 65%, #040912 100%);
+  border: 2px solid rgba(57, 255, 120, 0.45);
+  border-radius: 26px;
+  padding: 28px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(57, 255, 120, 0.22),
+    inset 0 0 20px rgba(57, 255, 120, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  z-index: 2;
+}
+
+.invoice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.invoice-price-box {
+  background: rgba(5, 13, 24, 0.7);
+  border: 1px solid rgba(57, 255, 120, 0.3);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: inset 0 0 15px rgba(57, 255, 120, 0.05);
+}
+
+.invoice-total-amount {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: clamp(34px, 4vw, 44px);
+  font-weight: 900;
+  color: #39ff78;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(57, 255, 120, 0.4);
+}
+
+.invoice-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #cbd5e1;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+}
+
+.invoice-row:last-child {
+  border-bottom: none;
+}
+
+/* Primary Order Button */
+.calc-order-btn {
+  position: relative;
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1.5px solid #34d399;
+  border-radius: 18px;
+  color: #04180d;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow:
+    0 10px 30px rgba(16, 185, 129, 0.4),
+    0 0 20px rgba(57, 255, 120, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.calc-order-btn:hover {
+  transform: translateY(-2.5px);
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  box-shadow:
+    0 14px 40px rgba(16, 185, 129, 0.6),
+    0 0 30px rgba(57, 255, 120, 0.6);
+  color: #020f08;
+}
+
+.calc-order-btn:active {
+  transform: scale(0.98);
+}
+
+.calc-btn-shine {
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.calc-order-btn:hover .calc-btn-shine {
+  left: 140%;
+}
+
+/* ===================================================
+   LIGHT MODE ADAPTABILITY
+   =================================================== */
+:root[data-theme="light"] .calc-master-chassis,
+html.light .calc-master-chassis,
+.light-theme .calc-master-chassis {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .calc-step-card,
+html.light .calc-step-card,
+.light-theme .calc-step-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .duration-card,
+html.light .duration-card,
+.light-theme .duration-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .duration-card.is-selected,
+html.light .duration-card.is-selected,
+.light-theme .duration-card.is-selected {
+  background: #f0fdf4;
+  border-color: #059669;
+}
+
+:root[data-theme="light"] .calc-toggle-card,
+html.light .calc-toggle-card,
+.light-theme .calc-toggle-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .calc-invoice-card,
+html.light .calc-invoice-card,
+.light-theme .calc-invoice-card {
+  background: #ffffff;
+  border-color: #059669;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="light"] .invoice-price-box,
+html.light .invoice-price-box,
+.light-theme .invoice-price-box {
+  background: #f0fdf4;
+  border-color: #a7f3d0;
+}
+
+:root[data-theme="light"] .invoice-total-amount,
+html.light .invoice-total-amount,
+.light-theme .invoice-total-amount {
+  color: #047857;
+  text-shadow: none;
+}

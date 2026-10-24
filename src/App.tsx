@@ -184,8 +184,11 @@ export default function App() {
           {/* Features Section (امکانات) */}
           <FeaturesSection onOpenOrderModal={() => handleOpenOrderModal('gold')} />
 
-          {/* ROI Calculator (محاسبه سود) */}
-          <RoiCalculator onOpenOrderModal={() => handleOpenOrderModal('gold')} />
+          {/* ROI Calculator / Customer Price Estimator (محاسبه‌گر هزینه فعال‌سازی مشتری) */}
+          <RoiCalculator 
+            onOpenOrderModal={handleOpenOrderModal} 
+            onNavigateToPurchase={handleNavigateToPurchase}
+          />
 
           {/* Pricing Plans (تعرفه) */}
           <PricingSection 
