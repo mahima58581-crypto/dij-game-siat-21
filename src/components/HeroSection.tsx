@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpLeft } from 'lucide-react';
-import livingRoomBg from '../assets/images/modern_minimalist_living_room.jpg';
+import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
 import './HeroSection.css';
 
 interface HeroSectionProps {
@@ -35,10 +35,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Master Framed Viewport Canvas */}
       <div className="stylecraft-master-frame">
         
-        {/* Inner Canvas with Modern Living Room Interior Background */}
+        {/* Inner Canvas with Cyberpunk Green Gaming Room Background */}
         <div 
           className="stylecraft-inner-canvas"
-          style={{ backgroundImage: `url(${livingRoomBg})` }}
+          style={{ backgroundImage: `url(${cyberpunkGreenRoomBg})` }}
         >
           {/* Subtle Contrast Overlay */}
           <div className="stylecraft-canvas-overlay" />
