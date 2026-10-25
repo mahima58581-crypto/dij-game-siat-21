@@ -119,13 +119,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             
             {/* Bold Headline */}
             <h1 className="stylecraft-main-title font-['Vazirmatn',sans-serif]">
-              مبلمان مدرن برای<br />
-              علاقه‌مندان به سبک مینیمال
+              نسل نوین مدیریت هوشمند گیم‌نت؛<br />
+              کنترل بلادرنگ، امنیت مطلق و سودآوری حداکثری
             </h1>
 
             {/* Subtitle Description */}
             <p className="stylecraft-sub-title font-['Vazirmatn',sans-serif]">
-              نهایت آرامش و اصالت را با مجموعه‌ای برگزیده از طراحی‌های الهام‌بخش، اختصاصی و آرامش‌بخش تجربه کنید
+              با سامانه جامع دیجی‌گیم کلوپ خود را به سطح بعد ببرید؛ کنترل هوشمند برق کنسول‌ها، ثبت خودکار ثانیه‌ها، منوی دیجیتال بوفه و گزارش مالی دقیق بدون حتی یک ریال خطا.
             </p>
 
             {/* Cyber Emerald Rectangular Action Button */}
