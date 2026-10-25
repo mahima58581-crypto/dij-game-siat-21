@@ -49,7 +49,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ========================================================= */}
           <header className="stylecraft-top-bar" dir="ltr">
             
-            {/* Top Left Action Tab: Connect With Us Pill + Arrow Button */}
+            {/* Top Left Action Tab: Connect With Us Pill */}
             <div className="stylecraft-action-tab" dir="rtl">
               <button 
                 type="button" 
@@ -58,14 +58,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 title="ارتباط با ما"
               >
                 ارتباط با ما
-              </button>
-              <button 
-                type="button" 
-                onClick={handleConnectClick} 
-                className="stylecraft-arrow-btn"
-                title="ارتباط با ما"
-              >
-                <ArrowUpLeft className="w-4 h-4 stroke-[2.2]" />
               </button>
             </div>
 
