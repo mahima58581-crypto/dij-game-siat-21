@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Home, Search, LayoutGrid, MessageSquare, Bell, Settings, 
+  Home, Search, LayoutGrid, MessageSquare, 
   Moon, Sun, ArrowUpRight, ArrowUpLeft, X
 } from 'lucide-react';
 import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
@@ -207,36 +207,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <span className="avatar-online-beacon absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full" />
             </div>
 
-            {/* 6. Notification Bell with Alert Dot */}
-            <button
-              type="button"
-              onClick={() => onOpenAuthModal?.()}
-              className="sidebar-dock-btn relative"
-              title="Notifications"
-            >
-              <Bell className="w-4 h-4" />
-              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-            </button>
-
           </div>
 
           {/* Organic Inset Bridge Notch */}
           <div className="sidebar-divider w-5 h-px bg-slate-300/40 my-1" />
 
-          {/* Lower Cluster (Settings & Theme Toggles) */}
+          {/* Lower Cluster (Theme Toggles) */}
           <div className="flex flex-col items-center gap-2">
             
-            {/* 7. Settings */}
-            <button
-              type="button"
-              onClick={() => onOpenOrderModal?.()}
-              className="sidebar-dock-btn"
-              title="Settings & Options"
-            >
-              <Settings className="w-4 h-4" />
-            </button>
-
-            {/* 8. Dark Mode Moon */}
+            {/* 6. Dark Mode Moon */}
             <button
               type="button"
               onClick={() => { if (mode !== 'dark') toggleTheme(); }}
@@ -246,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Moon className="w-4 h-4" />
             </button>
 
-            {/* 9. Light Mode Sun */}
+            {/* 7. Light Mode Sun */}
             <button
               type="button"
               onClick={() => { if (mode !== 'light') toggleTheme(); }}

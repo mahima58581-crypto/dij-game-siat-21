@@ -224,68 +224,63 @@
 .villa-left-sidebar {
   border-radius: 18px;
   background: 
-    linear-gradient(180deg, rgba(6, 14, 28, 0.94) 0%, rgba(3, 8, 18, 0.96) 100%) padding-box,
+    linear-gradient(180deg, rgba(6, 12, 24, 0.97) 0%, rgba(3, 7, 16, 0.98) 100%) padding-box,
     conic-gradient(
       from var(--rgb-dock-angle),
-      transparent 0%,
-      rgba(16, 185, 129, 0.25) 15%,
-      #059669 30%,
-      #10b981 50%,
-      #34d399 65%,
-      #39ff78 80%,
-      #00ff87 92%,
-      #a7f3d0 97%,
-      transparent 100%
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(16, 185, 129, 0.25) 25%,
+      rgba(57, 255, 120, 0.6) 55%,
+      rgba(0, 255, 135, 0.85) 80%,
+      rgba(255, 255, 255, 0.05) 100%
     ) border-box;
-  border: 1.75px solid transparent;
-  animation: rgbDockRotate 3s linear infinite;
-  backdrop-filter: blur(28px) saturate(220%);
-  -webkit-backdrop-filter: blur(28px) saturate(220%);
+  border: 1.5px solid transparent;
+  animation: rgbDockRotate 3.5s linear infinite;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.8),
-    0 0 25px rgba(57, 255, 120, 0.35),
-    0 0 45px rgba(16, 185, 129, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 16px 40px rgba(0, 0, 0, 0.85),
+    0 0 12px rgba(57, 255, 120, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
-/* Ambient Emerald Laser Glow Following the Perimeter */
+/* Ambient Emerald Laser Glow Following the Perimeter (Refined & Subtle) */
 .villa-left-sidebar::after {
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: 20px;
+  inset: -1px;
+  border-radius: 19px;
   background: conic-gradient(
     from var(--rgb-dock-angle),
     transparent 0%,
-    rgba(16, 185, 129, 0.4) 30%,
-    rgba(57, 255, 120, 0.75) 65%,
-    rgba(0, 255, 135, 0.95) 85%,
+    rgba(16, 185, 129, 0.15) 30%,
+    rgba(57, 255, 120, 0.35) 65%,
+    rgba(0, 255, 135, 0.45) 85%,
     transparent 100%
   );
-  filter: blur(12px);
+  filter: blur(6px);
   z-index: -1;
   pointer-events: none;
-  animation: rgbDockRotate 3s linear infinite;
-  opacity: 0.8;
+  animation: rgbDockRotate 3.5s linear infinite;
+  opacity: 0.35;
   transition: opacity 0.3s ease;
 }
 
 .villa-left-sidebar:hover::after {
-  opacity: 1;
-  filter: blur(16px);
+  opacity: 0.55;
+  filter: blur(8px);
 }
 
 .sidebar-dock-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f1f5f9;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -293,88 +288,73 @@
 }
 
 .sidebar-dock-btn:hover {
-  background: rgba(57, 255, 120, 0.16);
+  background: rgba(57, 255, 120, 0.18);
   border-color: rgba(57, 255, 120, 0.6);
   color: #39ff78;
-  transform: scale(1.1);
-  box-shadow: 0 0 14px rgba(57, 255, 120, 0.45);
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.3);
 }
 
-/* Living Cyber Emerald Active Button with Pulsing Wave */
+/* Living Cyber Emerald Active Button */
 .sidebar-dock-btn.is-active {
   background: linear-gradient(
     135deg,
     #00ff87 0%,
     #39ff78 40%,
-    #10b981 75%,
-    #059669 100%
+    #10b981 100%
   ) !important;
-  background-size: 200% 200% !important;
-  animation: activeBtnGlow 2.5s ease-in-out infinite alternate !important;
   color: #031508 !important;
   font-weight: 900;
-  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
   box-shadow: 
-    0 0 18px rgba(57, 255, 120, 0.85),
-    0 0 32px rgba(16, 185, 129, 0.6) !important;
-  border-radius: 10px;
+    0 0 14px rgba(57, 255, 120, 0.6),
+    0 0 22px rgba(16, 185, 129, 0.35) !important;
+  border-radius: 11px;
 }
 
 @keyframes activeBtnGlow {
   0% {
     background-position: 0% 50%;
-    box-shadow: 0 0 14px rgba(57, 255, 120, 0.75), 0 0 26px rgba(0, 255, 135, 0.5);
+    box-shadow: 0 0 12px rgba(57, 255, 120, 0.5), 0 0 20px rgba(0, 255, 135, 0.3);
   }
   100% {
     background-position: 100% 50%;
-    box-shadow: 0 0 22px rgba(0, 255, 135, 0.95), 0 0 38px rgba(16, 185, 129, 0.8);
+    box-shadow: 0 0 16px rgba(0, 255, 135, 0.7), 0 0 26px rgba(16, 185, 129, 0.5);
   }
 }
 
 .sidebar-dock-btn.is-theme-active {
-  background: linear-gradient(
-    135deg,
-    rgba(57, 255, 120, 0.22) 0%,
-    rgba(16, 185, 129, 0.15) 100%
-  ) !important;
+  background: rgba(57, 255, 120, 0.16) !important;
   color: #39ff78 !important;
-  border: 1px solid rgba(57, 255, 120, 0.55) !important;
-  box-shadow: 0 0 14px rgba(57, 255, 120, 0.45) !important;
-  border-radius: 10px;
+  border: 1px solid rgba(57, 255, 120, 0.5) !important;
+  box-shadow: 0 0 10px rgba(57, 255, 120, 0.25) !important;
+  border-radius: 11px;
 }
 
 /* RGB Chromatic Beacon for Avatar */
 .avatar-online-beacon {
   border: 2px solid #040914;
   background: #39ff78;
-  box-shadow: 0 0 8px #39ff78;
+  box-shadow: 0 0 6px #39ff78;
   animation: liveBeaconPulse 2s infinite ease-in-out;
 }
 
 @keyframes liveBeaconPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 6px #39ff78, 0 0 14px rgba(57, 255, 120, 0.5);
+    box-shadow: 0 0 5px #39ff78, 0 0 10px rgba(57, 255, 120, 0.4);
   }
   50% {
     transform: scale(1.15);
-    box-shadow: 0 0 12px #00ff87, 0 0 22px rgba(0, 255, 135, 0.8);
+    box-shadow: 0 0 8px #00ff87, 0 0 16px rgba(0, 255, 135, 0.6);
   }
 }
 
 /* RGB Chromatic Divider */
 .sidebar-divider {
-  width: 20px;
-  height: 1.5px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(57, 255, 120, 0.3) 20%,
-    #39ff78 50%,
-    rgba(57, 255, 120, 0.3) 80%,
-    transparent 100%
-  );
-  box-shadow: 0 0 8px rgba(57, 255, 120, 0.6);
+  width: 22px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
   margin: 4px 0;
 }
 
