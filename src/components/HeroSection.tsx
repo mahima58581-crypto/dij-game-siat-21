@@ -99,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Top Center: 3 Filter Telemetry Dropdowns */}
           <div 
-            className="villa-filter-island flex items-center gap-2 sm:gap-6 px-4 sm:px-6 py-2.5 rounded-full"
+            className="villa-filter-island flex items-center gap-2 sm:gap-6 px-4 sm:px-6 py-2.5 rounded-[14px]"
             onClick={e => e.stopPropagation()}
           >
             {/* 1. Location Dropdown */}
@@ -243,7 +243,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* =========================================================
             LEFT DOCK & SIDEBAR (ORGANIC CURVED ISLAND)
             ========================================================= */}
-        <aside className="villa-left-sidebar absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-2 py-3 px-2 rounded-full">
+        <aside className="villa-left-sidebar absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-2 py-3 px-2 rounded-[18px]">
           
           {/* Upper Cluster */}
           <div className="flex flex-col items-center gap-2">
@@ -307,7 +307,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <img 
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" 
                 alt="User Profile" 
-                className="w-8 h-8 rounded-full object-cover border-2 border-white/80 shadow-sm transition-transform group-hover:scale-105"
+                className="w-8 h-8 rounded-[10px] object-cover border-2 border-white/80 shadow-sm transition-transform group-hover:scale-105"
               />
               <span className="avatar-online-beacon absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full" />
             </div>
