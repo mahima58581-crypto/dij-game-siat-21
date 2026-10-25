@@ -218,7 +218,7 @@
 }
 
 /* ===================================================
-   LEFT VERTICAL DOCK SIDEBAR — QUANTUM RGB CHROMA PRO HUD
+   LEFT VERTICAL DOCK SIDEBAR — CYBER EMERALD LIVE RGB HUD
    (Exact original position preserved cleanly)
    ========================================================= */
 .villa-left-sidebar {
@@ -228,25 +228,28 @@
     conic-gradient(
       from var(--rgb-dock-angle),
       transparent 0%,
-      #00f0ff 20%,
-      #39ff78 40%,
-      #a855f7 60%,
-      #ec4899 80%,
+      rgba(16, 185, 129, 0.25) 15%,
+      #059669 30%,
+      #10b981 50%,
+      #34d399 65%,
+      #39ff78 80%,
+      #00ff87 92%,
+      #a7f3d0 97%,
       transparent 100%
     ) border-box;
   border: 1.75px solid transparent;
-  animation: rgbDockRotate 3.5s linear infinite;
+  animation: rgbDockRotate 3s linear infinite;
   backdrop-filter: blur(28px) saturate(220%);
   -webkit-backdrop-filter: blur(28px) saturate(220%);
   box-shadow: 
     0 20px 50px rgba(0, 0, 0, 0.8),
-    0 0 25px rgba(0, 240, 255, 0.3),
-    0 0 35px rgba(57, 255, 120, 0.25),
+    0 0 25px rgba(57, 255, 120, 0.35),
+    0 0 45px rgba(16, 185, 129, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: box-shadow 0.3s ease;
 }
 
-/* Ambient Laser Glow Following the Perimeter */
+/* Ambient Emerald Laser Glow Following the Perimeter */
 .villa-left-sidebar::after {
   content: "";
   position: absolute;
@@ -255,23 +258,22 @@
   background: conic-gradient(
     from var(--rgb-dock-angle),
     transparent 0%,
-    rgba(0, 240, 255, 0.6) 20%,
-    rgba(57, 255, 120, 0.6) 40%,
-    rgba(168, 85, 247, 0.6) 60%,
-    rgba(236, 72, 153, 0.6) 80%,
+    rgba(16, 185, 129, 0.4) 30%,
+    rgba(57, 255, 120, 0.75) 65%,
+    rgba(0, 255, 135, 0.95) 85%,
     transparent 100%
   );
-  filter: blur(10px);
+  filter: blur(12px);
   z-index: -1;
   pointer-events: none;
-  animation: rgbDockRotate 3.5s linear infinite;
-  opacity: 0.7;
+  animation: rgbDockRotate 3s linear infinite;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
 .villa-left-sidebar:hover::after {
   opacity: 1;
-  filter: blur(14px);
+  filter: blur(16px);
 }
 
 .sidebar-dock-btn {
@@ -291,71 +293,72 @@
 }
 
 .sidebar-dock-btn:hover {
-  background: rgba(0, 240, 255, 0.15);
-  border-color: rgba(0, 240, 255, 0.5);
-  color: #00f0ff;
+  background: rgba(57, 255, 120, 0.16);
+  border-color: rgba(57, 255, 120, 0.6);
+  color: #39ff78;
   transform: scale(1.1);
-  box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 14px rgba(57, 255, 120, 0.45);
 }
 
-/* Living Quantum RGB Active Button with Smooth Shifting Glow */
+/* Living Cyber Emerald Active Button with Pulsing Wave */
 .sidebar-dock-btn.is-active {
   background: linear-gradient(
     135deg,
-    #00f0ff 0%,
-    #10b981 50%,
-    #8b5cf6 100%
+    #00ff87 0%,
+    #39ff78 40%,
+    #10b981 75%,
+    #059669 100%
   ) !important;
   background-size: 200% 200% !important;
-  animation: activeBtnGlow 3s ease-in-out infinite alternate !important;
-  color: #030a14 !important;
+  animation: activeBtnGlow 2.5s ease-in-out infinite alternate !important;
+  color: #031508 !important;
   font-weight: 900;
-  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
   box-shadow: 
-    0 0 16px rgba(0, 240, 255, 0.75),
-    0 0 28px rgba(57, 255, 120, 0.55) !important;
+    0 0 18px rgba(57, 255, 120, 0.85),
+    0 0 32px rgba(16, 185, 129, 0.6) !important;
   border-radius: 10px;
 }
 
 @keyframes activeBtnGlow {
   0% {
     background-position: 0% 50%;
-    box-shadow: 0 0 14px rgba(0, 240, 255, 0.7), 0 0 24px rgba(57, 255, 120, 0.5);
+    box-shadow: 0 0 14px rgba(57, 255, 120, 0.75), 0 0 26px rgba(0, 255, 135, 0.5);
   }
   100% {
     background-position: 100% 50%;
-    box-shadow: 0 0 20px rgba(57, 255, 120, 0.85), 0 0 32px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 22px rgba(0, 255, 135, 0.95), 0 0 38px rgba(16, 185, 129, 0.8);
   }
 }
 
 .sidebar-dock-btn.is-theme-active {
   background: linear-gradient(
     135deg,
-    rgba(0, 240, 255, 0.2) 0%,
-    rgba(139, 92, 246, 0.2) 100%
+    rgba(57, 255, 120, 0.22) 0%,
+    rgba(16, 185, 129, 0.15) 100%
   ) !important;
-  color: #00f0ff !important;
-  border: 1px solid rgba(0, 240, 255, 0.5) !important;
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4) !important;
+  color: #39ff78 !important;
+  border: 1px solid rgba(57, 255, 120, 0.55) !important;
+  box-shadow: 0 0 14px rgba(57, 255, 120, 0.45) !important;
   border-radius: 10px;
 }
 
 /* RGB Chromatic Beacon for Avatar */
 .avatar-online-beacon {
   border: 2px solid #040914;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
   animation: liveBeaconPulse 2s infinite ease-in-out;
 }
 
 @keyframes liveBeaconPulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 6px #10b981, 0 0 12px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 6px #39ff78, 0 0 14px rgba(57, 255, 120, 0.5);
   }
   50% {
     transform: scale(1.15);
-    box-shadow: 0 0 12px #00f0ff, 0 0 22px rgba(0, 240, 255, 0.7);
+    box-shadow: 0 0 12px #00ff87, 0 0 22px rgba(0, 255, 135, 0.8);
   }
 }
 
@@ -366,10 +369,12 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 240, 255, 0.6) 30%,
-    rgba(57, 255, 120, 0.6) 70%,
+    rgba(57, 255, 120, 0.3) 20%,
+    #39ff78 50%,
+    rgba(57, 255, 120, 0.3) 80%,
     transparent 100%
   );
+  box-shadow: 0 0 8px rgba(57, 255, 120, 0.6);
   margin: 4px 0;
 }
 
