@@ -133,7 +133,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-[#050a14] text-slate-100 flex flex-col font-['Vazirmatn',sans-serif] selection:bg-emerald-500 selection:text-slate-950 transition-colors">
+      <div className="min-h-screen bg-[#050a14] text-slate-100 flex flex-col font-['Vazirmatn',sans-serif] selection:bg-emerald-500 selection:text-slate-950 transition-colors overflow-x-hidden w-full max-w-full">
         
         {showPurchasePage ? (
           <>
