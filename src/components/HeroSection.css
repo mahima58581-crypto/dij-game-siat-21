@@ -218,72 +218,60 @@
 }
 
 /* ===================================================
-   LEFT VERTICAL DOCK SIDEBAR — LIVING RGB CHROMA PRO HUD
+   LEFT VERTICAL DOCK SIDEBAR — QUANTUM RGB CHROMA PRO HUD
+   (Exact original position preserved cleanly)
    ========================================================= */
 .villa-left-sidebar {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  border-radius: 20px;
+  border-radius: 18px;
   background: 
-    linear-gradient(180deg, rgba(8, 14, 28, 0.92) 0%, rgba(4, 9, 20, 0.96) 100%) padding-box,
+    linear-gradient(180deg, rgba(6, 14, 28, 0.94) 0%, rgba(3, 8, 18, 0.96) 100%) padding-box,
     conic-gradient(
       from var(--rgb-dock-angle),
-      #00f0ff 0%,
-      #3b82f6 14%,
-      #8b5cf6 28%,
-      #ec4899 42%,
-      #ff3366 57%,
-      #f59e0b 71%,
-      #10b981 85%,
-      #00f0ff 100%
+      transparent 0%,
+      #00f0ff 20%,
+      #39ff78 40%,
+      #a855f7 60%,
+      #ec4899 80%,
+      transparent 100%
     ) border-box;
-  border: 2px solid transparent;
-  animation: rgbDockRotate 4s linear infinite;
+  border: 1.75px solid transparent;
+  animation: rgbDockRotate 3.5s linear infinite;
   backdrop-filter: blur(28px) saturate(220%);
   -webkit-backdrop-filter: blur(28px) saturate(220%);
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.75),
-    0 0 25px -4px rgba(0, 240, 255, 0.3),
-    0 0 45px -8px rgba(236, 72, 153, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(0, 240, 255, 0.3),
+    0 0 35px rgba(57, 255, 120, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: box-shadow 0.3s ease;
 }
 
-@media (min-width: 1024px) {
-  .villa-left-sidebar {
-    left: 1.5rem;
-  }
-}
-
-/* Ambient RGB Breathing Halo behind the Dock */
-.villa-left-sidebar::before {
+/* Ambient Laser Glow Following the Perimeter */
+.villa-left-sidebar::after {
   content: "";
   position: absolute;
-  inset: -4px;
-  border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    #00f0ff 0%,
-    #8b5cf6 25%,
-    #ec4899 50%,
-    #f59e0b 75%,
-    #10b981 100%
+  inset: -2px;
+  border-radius: 20px;
+  background: conic-gradient(
+    from var(--rgb-dock-angle),
+    transparent 0%,
+    rgba(0, 240, 255, 0.6) 20%,
+    rgba(57, 255, 120, 0.6) 40%,
+    rgba(168, 85, 247, 0.6) 60%,
+    rgba(236, 72, 153, 0.6) 80%,
+    transparent 100%
   );
-  background-size: 300% 300%;
-  animation: rgbFlowGlow 5s ease-in-out infinite;
+  filter: blur(10px);
   z-index: -1;
-  opacity: 0.55;
-  filter: blur(14px);
   pointer-events: none;
+  animation: rgbDockRotate 3.5s linear infinite;
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
-.villa-left-sidebar:hover::before {
-  opacity: 0.85;
-  filter: blur(18px);
+.villa-left-sidebar:hover::after {
+  opacity: 1;
+  filter: blur(14px);
 }
 
 .sidebar-dock-btn {
@@ -294,7 +282,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: #94a3b8;
   cursor: pointer;
   position: relative;
@@ -303,31 +291,41 @@
 }
 
 .sidebar-dock-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(0, 240, 255, 0.6);
+  background: rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.5);
   color: #00f0ff;
-  transform: scale(1.12);
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.45);
+  transform: scale(1.1);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
 }
 
-/* Living RGB Active Button with Flowing Wave */
+/* Living Quantum RGB Active Button with Smooth Shifting Glow */
 .sidebar-dock-btn.is-active {
   background: linear-gradient(
     135deg,
     #00f0ff 0%,
-    #8b5cf6 30%,
-    #ec4899 60%,
-    #10b981 100%
+    #10b981 50%,
+    #8b5cf6 100%
   ) !important;
-  background-size: 300% 300% !important;
-  animation: rgbFlowGlow 3.5s ease infinite !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  background-size: 200% 200% !important;
+  animation: activeBtnGlow 3s ease-in-out infinite alternate !important;
+  color: #030a14 !important;
+  font-weight: 900;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
   box-shadow: 
-    0 0 18px rgba(0, 240, 255, 0.7),
-    0 0 32px rgba(236, 72, 153, 0.5) !important;
+    0 0 16px rgba(0, 240, 255, 0.75),
+    0 0 28px rgba(57, 255, 120, 0.55) !important;
   border-radius: 10px;
-  transform: scale(1.06);
+}
+
+@keyframes activeBtnGlow {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.7), 0 0 24px rgba(57, 255, 120, 0.5);
+  }
+  100% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 20px rgba(57, 255, 120, 0.85), 0 0 32px rgba(139, 92, 246, 0.6);
+  }
 }
 
 .sidebar-dock-btn.is-theme-active {
@@ -337,46 +335,42 @@
     rgba(139, 92, 246, 0.2) 100%
   ) !important;
   color: #00f0ff !important;
-  border: 1px solid rgba(0, 240, 255, 0.6) !important;
-  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45) !important;
+  border: 1px solid rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4) !important;
   border-radius: 10px;
 }
 
 /* RGB Chromatic Beacon for Avatar */
 .avatar-online-beacon {
-  border: 2px solid #080e1c;
-  background: linear-gradient(135deg, #00f0ff, #10b981, #ec4899);
-  background-size: 200% 200%;
-  animation: rgbBeaconRotate 2.5s ease infinite alternate;
+  border: 2px solid #040914;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: liveBeaconPulse 2s infinite ease-in-out;
 }
 
-@keyframes rgbBeaconRotate {
-  0% {
-    background-position: 0% 50%;
-    box-shadow: 0 0 8px #00f0ff;
+@keyframes liveBeaconPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px #10b981, 0 0 12px rgba(16, 185, 129, 0.5);
   }
   50% {
-    background-position: 100% 50%;
-    box-shadow: 0 0 10px #10b981;
-  }
-  100% {
-    background-position: 0% 50%;
-    box-shadow: 0 0 12px #ec4899;
+    transform: scale(1.15);
+    box-shadow: 0 0 12px #00f0ff, 0 0 22px rgba(0, 240, 255, 0.7);
   }
 }
 
 /* RGB Chromatic Divider */
 .sidebar-divider {
-  width: 22px;
+  width: 20px;
   height: 1.5px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(0, 240, 255, 0.7) 25%,
-    rgba(236, 72, 153, 0.7) 75%,
+    rgba(0, 240, 255, 0.6) 30%,
+    rgba(57, 255, 120, 0.6) 70%,
     transparent 100%
   );
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 /* ===================================================
