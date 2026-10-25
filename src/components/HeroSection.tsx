@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUpLeft } from 'lucide-react';
 import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
-import cyberGamingCharacter from '../assets/images/cyber_gaming_character.png';
+import digigameOfficialLogo from '../assets/images/digigame_official_logo_2026.jpg';
 import './HeroSection.css';
 
 interface HeroSectionProps {
@@ -103,14 +103,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Top Right Brand Tab with S Ribbon Logo */}
             <div className="stylecraft-brand-tab" dir="rtl">
-              <div className="w-8 h-8 flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 32 32" className="w-7 h-7 fill-slate-950" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.5 5.5C8 7 6 10.5 6 14.5c0 6.5 6.5 8 11.5 10s4.5 4 4.5 6.5c0 3-2.5 5-6 5-4 0-7-2.5-7.5-6l-4.5 1.5C5 27 9.5 31 16 31c6.5 0 11-4 11-10 0-7-6.5-8.5-11.5-10.5S11 7 11 4.5C11 2.5 13 1 16 1c3.5 0 6 1.5 7 4.5l4-2C25.5 1 21.5 0 16 0 11.5 0 8 2.5 11.5 5.5z" />
-                </svg>
+              <div className="stylecraft-brand-logo-pod">
+                <img 
+                  src={digigameOfficialLogo} 
+                  alt="لوگو دیجی‌گیم" 
+                  className="stylecraft-brand-logo-img"
+                />
               </div>
               <div className="stylecraft-logo-stack text-right">
-                <span className="stylecraft-logo-title font-['Vazirmatn',sans-serif]">استایل‌کرفت</span>
-                <span className="stylecraft-logo-subtitle font-['Vazirmatn',sans-serif]">دیزاین</span>
+                <span className="stylecraft-logo-title font-['Vazirmatn',sans-serif]">دیجی‌گیم</span>
+                <span className="stylecraft-logo-subtitle font-['Vazirmatn',sans-serif]">سامانه هوشمند گیم‌نت</span>
               </div>
             </div>
 
@@ -145,20 +147,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* =========================================================
-              GAMING CHARACTER (شخصیت بازی خفن و جذاب در محیط گیمینگ)
-              ========================================================= */}
-          <div className="hero-gaming-character-container" aria-hidden="true">
-            <div className="hero-gaming-character-wrapper">
-              <img 
-                src={cyberGamingCharacter} 
-                alt="Cyberpunk Gaming Character" 
-                className="hero-gaming-character-img"
-              />
-              <div className="hero-character-ground-shadow" />
-              <div className="hero-character-cyber-glow" />
-            </div>
-          </div>
+          {/* Empty bottom anchor to keep layout balanced over the sofa */}
+          <div className="h-6" />
 
         </div>
 

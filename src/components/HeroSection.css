@@ -202,17 +202,17 @@
   width: 100%;
 }
 
-/* Right Brand Tab (White pod dipping into canvas from top-right) */
+/* Right Brand Tab (Navy Blue pod dipping into canvas from top-right) */
 .stylecraft-brand-tab {
   position: relative;
-  background: #ffffff;
-  padding: 12px 20px 14px 24px;
+  background: #091a32;
+  padding: 10px 20px 12px 24px;
   border-bottom-left-radius: 26px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
   user-select: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 15px rgba(9, 26, 50, 0.6);
 }
 
 /* Inverted Fillet Curve on Left of Brand Tab */
@@ -224,30 +224,53 @@
   width: 26px;
   height: 26px;
   border-top-right-radius: 26px;
-  box-shadow: 10px -10px 0 10px #ffffff;
+  box-shadow: 10px -10px 0 10px #091a32;
   pointer-events: none;
+}
+
+/* Brand Logo Image Pod */
+.stylecraft-brand-logo-pod {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #050d1a;
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stylecraft-brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Brand Logo Typography */
 .stylecraft-logo-stack {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 1.15;
 }
 
 .stylecraft-logo-title {
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  color: #0f172a;
+  font-size: 15px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
 }
 
 .stylecraft-logo-subtitle {
   font-family: 'Vazirmatn', sans-serif;
-  font-size: 15px;
-  font-weight: 900;
-  color: #0f172a;
-  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-top: 1px;
 }
 
 /* ==========================================================================
@@ -358,102 +381,6 @@
 
 .stylecraft-explore-btn:hover .stylecraft-btn-shine {
   left: 140%;
-}
-
-/* ==========================================================================
-   GAMING CHARACTER INTEGRATION (شخصیت گیمینگ جذاب در فضای اتاق)
-   ========================================================================== */
-.hero-gaming-character-container {
-  position: absolute;
-  bottom: 0;
-  left: 3%;
-  z-index: 8;
-  height: 75%;
-  max-height: 620px;
-  min-height: 380px;
-  display: flex;
-  align-items: flex-end;
-  pointer-events: none;
-  user-select: none;
-}
-
-.hero-gaming-character-wrapper {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  animation: characterIdle 6s ease-in-out infinite;
-}
-
-.hero-gaming-character-img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-  object-position: bottom;
-  mix-blend-mode: screen;
-  filter: contrast(1.15) brightness(1.05) drop-shadow(0 0 28px rgba(57, 255, 120, 0.45));
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Subtle ground neon bounce under character */
-.hero-character-ground-shadow {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 25px;
-  background: radial-gradient(ellipse at center, rgba(57, 255, 120, 0.45) 0%, rgba(57, 255, 120, 0.1) 45%, transparent 70%);
-  filter: blur(8px);
-  pointer-events: none;
-}
-
-/* Gentle ambient cyber aura behind character */
-.hero-character-cyber-glow {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  width: 90%;
-  height: 60%;
-  background: radial-gradient(circle at center, rgba(57, 255, 120, 0.18) 0%, rgba(0, 220, 130, 0.05) 50%, transparent 75%);
-  filter: blur(25px);
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes characterIdle {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-9px);
-  }
-}
-
-@media (max-width: 1200px) {
-  .hero-gaming-character-container {
-    height: 60%;
-    max-height: 480px;
-    left: 1%;
-    opacity: 0.85;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-gaming-character-container {
-    height: 48%;
-    max-height: 380px;
-    left: -20px;
-    opacity: 0.65;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-gaming-character-container {
-    display: none;
-  }
 }
 
 /* ==========================================================================
