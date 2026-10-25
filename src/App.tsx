@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AppSpecialFeaturesSection } from './components/AppSpecialFeaturesSection';
 import { FeaturesSection } from './components/FeaturesSection';
@@ -138,14 +137,6 @@ export default function App() {
         
         {showPurchasePage ? (
           <>
-            <Navbar
-              alwaysVisible={true}
-              onOpenOrderModal={handleOpenOrderModal}
-              onOpenAuthModal={() => setAuthModalOpen(true)}
-              onNavigateToPurchase={handleNavigateToPurchase}
-              onNavigateToSection={navigateToSection}
-              onNavigateHome={handleNavigateHome}
-            />
             <main className="flex-1">
               <PurchasePage
                 onBack={handleNavigateHome}
@@ -160,16 +151,6 @@ export default function App() {
           </>
         ) : (
           <>
-            {/* Sticky Navigation Bar (Appears seamlessly on scroll past full-screen hero) */}
-            <Navbar
-              alwaysVisible={false}
-              onOpenOrderModal={handleOpenOrderModal}
-              onOpenAuthModal={() => setAuthModalOpen(true)}
-              onNavigateToPurchase={handleNavigateToPurchase}
-              onNavigateToSection={navigateToSection}
-              onNavigateHome={handleNavigateHome}
-            />
-
             {/* Main Public & Interactive Sections */}
             <main className="flex-1 m-0 p-0">
           {/* Full-Page Cinematic Hero Section based on reference image */}
