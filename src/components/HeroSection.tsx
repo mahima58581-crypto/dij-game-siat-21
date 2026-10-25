@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpLeft } from 'lucide-react';
 import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
 import digigameOfficialLogo from '../assets/images/digigame_official_logo_2026.jpg';
+import ThemeToggle from './ThemeToggle';
 import './HeroSection.css';
 
 interface HeroSectionProps {
@@ -49,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ========================================================= */}
           <header className="stylecraft-top-bar" dir="ltr">
             
-            {/* Top Left Action Tab: Connect With Us Pill */}
+            {/* Top Left Action Tab: Connect With Us Button & Light/Dark Theme Toggle */}
             <div className="stylecraft-action-tab" dir="rtl">
               <button 
                 type="button" 
@@ -59,6 +60,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 ارتباط با ما
               </button>
+              <ThemeToggle />
             </div>
 
             {/* Top Center Nav Links sitting directly over dark image */}
