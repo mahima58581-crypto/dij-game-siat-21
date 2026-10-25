@@ -83,15 +83,15 @@
   padding: 0;
 }
 
-/* Left Action Tab (White pod dipping into canvas from top-left) */
+/* Left Action Tab (Navy Blue pod dipping into canvas from top-left) */
 .stylecraft-action-tab {
   position: relative;
-  background: #ffffff;
+  background: #091a32;
   padding: 10px 18px 12px 18px;
   border-bottom-right-radius: 26px;
   display: inline-flex;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 15px rgba(9, 26, 50, 0.6);
 }
 
 /* Inverted Fillet Curve on Right of Action Tab */
@@ -103,7 +103,7 @@
   width: 26px;
   height: 26px;
   border-top-left-radius: 26px;
-  box-shadow: -10px -10px 0 10px #ffffff;
+  box-shadow: -10px -10px 0 10px #091a32;
   pointer-events: none;
 }
 
@@ -116,7 +116,7 @@
   gap: 8px;
   padding: 8px 22px;
   height: 40px;
-  background: #091a32;
+  background: linear-gradient(135deg, #102644 0%, #06152b 100%);
   color: #39ff78;
   border: 1.5px solid rgba(57, 255, 120, 0.55);
   border-radius: 12px;
