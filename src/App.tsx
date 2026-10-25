@@ -178,6 +178,7 @@ export default function App() {
             onScrollToDemo={handleScrollToDemo}
             onOpenAuthModal={() => setAuthModalOpen(true)}
             onNavigateToSection={navigateToSection}
+            onNavigateToPurchase={handleNavigateToPurchase}
             isLoggedIn={isLoggedIn}
           />
 

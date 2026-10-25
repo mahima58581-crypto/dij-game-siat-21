@@ -13,6 +13,7 @@ interface HeroSectionProps {
   onScrollToDemo?: () => void;
   onOpenAuthModal?: () => void;
   onNavigateToSection?: (sectionId: string) => void;
+  onNavigateToPurchase?: (modeOrPlanId?: string) => void;
   isLoggedIn?: boolean;
 }
 
@@ -21,6 +22,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onScrollToDemo,
   onOpenAuthModal,
   onNavigateToSection,
+  onNavigateToPurchase,
   isLoggedIn = false
 }) => {
   const { mode, toggleTheme } = useTheme();
@@ -88,10 +90,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              onOpenOrderModal?.();
+              if (onNavigateToPurchase) {
+                onNavigateToPurchase('new');
+              } else {
+                window.location.hash = 'purchase';
+              }
             }}
             className="villa-pill-btn villa-buy-btn group"
-            title="خرید اشتراک و لایسنس"
+            title="ورود به صفحه خرید و فعال‌سازی لایسنس"
           >
             <ArrowUpLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
             <span className="font-extrabold text-sm tracking-wide">Buy</span>
