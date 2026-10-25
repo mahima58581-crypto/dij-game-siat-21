@@ -343,6 +343,39 @@
   padding: 20px 24px 100px 24px;
 }
 
+.stylecraft-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  background: rgba(6, 18, 30, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(57, 255, 120, 0.35);
+  border-radius: 9999px;
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  box-shadow: 0 0 16px -2px rgba(57, 255, 120, 0.25);
+  user-select: none;
+}
+
+.stylecraft-badge-pulse {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background: #39ff78;
+  box-shadow: 0 0 8px #39ff78;
+  animation: badgePing 2s infinite;
+}
+
+@keyframes badgePing {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
 .stylecraft-main-title {
   font-family: 'Vazirmatn', sans-serif;
   font-size: clamp(34px, 4.4vw, 58px);
@@ -354,6 +387,14 @@
   margin: 0;
 }
 
+.stylecraft-text-gradient {
+  background: linear-gradient(135deg, #39ff78 15%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(57, 255, 120, 0.45));
+}
+
 .stylecraft-sub-title {
   font-family: 'Vazirmatn', sans-serif;
   font-size: clamp(13px, 1.3vw, 16px);
@@ -361,7 +402,7 @@
   color: rgba(226, 232, 240, 0.95);
   line-height: 1.8;
   max-width: 660px;
-  margin: 18px auto 0 auto;
+  margin: 16px auto 0 auto;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
 

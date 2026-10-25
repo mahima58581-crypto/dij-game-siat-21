@@ -117,15 +117,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ========================================================= */}
           <div className="stylecraft-hero-content" dir="rtl">
             
-            {/* Bold Headline */}
+            {/* Cyber Emerald Pill Badge */}
+            <div className="stylecraft-hero-badge">
+              <span className="stylecraft-badge-pulse" />
+              <span>سامانه نسل جدید مدیریت گیم‌نت</span>
+            </div>
+
+            {/* Bold Punchy Headline with Theme Gradient */}
             <h1 className="stylecraft-main-title font-['Vazirmatn',sans-serif]">
-              نسل نوین مدیریت هوشمند گیم‌نت؛<br />
-              کنترل بلادرنگ، امنیت مطلق و سودآوری حداکثری
+              مدیریت هوشمند کلوپ با <span className="stylecraft-text-gradient">دیجی‌گیم</span>
             </h1>
 
-            {/* Subtitle Description */}
+            {/* Short & Powerful Subtitle Description */}
             <p className="stylecraft-sub-title font-['Vazirmatn',sans-serif]">
-              با سامانه جامع دیجی‌گیم کلوپ خود را به سطح بعد ببرید؛ کنترل هوشمند برق کنسول‌ها، ثبت خودکار ثانیه‌ها، منوی دیجیتال بوفه و گزارش مالی دقیق بدون حتی یک ریال خطا.
+              کنترل خودکار برق کنسول‌ها، محاسبه دقیق ثانیه‌ای و افزایش قطعی درآمد کلوپ شما.
             </p>
 
             {/* Cyber Emerald Rectangular Action Button */}
