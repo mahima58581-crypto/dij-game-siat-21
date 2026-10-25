@@ -139,6 +139,7 @@ export default function App() {
         {showPurchasePage ? (
           <>
             <Navbar
+              alwaysVisible={true}
               onOpenOrderModal={handleOpenOrderModal}
               onOpenAuthModal={() => setAuthModalOpen(true)}
               onNavigateToPurchase={handleNavigateToPurchase}
@@ -159,8 +160,9 @@ export default function App() {
           </>
         ) : (
           <>
-            {/* Navigation Bar */}
+            {/* Sticky Navigation Bar (Appears seamlessly on scroll past full-screen hero) */}
             <Navbar
+              alwaysVisible={false}
               onOpenOrderModal={handleOpenOrderModal}
               onOpenAuthModal={() => setAuthModalOpen(true)}
               onNavigateToPurchase={handleNavigateToPurchase}
@@ -169,12 +171,13 @@ export default function App() {
             />
 
             {/* Main Public & Interactive Sections */}
-            <main className="flex-1 space-y-4 sm:space-y-6">
-          {/* Hero Section based on reference image */}
+            <main className="flex-1">
+          {/* Full-Page Cinematic Hero Section based on reference image */}
           <HeroSection
             onOpenOrderModal={() => handleOpenOrderModal('gold')}
             onScrollToDemo={handleScrollToDemo}
             onOpenAuthModal={() => setAuthModalOpen(true)}
+            onNavigateToSection={navigateToSection}
             isLoggedIn={isLoggedIn}
           />
 

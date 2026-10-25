@@ -11,6 +11,7 @@ interface NavbarProps {
   onNavigateToPurchase?: () => void;
   onNavigateToSection?: (sectionId: string) => void;
   onNavigateHome?: () => void;
+  alwaysVisible?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateToPurchase,
   onNavigateToSection,
   onNavigateHome,
+  alwaysVisible = false,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [isScrolledPastHero, setIsScrolledPastHero] = React.useState(false);
@@ -33,9 +35,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Hero section height is roughly 650-700px. Once scrolled past 250px (heading to slide 2), morph navbar to expanded full mode!
+      // Reveal sticky full navbar once scrolled past hero section
       const scrollPos = window.scrollY;
-      if (scrollPos > 240) {
+      if (scrollPos > 160) {
         setIsScrolledPastHero(true);
       } else {
         setIsScrolledPastHero(false);
@@ -47,11 +49,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isVisible = alwaysVisible || isScrolledPastHero;
+
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-500 ease-out ${
-      isScrolledPastHero 
-        ? 'navbar-expanded' 
-        : 'navbar-compact'
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+      isVisible 
+        ? 'navbar-expanded translate-y-0 opacity-100 pointer-events-auto' 
+        : '-translate-y-full opacity-0 pointer-events-none'
     }`}>
       <div 
         className="navbar-inner-container mx-auto flex items-center justify-between gap-3 sm:gap-4 transition-all duration-500 relative"

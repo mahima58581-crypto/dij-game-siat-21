@@ -14,6 +14,7 @@ interface HeroSectionProps {
   onOpenOrderModal?: () => void;
   onScrollToDemo?: () => void;
   onOpenAuthModal?: () => void;
+  onNavigateToSection?: (sectionId: string) => void;
   isLoggedIn?: boolean;
 }
 
@@ -21,6 +22,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onOpenOrderModal,
   onScrollToDemo,
   onOpenAuthModal,
+  onNavigateToSection,
   isLoggedIn = false
 }) => {
   const { mode, toggleTheme } = useTheme();
@@ -98,12 +100,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section 
       id="home" 
-      className="villa-hero-section relative w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6 pt-2 pb-6 select-none"
+      className="villa-hero-section relative w-full min-h-screen lg:h-screen m-0 p-0 select-none overflow-hidden"
       onClick={() => setOpenDropdown(null)}
     >
-      {/* Master Viewport Frame matching reference image */}
+      {/* Master Viewport Frame matching reference image (Edge-to-Edge Full Screen) */}
       <div 
-        className="villa-master-frame relative w-full min-h-[720px] sm:min-h-[780px] lg:min-h-[820px] rounded-[38px] sm:rounded-[46px] overflow-hidden shadow-2xl flex flex-col justify-between"
+        className="villa-master-frame relative w-full h-full min-h-screen lg:h-screen overflow-hidden flex flex-col justify-between"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
@@ -243,10 +245,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              onScrollToDemo?.();
+              if (onNavigateToSection) onNavigateToSection('pricing');
+              else onScrollToDemo?.();
             }}
             className="villa-pill-btn villa-rent-btn group"
-            title="مشاهده نسخه آزمایشی و تست"
+            title="مشاهده تعرفه‌ها و اشتراک"
           >
             <span className="font-extrabold text-sm tracking-wide">Rent</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -287,7 +290,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* 1. Home Button (Active) */}
             <button
               type="button"
-              onClick={() => setActiveNav('home')}
+              onClick={() => {
+                setActiveNav('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className={`sidebar-dock-btn ${activeNav === 'home' ? 'is-active' : ''}`}
               title="Home"
             >
@@ -307,9 +313,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* 3. Grid / Dashboard */}
             <button
               type="button"
-              onClick={() => setActiveNav('grid')}
+              onClick={() => {
+                setActiveNav('grid');
+                if (onNavigateToSection) onNavigateToSection('features');
+              }}
               className={`sidebar-dock-btn ${activeNav === 'grid' ? 'is-active' : ''}`}
-              title="Dashboard Grid"
+              title="امکانات و داشبورد گیم‌نت"
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
@@ -319,10 +328,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               type="button"
               onClick={() => {
                 setActiveNav('chat');
-                if (!isLoggedIn && onOpenAuthModal) onOpenAuthModal();
+                if (onNavigateToSection) onNavigateToSection('faq');
+                else if (!isLoggedIn && onOpenAuthModal) onOpenAuthModal();
               }}
               className={`sidebar-dock-btn ${activeNav === 'chat' ? 'is-active' : ''}`}
-              title="Messages"
+              title="پشتیبانی و سوالات متداول"
             >
               <MessageSquare className="w-4 h-4" />
             </button>
@@ -458,9 +468,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {/* Circular Arrow Button */}
                 <button
                   type="button"
-                  onClick={() => onScrollToDemo?.()}
+                  onClick={() => {
+                    if (onNavigateToSection) onNavigateToSection('features');
+                    else onScrollToDemo?.();
+                  }}
                   className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 flex items-center justify-center transition-transform hover:scale-105 shadow-sm"
-                  title="Explore All Properties"
+                  title="Explore All Features & Properties"
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
