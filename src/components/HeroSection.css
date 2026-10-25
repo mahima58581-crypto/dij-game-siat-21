@@ -1,568 +1,402 @@
-/* ===================================================
-   LUXURY ARCHITECTURAL VILLA HERO SECTION
-   PIXEL-PERFECT REPRODUCTION OF USER REFERENCE DESIGN
-   =================================================== */
+/* ==========================================================================
+   STYLECRAFT DESIGN HERO SECTION — PIXEL-PERFECT REPRODUCTION OF REFERENCE
+   Modern Minimalist Aesthetic with Inverted-Notch Navigation Bar & Framed Canvas
+   ========================================================================== */
 
-@property --rgb-dock-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes rgbDockRotate {
-  0% {
-    --rgb-dock-angle: 0deg;
-  }
-  100% {
-    --rgb-dock-angle: 360deg;
-  }
-}
-
-@keyframes rgbFlowGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.villa-hero-section {
+/* Outer Viewport Chassis (Cool Architectural Soft Gray Backdrop) */
+.stylecraft-hero-section {
   position: relative;
-  top: 0;
-  left: 0;
-  isolation: isolate;
   width: 100%;
-  max-width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  margin: 0 !important;
-  padding: 0 !important;
+  background: #dde4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
   overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Master Viewport Canvas Frame (Full Page Edge-to-Edge) */
-.villa-master-frame {
+/* Master White Card Frame with Generous Rounded Corners */
+.stylecraft-master-frame {
   position: relative;
-  top: 0;
-  left: 0;
-  isolation: isolate;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: #0b1524;
+  max-width: 1440px;
+  min-height: calc(100vh - 36px);
+  min-height: calc(100dvh - 36px);
+  background: #ffffff;
+  border-radius: 40px;
+  padding: 0 14px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    0 30px 80px -15px rgba(15, 23, 42, 0.18),
+    0 10px 25px -5px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Inner Cinematic Canvas (Holds the Dark Interior Background) */
+.stylecraft-inner-canvas {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  border-radius: 0 0 28px 28px;
   background-size: cover;
-  background-position: center center !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background-position: center bottom;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-/* Ambient Vignette & Sky Gradation */
-.villa-ambient-overlay {
+/* Subtle Vignette & Shadow Overlay to ensure pristine text readability */
+.stylecraft-canvas-overlay {
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(ellipse at 50% 20%, transparent 40%, rgba(10, 18, 30, 0.35) 90%),
-    linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, transparent 40%, rgba(10, 15, 26, 0.3) 100%);
-  z-index: 10;
+    radial-gradient(ellipse at 50% 38%, transparent 20%, rgba(10, 14, 20, 0.4) 80%),
+    linear-gradient(180deg, rgba(8, 12, 18, 0.35) 0%, transparent 45%, rgba(8, 12, 18, 0.3) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* ===================================================
-   TOP FLOATING NAV ISLAND & FILTERS
-   ========================================================= */
-.villa-top-bar-wrapper {
+/* ==========================================================================
+   TOP NOTCH NAVIGATION BAR (INVERTED FILLET CORNERS)
+   ========================================================================== */
+.stylecraft-top-bar {
   position: relative;
-  z-index: 30;
+  z-index: 20;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
 
-/* ===================================================
-   TOP CYBER GLASS ISLAND & ACTION BUTTONS
-   MATCHING THE DIGIGAME CYBER EMERALD BUTTON THEME
-   ========================================================= */
-.villa-top-bar-wrapper {
+/* Left Brand Tab (White pod dipping into canvas) */
+.stylecraft-brand-tab {
   position: relative;
-  z-index: 30;
-}
-
-/* Cyber Emerald Buy & Rent Action Buttons */
-.villa-pill-btn {
-  position: relative;
+  background: #ffffff;
+  padding: 12px 24px 14px 20px;
+  border-bottom-right-radius: 26px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 12px;
-  background: rgba(6, 18, 30, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1.5px solid rgba(57, 255, 120, 0.45);
-  color: #39ff78;
-  font-family: 'Outfit', 'Vazirmatn', sans-serif;
-  box-shadow: 
-    0 4px 18px rgba(0, 0, 0, 0.4),
-    0 0 15px -4px rgba(57, 255, 120, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 12px;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-.villa-pill-btn svg {
-  color: #39ff78;
-  transition: all 0.25s ease;
-}
-
-.villa-pill-btn:hover {
-  background: #39ff78;
-  border-color: #39ff78;
-  color: #031508;
-  box-shadow: 0 0 25px rgba(57, 255, 120, 0.65);
-  transform: translateY(-2px);
-}
-
-.villa-pill-btn:hover svg {
-  color: #031508;
-}
-
-.villa-pill-btn:active {
-  transform: scale(0.97);
-}
-
-/* Center Filter Island (Cyber Navy Glass with Neon Emerald Accent) */
-.villa-filter-island {
-  border-radius: 14px;
-  background: rgba(6, 18, 30, 0.85);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1.5px solid rgba(57, 255, 120, 0.4);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px -5px rgba(57, 255, 120, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.filter-telemetry-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  padding: 5px 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.filter-telemetry-btn:hover {
-  background: rgba(57, 255, 120, 0.12);
-  border-color: rgba(57, 255, 120, 0.25);
-}
-
-/* Dropdown Popup Menu */
-.villa-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  min-width: 175px;
-  background: rgba(6, 18, 30, 0.95);
-  backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(57, 255, 120, 0.4);
-  border-radius: 12px;
-  padding: 6px;
-  box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.6),
-    0 0 20px rgba(57, 255, 120, 0.15);
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  animation: dropdownPop 0.2s ease-out;
-}
-
-@keyframes dropdownPop {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.dropdown-opt {
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: transparent;
-  border: none;
-  text-align: left;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #cbd5e1;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.dropdown-opt:hover {
-  background: rgba(57, 255, 120, 0.15);
-  color: #39ff78;
-}
-
-.dropdown-opt.active {
-  background: rgba(57, 255, 120, 0.25);
-  color: #39ff78;
-  font-weight: 800;
-}
-
-/* ===================================================
-   LEFT VERTICAL DOCK SIDEBAR — CYBER EMERALD LIVE RGB HUD
-   (Exact original position preserved cleanly)
-   ========================================================= */
-.villa-left-sidebar {
-  border-radius: 18px;
-  background: 
-    linear-gradient(180deg, rgba(6, 12, 24, 0.97) 0%, rgba(3, 7, 16, 0.98) 100%) padding-box,
-    conic-gradient(
-      from var(--rgb-dock-angle),
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(16, 185, 129, 0.25) 25%,
-      rgba(57, 255, 120, 0.6) 55%,
-      rgba(0, 255, 135, 0.85) 80%,
-      rgba(255, 255, 255, 0.05) 100%
-    ) border-box;
-  border: 1.5px solid transparent;
-  animation: rgbDockRotate 3.5s linear infinite;
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.85),
-    0 0 12px rgba(57, 255, 120, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Ambient Emerald Laser Glow Following the Perimeter (Refined & Subtle) */
-.villa-left-sidebar::after {
+/* Inverted Fillet Curve on Right of Brand Tab */
+.stylecraft-brand-tab::after {
   content: "";
   position: absolute;
-  inset: -1px;
-  border-radius: 19px;
-  background: conic-gradient(
-    from var(--rgb-dock-angle),
-    transparent 0%,
-    rgba(16, 185, 129, 0.15) 30%,
-    rgba(57, 255, 120, 0.35) 65%,
-    rgba(0, 255, 135, 0.45) 85%,
-    transparent 100%
-  );
-  filter: blur(6px);
-  z-index: -1;
+  top: 0;
+  right: -26px;
+  width: 26px;
+  height: 26px;
+  border-top-left-radius: 26px;
+  box-shadow: -10px -10px 0 10px #ffffff;
   pointer-events: none;
-  animation: rgbDockRotate 3.5s linear infinite;
-  opacity: 0.35;
-  transition: opacity 0.3s ease;
 }
 
-.villa-left-sidebar:hover::after {
-  opacity: 0.55;
-  filter: blur(8px);
+/* Brand Logo Typography */
+.stylecraft-logo-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
 }
 
-.sidebar-dock-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
+.stylecraft-logo-title {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.stylecraft-logo-subtitle {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Center Horizontal Nav Links (Sits directly over dark interior) */
+.stylecraft-nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #f1f5f9;
-  cursor: pointer;
+  gap: 36px;
+  padding-top: 18px;
+  z-index: 5;
+}
+
+.stylecraft-nav-link {
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: all 0.25s ease;
   position: relative;
-  overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px 2px;
 }
 
-.sidebar-dock-btn:hover {
-  background: rgba(57, 255, 120, 0.18);
-  border-color: rgba(57, 255, 120, 0.6);
-  color: #39ff78;
-  transform: scale(1.08);
-  box-shadow: 0 0 12px rgba(57, 255, 120, 0.3);
+.stylecraft-nav-link:hover {
+  color: #f87171;
+  text-shadow: 0 0 14px rgba(248, 113, 113, 0.4);
 }
 
-/* Living Cyber Emerald Active Button */
-.sidebar-dock-btn.is-active {
-  background: linear-gradient(
-    135deg,
-    #00ff87 0%,
-    #39ff78 40%,
-    #10b981 100%
-  ) !important;
-  color: #031508 !important;
-  font-weight: 900;
-  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 
-    0 0 14px rgba(57, 255, 120, 0.6),
-    0 0 22px rgba(16, 185, 129, 0.35) !important;
-  border-radius: 11px;
+.stylecraft-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ef4444;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
 }
 
-@keyframes activeBtnGlow {
-  0% {
-    background-position: 0% 50%;
-    box-shadow: 0 0 12px rgba(57, 255, 120, 0.5), 0 0 20px rgba(0, 255, 135, 0.3);
-  }
-  100% {
-    background-position: 100% 50%;
-    box-shadow: 0 0 16px rgba(0, 255, 135, 0.7), 0 0 26px rgba(16, 185, 129, 0.5);
-  }
+.stylecraft-nav-link:hover::after {
+  width: 100%;
 }
 
-.sidebar-dock-btn.is-theme-active {
-  background: rgba(57, 255, 120, 0.16) !important;
-  color: #39ff78 !important;
-  border: 1px solid rgba(57, 255, 120, 0.5) !important;
-  box-shadow: 0 0 10px rgba(57, 255, 120, 0.25) !important;
-  border-radius: 11px;
-}
-
-/* RGB Chromatic Beacon for Avatar */
-.avatar-online-beacon {
-  border: 2px solid #040914;
-  background: #39ff78;
-  box-shadow: 0 0 6px #39ff78;
-  animation: liveBeaconPulse 2s infinite ease-in-out;
-}
-
-@keyframes liveBeaconPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 5px #39ff78, 0 0 10px rgba(57, 255, 120, 0.4);
-  }
-  50% {
-    transform: scale(1.15);
-    box-shadow: 0 0 8px #00ff87, 0 0 16px rgba(0, 255, 135, 0.6);
-  }
-}
-
-/* RGB Chromatic Divider */
-.sidebar-divider {
-  width: 22px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 4px 0;
-}
-
-/* ===================================================
-   CENTER CANVAS: BIG HEADLINE & INTRO
-   ========================================================= */
-.villa-headline-stack {
-  margin-top: 10px;
-}
-
-.villa-huge-title {
-  font-family: 'Vazirmatn', 'Outfit', sans-serif;
-  font-size: clamp(38px, 6.2vw, 84px);
-  font-weight: 900;
-  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
-}
-
-.villa-narrative-box {
-  margin-bottom: 20px;
-}
-
-/* ===================================================
-   BOTTOM LEFT WHITE ORGANIC CARD
-   ========================================================= */
-.villa-bottom-left-card {
+/* Right Action Tab (White pod dipping into canvas) */
+.stylecraft-action-tab {
   position: relative;
   background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 
-    0 24px 60px rgba(0, 0, 0, 0.16),
-    0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.villa-bottom-left-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-}
-
-/* ===================================================
-   BOTTOM RIGHT FROSTED GLASS CARD
-   ========================================================= */
-.villa-bottom-right-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(34px) saturate(200%);
-  -webkit-backdrop-filter: blur(34px) saturate(200%);
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 
-    0 24px 60px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(255, 255, 255, 0.8);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.villa-bottom-right-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.26);
-}
-
-/* Action Pills inside Villa Card (Heart, Save, Share) */
-.villa-action-pill {
+  padding: 12px 18px 14px 24px;
+  border-bottom-left-radius: 26px;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 8px 14px;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+/* Inverted Fillet Curve on Left of Action Tab */
+.stylecraft-action-tab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -26px;
+  width: 26px;
+  height: 26px;
+  border-top-right-radius: 26px;
+  box-shadow: 10px -10px 0 10px #ffffff;
+  pointer-events: none;
+}
+
+/* Connect With Us Pill & Circular Arrow */
+.stylecraft-connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  color: #1e293b;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.villa-action-pill:hover {
+.stylecraft-connect-btn:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.stylecraft-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.stylecraft-arrow-btn:hover {
+  background: #000000;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.stylecraft-arrow-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.stylecraft-arrow-btn:hover svg {
+  transform: translate(1px, -1px);
+}
+
+/* ==========================================================================
+   CENTER HERO CANVAS CONTENT
+   ========================================================================== */
+.stylecraft-hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 10px 20px 180px 20px;
+}
+
+.stylecraft-main-title {
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  margin: 0;
+}
+
+.stylecraft-sub-title {
+  font-size: clamp(12.5px, 1.25vw, 15px);
+  font-weight: 400;
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 14px auto 0 auto;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Coral-Red Pill Action Button */
+.stylecraft-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 7px 8px 7px 24px;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 60%, #dc2626 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: 
+    0 12px 30px -4px rgba(239, 68, 68, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stylecraft-explore-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 16px 36px -4px rgba(239, 68, 68, 0.65),
+    0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.stylecraft-explore-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.stylecraft-explore-arrow-pod {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
   background: #ffffff;
   color: #0f172a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease;
 }
 
-.villa-action-pill.is-liked {
-  color: #f43f5e;
-  background: #fff1f2;
-  border-color: #fecdd3;
+.stylecraft-explore-btn:hover .stylecraft-explore-arrow-pod {
+  transform: translate(1px, -1px);
 }
 
-.villa-action-pill.is-saved {
-  color: #d97706;
-  background: #fffbeb;
-  border-color: #fde68a;
-}
-
-/* Dark Mode Adaptation for Floating Cards */
-:root[data-theme="dark"] .villa-bottom-right-card,
-html.dark .villa-bottom-right-card {
-  background: rgba(15, 23, 42, 0.55);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-}
-
-:root[data-theme="dark"] .villa-action-pill,
-html.dark .villa-action-pill {
-  background: rgba(30, 41, 59, 0.7);
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #e2e8f0;
-}
-
-:root[data-theme="dark"] .villa-action-pill:hover,
-html.dark .villa-action-pill:hover {
-  background: #1e293b;
-  color: #ffffff;
-}
-
-:root[data-theme="dark"] .villa-filter-island,
-html.dark .villa-filter-island {
-  background: rgba(6, 18, 30, 0.9);
-  border-color: rgba(57, 255, 120, 0.4);
-}
-
-:root[data-theme="dark"] .villa-pill-btn,
-html.dark .villa-pill-btn {
-  background: rgba(6, 18, 30, 0.85);
-  color: #39ff78;
-  border-color: rgba(57, 255, 120, 0.45);
-}
-
-:root[data-theme="dark"] .villa-pill-btn:hover,
-html.dark .villa-pill-btn:hover {
-  background: #39ff78;
-  border-color: #39ff78;
-  color: #031508;
-  box-shadow: 0 0 25px rgba(57, 255, 120, 0.65);
-}
-
-:root[data-theme="dark"] .villa-dropdown-menu,
-html.dark .villa-dropdown-menu {
-  background: #0f172a;
-  border-color: #334155;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-:root[data-theme="dark"] .dropdown-opt,
-html.dark .dropdown-opt {
-  color: #cbd5e1;
-}
-
-:root[data-theme="dark"] .dropdown-opt:hover,
-html.dark .dropdown-opt:hover {
-  background: #1e293b;
-  color: #ffffff;
-}
-
-/* ===================================================
-   RESPONSIVE OPTIMIZATIONS
-   ========================================================= */
-@media (max-width: 1024px) {
-  .villa-master-frame {
-    min-height: 100vh;
-    min-height: 100dvh;
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .stylecraft-hero-section {
+    padding: 10px;
   }
 
-  .villa-bottom-cards-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
+  .stylecraft-master-frame {
+    border-radius: 28px;
+    padding: 0 8px 8px 8px;
+    min-height: calc(100vh - 20px);
   }
 
-  .villa-bottom-left-card,
-  .villa-bottom-right-card {
-    max-width: 100%;
-    width: 100%;
+  .stylecraft-inner-canvas {
+    border-radius: 0 0 22px 22px;
   }
 
-  .villa-left-sidebar {
-    left: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .villa-master-frame {
-    border-radius: 0 !important;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-bottom: 2rem;
-  }
-
-  .villa-top-bar-wrapper {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .villa-filter-island {
-    order: 2;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .villa-pill-btn {
-    width: 48%;
-    justify-content: center;
-  }
-
-  .villa-left-sidebar {
+  .stylecraft-nav-links {
     display: none;
   }
 
-  .villa-huge-title {
-    font-size: 42px;
+  .stylecraft-hero-content {
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stylecraft-brand-tab {
+    padding: 10px 16px 12px 14px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .stylecraft-brand-tab::after {
+    display: none;
+  }
+
+  .stylecraft-action-tab {
+    padding: 10px 14px 12px 16px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .stylecraft-action-tab::before {
+    display: none;
+  }
+
+  .stylecraft-connect-btn {
+    padding: 8px 14px;
+    font-size: 11.5px;
+  }
+
+  .stylecraft-arrow-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .stylecraft-main-title {
+    font-size: 28px;
+  }
+
+  .stylecraft-sub-title {
+    font-size: 12px;
+  }
+
+  .stylecraft-hero-content {
+    padding-bottom: 90px;
   }
 }
