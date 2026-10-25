@@ -288,53 +288,76 @@
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
 }
 
-/* Coral-Red Pill Action Button */
+/* Rectangular Cyber Emerald Action Button (Matching Site Theme Exactly) */
 .stylecraft-explore-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 32px;
-  padding: 8px 10px 8px 26px;
-  background: linear-gradient(135deg, #f87171 0%, #ef4444 60%, #dc2626 100%);
-  color: #ffffff;
-  border: none;
-  border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  box-shadow: 
-    0 12px 30px -4px rgba(239, 68, 68, 0.5),
-    0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.stylecraft-explore-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 
-    0 16px 36px -4px rgba(239, 68, 68, 0.65),
-    0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.stylecraft-explore-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.stylecraft-explore-arrow-pod {
-  width: 28px;
-  height: 28px;
-  border-radius: 9999px;
-  background: #ffffff;
-  color: #0f172a;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s ease;
+  gap: 10px;
+  margin-top: 32px;
+  padding: 12px 28px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(6, 18, 30, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(57, 255, 120, 0.45);
+  color: #39ff78;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.5),
+    0 0 20px -4px rgba(57, 255, 120, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.stylecraft-explore-btn:hover .stylecraft-explore-arrow-pod {
-  transform: translate(1px, -1px);
+.stylecraft-explore-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 30px rgba(57, 255, 120, 0.7);
+  transform: translateY(-2px);
+}
+
+.stylecraft-explore-btn:active {
+  transform: scale(0.98);
+}
+
+.stylecraft-explore-btn svg {
+  color: #39ff78;
+  transition: all 0.25s ease;
+}
+
+.stylecraft-explore-btn:hover svg {
+  color: #031508;
+  transform: translate(-1.5px, -1.5px);
+}
+
+/* Subtle Shimmer Sweep */
+.stylecraft-btn-shine {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.stylecraft-explore-btn:hover .stylecraft-btn-shine {
+  left: 140%;
 }
 
 /* ==========================================================================

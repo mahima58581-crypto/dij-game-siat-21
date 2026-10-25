@@ -131,16 +131,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               نهایت آرامش و اصالت را با مجموعه‌ای برگزیده از طراحی‌های الهام‌بخش، اختصاصی و آرامش‌بخش تجربه کنید
             </p>
 
-            {/* Coral-Red Pill Action Button */}
+            {/* Cyber Emerald Rectangular Action Button */}
             <button 
               type="button" 
               onClick={handleExploreClick} 
               className="stylecraft-explore-btn group"
             >
-              <span className="font-['Vazirmatn',sans-serif]">مشاهده و کاوش بیشتر</span>
-              <span className="stylecraft-explore-arrow-pod">
-                <ArrowUpLeft className="w-3.5 h-3.5 stroke-[2.5]" />
-              </span>
+              <span className="stylecraft-btn-shine" aria-hidden="true" />
+              <span>مشاهده و کاوش بیشتر</span>
+              <ArrowUpLeft className="w-4 h-4" />
             </button>
 
           </div>
