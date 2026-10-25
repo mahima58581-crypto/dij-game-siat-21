@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Home, Search, LayoutGrid, MessageSquare, Bell, Settings, 
-  Moon, Sun, MapPin, Building2, ChevronDown, ArrowUpRight, 
-  ArrowUpLeft, DollarSign, X
+  Moon, Sun, ArrowUpRight, ArrowUpLeft, X
 } from 'lucide-react';
 import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
 import { useTheme } from '../context/ThemeContext';
@@ -26,12 +25,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   isLoggedIn = false
 }) => {
   const { mode, toggleTheme } = useTheme();
-  
-  // Interactive Filter States
-  const [activeLocation, setActiveLocation] = useState('تهران');
-  const [activePropertyType, setActivePropertyType] = useState('کلوپ VIP');
-  const [activeMaxPrice, setActiveMaxPrice] = useState('پلن طلایی');
-  const [openDropdown, setOpenDropdown] = useState<'location' | 'type' | 'price' | null>(null);
 
   // Left Sidebar Active Nav Item
   const [activeNav, setActiveNav] = useState<'home' | 'search' | 'grid' | 'chat'>('home');
@@ -102,110 +95,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <ArrowUpLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
             <span className="font-extrabold text-sm tracking-wide font-['Vazirmatn',sans-serif]">خرید لایسنس</span>
           </button>
-
-          {/* Top Center: 3 Filter Telemetry Dropdowns */}
-          <div 
-            className="villa-filter-island flex items-center gap-2 sm:gap-6 px-4 sm:px-6 py-2.5 rounded-[14px]"
-            onClick={e => e.stopPropagation()}
-          >
-            {/* 1. Location Dropdown */}
-            <div className="relative">
-              <button 
-                type="button" 
-                onClick={() => setOpenDropdown(prev => prev === 'location' ? null : 'location')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
-              >
-                <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">موقعیت</span>
-                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activeLocation}</span>
-                </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'location' ? 'rotate-180' : ''}`} />
-              </button>
-
-              {openDropdown === 'location' && (
-                <div className="villa-dropdown-menu" dir="rtl">
-                  {['تهران', 'اصفهان', 'مشهد', 'شیراز', 'تبریز', 'سراسر ایران'].map(loc => (
-                    <button
-                      key={loc}
-                      type="button"
-                      onClick={() => { setActiveLocation(loc); setOpenDropdown(null); }}
-                      className={`dropdown-opt ${activeLocation === loc ? 'active' : ''}`}
-                    >
-                      {loc}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="h-5 w-px bg-emerald-500/30" />
-
-            {/* 2. Property Type Dropdown */}
-            <div className="relative">
-              <button 
-                type="button" 
-                onClick={() => setOpenDropdown(prev => prev === 'type' ? null : 'type')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
-              >
-                <Building2 className="w-3.5 h-3.5 text-emerald-400" />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">نوع گیم‌نت</span>
-                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activePropertyType}</span>
-                </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
-              </button>
-
-              {openDropdown === 'type' && (
-                <div className="villa-dropdown-menu" dir="rtl">
-                  {['کلوپ VIP', 'گیم‌نت حرفه‌ای', 'کافه گیمینگ', 'مجموعه واقعیت مجازی', 'آرنا مسابقات'].map(t => (
-                    <button
-                      key={t}
-                      type="button"
-                      onClick={() => { setActivePropertyType(t); setOpenDropdown(null); }}
-                      className={`dropdown-opt ${activePropertyType === t ? 'active' : ''}`}
-                    >
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="h-5 w-px bg-emerald-500/30 hidden sm:block" />
-
-            {/* 3. Max Price Dropdown */}
-            <div className="relative hidden sm:block">
-              <button 
-                type="button" 
-                onClick={() => setOpenDropdown(prev => prev === 'price' ? null : 'price')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
-              >
-                <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">پلن انتخابی</span>
-                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activeMaxPrice}</span>
-                </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
-              </button>
-
-              {openDropdown === 'price' && (
-                <div className="villa-dropdown-menu" dir="rtl">
-                  {['پلن برنزی', 'پلن نقره‌ای', 'پلن طلایی VIP', 'پلن الماس نامحدود'].map(p => (
-                    <button
-                      key={p}
-                      type="button"
-                      onClick={() => { setActiveMaxPrice(p); setOpenDropdown(null); }}
-                      className={`dropdown-opt ${activeMaxPrice === p ? 'active' : ''}`}
-                    >
-                      {p}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-          </div>
 
           {/* Top Right: Rent Pill Button */}
           <button
