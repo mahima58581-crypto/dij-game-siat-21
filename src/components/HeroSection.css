@@ -86,7 +86,7 @@
 /* Left Action Tab (Navy Blue pod dipping into canvas from top-left) */
 .stylecraft-action-tab {
   position: relative;
-  background: #091a32;
+  background: #003a61;
   padding: 10px 18px 12px 18px;
   border-bottom-right-radius: 26px;
   display: inline-flex;
@@ -129,7 +129,7 @@
   width: 26px;
   height: 26px;
   border-top-left-radius: 26px;
-  box-shadow: -10px -10px 0 10px #091a32;
+  box-shadow: -10px -10px 0 10px #003a61;
   pointer-events: none;
   z-index: 1;
 }
@@ -255,7 +255,7 @@
 /* Right Brand Tab (Navy Blue pod dipping into canvas from top-right) */
 .stylecraft-brand-tab {
   position: relative;
-  background: #091a32;
+  background: #003a61;
   padding: 10px 20px 12px 24px;
   border-bottom-left-radius: 26px;
   display: inline-flex;
@@ -275,7 +275,7 @@
   width: 26px;
   height: 26px;
   border-top-right-radius: 26px;
-  box-shadow: 10px -10px 0 10px #091a32;
+  box-shadow: 10px -10px 0 10px #003a61;
   pointer-events: none;
   z-index: 1;
 }
