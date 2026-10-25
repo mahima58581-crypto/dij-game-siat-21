@@ -3,7 +3,7 @@ import {
   Home, LayoutGrid, MessageSquare, 
   Moon, Sun, ArrowUpRight, ArrowUpLeft
 } from 'lucide-react';
-import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
+import neonGameCollageBg from '../assets/images/epic_neon_gaming_collage.png';
 import { useTheme } from '../context/ThemeContext';
 import './HeroSection.css';
 
@@ -55,7 +55,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section 
       id="home" 
       className="villa-hero-section relative w-full min-h-screen lg:h-screen m-0 p-0 select-none overflow-hidden"
-      onClick={() => setOpenDropdown(null)}
     >
       {/* Master Viewport Frame matching reference image (Edge-to-Edge Full Screen) */}
       <div 
@@ -63,9 +62,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
-          backgroundImage: `url(${villaBg})`,
+          backgroundImage: `url(${neonGameCollageBg})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center top'
+          backgroundPosition: 'center center'
         }}
       >
         {/* Soft Ambient Cinematic Vignette Overlay */}
