@@ -51,57 +51,85 @@
   z-index: 30;
 }
 
-/* Top Buy & Rent Action Pills */
+/* ===================================================
+   TOP CYBER GLASS ISLAND & ACTION BUTTONS
+   MATCHING THE DIGIGAME CYBER EMERALD BUTTON THEME
+   ========================================================= */
+.villa-top-bar-wrapper {
+  position: relative;
+  z-index: 30;
+}
+
+/* Cyber Emerald Buy & Rent Action Buttons */
 .villa-pill-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 22px;
   border-radius: 12px;
-  background: #ffffff;
-  color: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(6, 18, 30, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1.5px solid rgba(57, 255, 120, 0.45);
+  color: #39ff78;
+  font-family: 'Outfit', 'Vazirmatn', sans-serif;
   box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+    0 4px 18px rgba(0, 0, 0, 0.4),
+    0 0 15px -4px rgba(57, 255, 120, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.villa-pill-btn svg {
+  color: #39ff78;
+  transition: all 0.25s ease;
 }
 
 .villa-pill-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 25px rgba(57, 255, 120, 0.65);
   transform: translateY(-2px);
-  background: #f8fafc;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
-  color: #0284c7;
+}
+
+.villa-pill-btn:hover svg {
+  color: #031508;
 }
 
 .villa-pill-btn:active {
   transform: scale(0.97);
 }
 
-/* Center Filter Island */
+/* Center Filter Island (Cyber Navy Glass with Neon Emerald Accent) */
 .villa-filter-island {
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(6, 18, 30, 0.85);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
   box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 20px -5px rgba(57, 255, 120, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .filter-telemetry-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
-  padding: 4px 6px;
+  padding: 5px 8px;
   border-radius: 8px;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .filter-telemetry-btn:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(57, 255, 120, 0.12);
+  border-color: rgba(57, 255, 120, 0.25);
 }
 
 /* Dropdown Popup Menu */
@@ -109,16 +137,19 @@
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  min-width: 170px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  min-width: 175px;
+  background: rgba(6, 18, 30, 0.95);
+  backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
   border-radius: 12px;
   padding: 6px;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(57, 255, 120, 0.15);
   z-index: 50;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   animation: dropdownPop 0.2s ease-out;
 }
 
@@ -135,34 +166,35 @@
   text-align: left;
   font-size: 12.5px;
   font-weight: 600;
-  color: #334155;
+  color: #cbd5e1;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .dropdown-opt:hover {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: rgba(57, 255, 120, 0.15);
+  color: #39ff78;
 }
 
 .dropdown-opt.active {
-  background: #ecfdf5;
-  color: #059669;
+  background: rgba(57, 255, 120, 0.25);
+  color: #39ff78;
   font-weight: 800;
 }
 
 /* ===================================================
-   LEFT VERTICAL DOCK SIDEBAR
+   LEFT VERTICAL DOCK SIDEBAR (CYBER EMERALD THEME)
    ========================================================= */
 .villa-left-sidebar {
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(6, 18, 30, 0.85);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(57, 255, 120, 0.4);
   box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    0 16px 40px rgba(0, 0, 0, 0.55),
+    0 0 25px -5px rgba(57, 255, 120, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-dock-btn {
@@ -173,29 +205,32 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: none;
-  color: #64748b;
+  border: 1px solid transparent;
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sidebar-dock-btn:hover {
-  background: rgba(15, 23, 42, 0.08);
-  color: #0f172a;
+  background: rgba(57, 255, 120, 0.15);
+  border-color: rgba(57, 255, 120, 0.3);
+  color: #39ff78;
   transform: scale(1.08);
 }
 
 .sidebar-dock-btn.is-active {
-  background: #0f172a;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+  background: #39ff78;
+  color: #031508;
+  border-color: #39ff78;
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.6);
   border-radius: 10px;
 }
 
 .sidebar-dock-btn.is-theme-active {
-  background: #f1f5f9;
-  color: #059669;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: rgba(57, 255, 120, 0.2);
+  color: #39ff78;
+  border: 1px solid rgba(57, 255, 120, 0.4);
+  box-shadow: 0 0 12px rgba(57, 255, 120, 0.25);
   border-radius: 10px;
 }
 
@@ -315,14 +350,14 @@ html.dark .villa-action-pill:hover {
 
 :root[data-theme="dark"] .villa-filter-island,
 html.dark .villa-filter-island {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(6, 18, 30, 0.9);
+  border-color: rgba(57, 255, 120, 0.4);
 }
 
 :root[data-theme="dark"] .villa-left-sidebar,
 html.dark .villa-left-sidebar {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(6, 18, 30, 0.9);
+  border-color: rgba(57, 255, 120, 0.4);
 }
 
 :root[data-theme="dark"] .sidebar-dock-btn,
@@ -332,21 +367,32 @@ html.dark .sidebar-dock-btn {
 
 :root[data-theme="dark"] .sidebar-dock-btn:hover,
 html.dark .sidebar-dock-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: rgba(57, 255, 120, 0.15);
+  border-color: rgba(57, 255, 120, 0.3);
+  color: #39ff78;
 }
 
 :root[data-theme="dark"] .sidebar-dock-btn.is-active,
 html.dark .sidebar-dock-btn.is-active {
-  background: #38bdf8;
-  color: #0f172a;
+  background: #39ff78;
+  color: #031508;
+  border-color: #39ff78;
+  box-shadow: 0 0 18px rgba(57, 255, 120, 0.6);
 }
 
 :root[data-theme="dark"] .villa-pill-btn,
 html.dark .villa-pill-btn {
-  background: rgba(15, 23, 42, 0.9);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(6, 18, 30, 0.85);
+  color: #39ff78;
+  border-color: rgba(57, 255, 120, 0.45);
+}
+
+:root[data-theme="dark"] .villa-pill-btn:hover,
+html.dark .villa-pill-btn:hover {
+  background: #39ff78;
+  border-color: #39ff78;
+  color: #031508;
+  box-shadow: 0 0 25px rgba(57, 255, 120, 0.65);
 }
 
 :root[data-theme="dark"] .villa-dropdown-menu,

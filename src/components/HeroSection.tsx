@@ -109,12 +109,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => setOpenDropdown(prev => prev === 'location' ? null : 'location')}
                 className="filter-telemetry-btn flex items-center gap-1.5 text-left"
               >
-                <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                <MapPin className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Location</span>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activeLocation}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{activeLocation}</span>
                 </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'location' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'location' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'location' && (
@@ -133,7 +133,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               )}
             </div>
 
-            <div className="h-5 w-px bg-slate-300/60 dark:bg-slate-700/60" />
+            <div className="h-5 w-px bg-emerald-500/30" />
 
             {/* 2. Property Type Dropdown */}
             <div className="relative">
@@ -142,12 +142,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => setOpenDropdown(prev => prev === 'type' ? null : 'type')}
                 className="filter-telemetry-btn flex items-center gap-1.5 text-left"
               >
-                <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                <Building2 className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Property Type</span>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activePropertyType}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{activePropertyType}</span>
                 </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'type' && (
@@ -166,7 +166,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               )}
             </div>
 
-            <div className="h-5 w-px bg-slate-300/60 dark:bg-slate-700/60 hidden sm:block" />
+            <div className="h-5 w-px bg-emerald-500/30 hidden sm:block" />
 
             {/* 3. Max Price Dropdown */}
             <div className="relative hidden sm:block">
@@ -175,12 +175,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => setOpenDropdown(prev => prev === 'price' ? null : 'price')}
                 className="filter-telemetry-btn flex items-center gap-1.5 text-left"
               >
-                <DollarSign className="w-3.5 h-3.5 text-slate-500" />
+                <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Max Price</span>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activeMaxPrice}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{activeMaxPrice}</span>
                 </div>
-                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'price' && (
