@@ -3,6 +3,33 @@
    PIXEL-PERFECT REPRODUCTION OF USER REFERENCE DESIGN
    =================================================== */
 
+@property --rgb-dock-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rgbDockRotate {
+  0% {
+    --rgb-dock-angle: 0deg;
+  }
+  100% {
+    --rgb-dock-angle: 360deg;
+  }
+}
+
+@keyframes rgbFlowGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .villa-hero-section {
   position: relative;
   top: 0;
@@ -191,18 +218,72 @@
 }
 
 /* ===================================================
-   LEFT VERTICAL DOCK SIDEBAR (CYBER EMERALD THEME)
+   LEFT VERTICAL DOCK SIDEBAR — LIVING RGB CHROMA PRO HUD
    ========================================================= */
 .villa-left-sidebar {
-  border-radius: 18px;
-  background: rgba(6, 18, 30, 0.85);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1.5px solid rgba(57, 255, 120, 0.4);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  border-radius: 20px;
+  background: 
+    linear-gradient(180deg, rgba(8, 14, 28, 0.92) 0%, rgba(4, 9, 20, 0.96) 100%) padding-box,
+    conic-gradient(
+      from var(--rgb-dock-angle),
+      #00f0ff 0%,
+      #3b82f6 14%,
+      #8b5cf6 28%,
+      #ec4899 42%,
+      #ff3366 57%,
+      #f59e0b 71%,
+      #10b981 85%,
+      #00f0ff 100%
+    ) border-box;
+  border: 2px solid transparent;
+  animation: rgbDockRotate 4s linear infinite;
+  backdrop-filter: blur(28px) saturate(220%);
+  -webkit-backdrop-filter: blur(28px) saturate(220%);
   box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.55),
-    0 0 25px -5px rgba(57, 255, 120, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 20px 50px rgba(0, 0, 0, 0.75),
+    0 0 25px -4px rgba(0, 240, 255, 0.3),
+    0 0 45px -8px rgba(236, 72, 153, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1024px) {
+  .villa-left-sidebar {
+    left: 1.5rem;
+  }
+}
+
+/* Ambient RGB Breathing Halo behind the Dock */
+.villa-left-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    #00f0ff 0%,
+    #8b5cf6 25%,
+    #ec4899 50%,
+    #f59e0b 75%,
+    #10b981 100%
+  );
+  background-size: 300% 300%;
+  animation: rgbFlowGlow 5s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0.55;
+  filter: blur(14px);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.villa-left-sidebar:hover::before {
+  opacity: 0.85;
+  filter: blur(18px);
 }
 
 .sidebar-dock-btn {
@@ -212,38 +293,90 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: #94a3b8;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sidebar-dock-btn:hover {
-  background: rgba(57, 255, 120, 0.15);
-  border-color: rgba(57, 255, 120, 0.3);
-  color: #39ff78;
-  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.6);
+  color: #00f0ff;
+  transform: scale(1.12);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.45);
 }
 
+/* Living RGB Active Button with Flowing Wave */
 .sidebar-dock-btn.is-active {
-  background: #39ff78;
-  color: #031508;
-  border-color: #39ff78;
-  box-shadow: 0 0 18px rgba(57, 255, 120, 0.6);
+  background: linear-gradient(
+    135deg,
+    #00f0ff 0%,
+    #8b5cf6 30%,
+    #ec4899 60%,
+    #10b981 100%
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: rgbFlowGlow 3.5s ease infinite !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 
+    0 0 18px rgba(0, 240, 255, 0.7),
+    0 0 32px rgba(236, 72, 153, 0.5) !important;
   border-radius: 10px;
+  transform: scale(1.06);
 }
 
 .sidebar-dock-btn.is-theme-active {
-  background: rgba(57, 255, 120, 0.2);
-  color: #39ff78;
-  border: 1px solid rgba(57, 255, 120, 0.4);
-  box-shadow: 0 0 12px rgba(57, 255, 120, 0.25);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 240, 255, 0.2) 0%,
+    rgba(139, 92, 246, 0.2) 100%
+  ) !important;
+  color: #00f0ff !important;
+  border: 1px solid rgba(0, 240, 255, 0.6) !important;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45) !important;
   border-radius: 10px;
 }
 
+/* RGB Chromatic Beacon for Avatar */
 .avatar-online-beacon {
-  box-shadow: 0 0 6px #10b981;
+  border: 2px solid #080e1c;
+  background: linear-gradient(135deg, #00f0ff, #10b981, #ec4899);
+  background-size: 200% 200%;
+  animation: rgbBeaconRotate 2.5s ease infinite alternate;
+}
+
+@keyframes rgbBeaconRotate {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 8px #00f0ff;
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 10px #10b981;
+  }
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 12px #ec4899;
+  }
+}
+
+/* RGB Chromatic Divider */
+.sidebar-divider {
+  width: 22px;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 240, 255, 0.7) 25%,
+    rgba(236, 72, 153, 0.7) 75%,
+    transparent 100%
+  );
+  margin: 6px 0;
 }
 
 /* ===================================================
@@ -361,32 +494,6 @@ html.dark .villa-action-pill:hover {
 html.dark .villa-filter-island {
   background: rgba(6, 18, 30, 0.9);
   border-color: rgba(57, 255, 120, 0.4);
-}
-
-:root[data-theme="dark"] .villa-left-sidebar,
-html.dark .villa-left-sidebar {
-  background: rgba(6, 18, 30, 0.9);
-  border-color: rgba(57, 255, 120, 0.4);
-}
-
-:root[data-theme="dark"] .sidebar-dock-btn,
-html.dark .sidebar-dock-btn {
-  color: #94a3b8;
-}
-
-:root[data-theme="dark"] .sidebar-dock-btn:hover,
-html.dark .sidebar-dock-btn:hover {
-  background: rgba(57, 255, 120, 0.15);
-  border-color: rgba(57, 255, 120, 0.3);
-  color: #39ff78;
-}
-
-:root[data-theme="dark"] .sidebar-dock-btn.is-active,
-html.dark .sidebar-dock-btn.is-active {
-  background: #39ff78;
-  color: #031508;
-  border-color: #39ff78;
-  box-shadow: 0 0 18px rgba(57, 255, 120, 0.6);
 }
 
 :root[data-theme="dark"] .villa-pill-btn,
