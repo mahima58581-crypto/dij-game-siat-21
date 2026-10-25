@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { 
   Home, Search, LayoutGrid, MessageSquare, Bell, Settings, 
   Moon, Sun, MapPin, Building2, ChevronDown, ArrowUpRight, 
-  ArrowUpLeft, Heart, Bookmark, Share2, Bed, Bath, Maximize2, 
-  TreePine, DollarSign, X, Check
+  ArrowUpLeft, DollarSign, X
 } from 'lucide-react';
 import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
 import { useTheme } from '../context/ThemeContext';
-import { soundManager } from '../utils/audioAlerts';
 import './HeroSection.css';
 
 interface HeroSectionProps {
@@ -32,13 +30,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [activePropertyType, setActivePropertyType] = useState('Villa');
   const [activeMaxPrice, setActiveMaxPrice] = useState('$300 000');
   const [openDropdown, setOpenDropdown] = useState<'location' | 'type' | 'price' | null>(null);
-
-  // Card Interactive States
-  const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(4400);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [bookmarkCount, setBookmarkCount] = useState(152);
-  const [showShareNotice, setShowShareNotice] = useState(false);
 
   // Left Sidebar Active Nav Item
   const [activeNav, setActiveNav] = useState<'home' | 'search' | 'grid' | 'chat'>('home');
@@ -65,36 +56,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     e.currentTarget.style.setProperty('--tilt-x', '0');
     e.currentTarget.style.setProperty('--tilt-y', '0');
-  };
-
-  const handleLikeToggle = () => {
-    setIsLiked(prev => {
-      const next = !prev;
-      setLikeCount(c => next ? c + 1 : c - 1);
-      return next;
-    });
-    try {
-      soundManager.playRelayClick();
-    } catch {}
-  };
-
-  const handleBookmarkToggle = () => {
-    setIsBookmarked(prev => {
-      const next = !prev;
-      setBookmarkCount(c => next ? c + 1 : c - 1);
-      return next;
-    });
-    try {
-      soundManager.playRelayClick();
-    } catch {}
-  };
-
-  const handleShare = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      setShowShareNotice(true);
-      setTimeout(() => setShowShareNotice(false), 2400);
-    }
   };
 
   return (
@@ -481,114 +442,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
 
-          {/* 2. Bottom Right: Frosted Glassmorphism Card "Lunar Oasis Villa" */}
-          <div className="villa-bottom-right-card max-w-lg w-full sm:w-[460px] p-6 sm:p-7 rounded-[32px] sm:rounded-[36px] shadow-2xl flex flex-col justify-between">
-            
-            {/* Header: Title, Pin Location & Arrow Action */}
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h4 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                  Lunar Oasis Villa
-                </h4>
-                <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 text-xs mt-1">
-                  <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                  <span>1874 Forest Haven Rd, Asheville</span>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => onOpenOrderModal?.()}
-                className="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-800/90 hover:bg-white text-slate-900 dark:text-white flex items-center justify-center transition-transform hover:scale-105 shadow-md shrink-0"
-                title="View Villa Details"
-              >
-                <ArrowUpRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Description */}
-            <p className="text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] leading-relaxed pt-3 pb-4">
-              This futuristic villa seamlessly blends into the desert environment, offering a modern, flowing space with panoramic desert views. Its innovative design makes it a perfect luxury getaway.
-            </p>
-
-            {/* Specs Badges Row */}
-            <div className="flex items-center gap-3 sm:gap-4 flex-wrap text-slate-700 dark:text-slate-200 text-xs pb-5 border-b border-white/20 dark:border-white/10">
-              <span className="flex items-center gap-1.5">
-                <Maximize2 className="w-3.5 h-3.5 opacity-70" />
-                595m²
-              </span>
-              <span className="flex items-center gap-1.5">
-                <TreePine className="w-3.5 h-3.5 opacity-70" />
-                126m² yard
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Bed className="w-3.5 h-3.5 opacity-70" />
-                3 bedrooms
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Bath className="w-3.5 h-3.5 opacity-70" />
-                2 baths
-              </span>
-            </div>
-
-            {/* Footer Action Row: Monogram Badge & Social Counters */}
-            <div className="pt-4 flex items-center justify-between">
-              
-              {/* Monogram Brand Avatar Logo */}
-              <div 
-                className="w-12 h-12 rounded-full bg-[#1e1548] text-white font-outfit font-black text-2xl flex items-center justify-center shadow-lg border border-white/20 transition-transform hover:scale-105 cursor-pointer"
-                title="DigiGame Luxury Monogram"
-              >
-                <span className="translate-y-[-1px]">U</span>
-              </div>
-
-              {/* Action Buttons: Like, Save, Share */}
-              <div className="flex items-center gap-2 sm:gap-3">
-                
-                {/* Like Button */}
-                <button
-                  type="button"
-                  onClick={handleLikeToggle}
-                  className={`villa-action-pill ${isLiked ? 'is-liked' : ''}`}
-                >
-                  <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-500 text-rose-500' : ''}`} />
-                  <span className="font-outfit font-bold text-xs">{likeCount > 4400 ? '4.4K+' : '4.4K'}</span>
-                </button>
-
-                {/* Bookmark Button */}
-                <button
-                  type="button"
-                  onClick={handleBookmarkToggle}
-                  className={`villa-action-pill ${isBookmarked ? 'is-saved' : ''}`}
-                >
-                  <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-amber-400 text-amber-400' : ''}`} />
-                  <span className="font-outfit font-bold text-xs">{bookmarkCount}</span>
-                </button>
-
-                {/* Share Button */}
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  className="villa-action-pill"
-                  title="کپی لینک اشتراک‌گذاری"
-                >
-                  <Share2 className="w-4 h-4" />
-                </button>
-
-              </div>
-            </div>
-
-          </div>
-
         </div>
-
-        {/* Share Feedback Toast */}
-        {showShareNotice && (
-          <div className="absolute top-20 right-8 z-50 bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-xl backdrop-blur-md">
-            <Check className="w-4 h-4 text-emerald-400" />
-            <span>لینک اختصاصی ویلا کپی شد!</span>
-          </div>
-        )}
 
       </div>
     </section>
