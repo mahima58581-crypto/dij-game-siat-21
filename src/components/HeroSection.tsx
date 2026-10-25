@@ -1,5 +1,7 @@
 import React from 'react';
-import { ArrowUpLeft } from 'lucide-react';
+import { 
+  ArrowUpLeft, Gamepad2, Zap, QrCode, Sparkles, Activity, ShieldCheck 
+} from 'lucide-react';
 import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
 import './HeroSection.css';
 
@@ -42,6 +44,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           {/* Subtle Contrast Overlay */}
           <div className="stylecraft-canvas-overlay" />
+
+          {/* =========================================================
+              AREA 1: FLOATING CYBER TELEMETRY HUD BADGES (UPPER SIDES)
+              ========================================================= */}
+          {/* Left Upper Cyber Telemetry Pill */}
+          <div className="cyber-hud-badge cyber-hud-left" dir="rtl">
+            <span className="cyber-pulse-dot" />
+            <div className="flex flex-col text-right leading-tight">
+              <span className="text-[10px] text-emerald-400 font-bold tracking-wider font-mono">LIVE ENGINE // 240Hz</span>
+              <span className="text-xs text-white font-extrabold font-['Vazirmatn',sans-serif]">پینگ سرور: ۱۲ میلی‌ثانیه</span>
+            </div>
+            <Activity className="w-4 h-4 text-emerald-400" />
+          </div>
+
+          {/* Right Upper Cyber Status Pill */}
+          <div className="cyber-hud-badge cyber-hud-right" dir="rtl">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <div className="flex flex-col text-right leading-tight">
+              <span className="text-[10px] text-emerald-400 font-bold tracking-wider font-mono">GAMING ARENA v4.2</span>
+              <span className="text-xs text-white font-extrabold font-['Vazirmatn',sans-serif]">امنیت دخل و سیستم: ۱۰۰٪</span>
+            </div>
+          </div>
 
           {/* =========================================================
               TOP INVERTED NOTCH NAVIGATION BAR
@@ -144,8 +168,75 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* Empty bottom anchor to keep layout balanced over the sofa */}
-          <div className="h-6" />
+          {/* =========================================================
+              AREA 2: BOTTOM DESK GAMING COMMAND STATION DOCK
+              (Fills the wide empty desk surface with gaming telemetry)
+              ========================================================= */}
+          <div className="stylecraft-bottom-dock" dir="rtl">
+            <div className="stylecraft-dock-island">
+              
+              {/* 1. PS5 & PC */}
+              <div 
+                className="stylecraft-dock-item"
+                onClick={() => onNavigateToSection?.('features')}
+                title="امکانات و کنترل کنسول‌ها"
+              >
+                <div className="stylecraft-dock-icon-pod">
+                  <Gamepad2 className="w-5 h-5" />
+                </div>
+                <div className="stylecraft-dock-text-stack">
+                  <span className="stylecraft-dock-title">کنترل PS5 و PC</span>
+                  <span className="stylecraft-dock-desc">محاسبه خودکار و بلادرنگ</span>
+                </div>
+              </div>
+
+              {/* 2. Smart Power Relay */}
+              <div 
+                className="stylecraft-dock-item"
+                onClick={() => onNavigateToSection?.('special-features')}
+                title="کنترل خودکار برق دستگاه‌ها"
+              >
+                <div className="stylecraft-dock-icon-pod">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <div className="stylecraft-dock-text-stack">
+                  <span className="stylecraft-dock-title">سوئیچ رله هوشمند</span>
+                  <span className="stylecraft-dock-desc">قطع و وصل خودکار برق</span>
+                </div>
+              </div>
+
+              {/* 3. Buffet QR */}
+              <div 
+                className="stylecraft-dock-item"
+                onClick={() => onNavigateToSection?.('special-features')}
+                title="منوی دیجیتال بوفه با QR کد"
+              >
+                <div className="stylecraft-dock-icon-pod">
+                  <QrCode className="w-5 h-5" />
+                </div>
+                <div className="stylecraft-dock-text-stack">
+                  <span className="stylecraft-dock-title">سفارش بوفه با QR</span>
+                  <span className="stylecraft-dock-desc">بدون وقفه در حین بازی</span>
+                </div>
+              </div>
+
+              {/* 4. Active Gamers */}
+              <div 
+                className="stylecraft-dock-item"
+                onClick={() => onNavigateToSection?.('pricing')}
+                title="مشاهده تعرفه‌ها و کلوپ‌های همکار"
+              >
+                <div className="stylecraft-dock-icon-pod">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div className="stylecraft-dock-text-stack">
+                  <span className="stylecraft-dock-title">+۱۰,۰۰۰ گیمر فعال</span>
+                  <span className="stylecraft-dock-desc">کلوپ‌های برتر سراسر کشور</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
 
         </div>
 
