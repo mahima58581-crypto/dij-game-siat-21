@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Home, Search, LayoutGrid, MessageSquare, 
-  Moon, Sun, ArrowUpRight, ArrowUpLeft, X
+  Home, LayoutGrid, MessageSquare, 
+  Moon, Sun, ArrowUpRight, ArrowUpLeft
 } from 'lucide-react';
 import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
 import { useTheme } from '../context/ThemeContext';
@@ -27,9 +27,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const { mode, toggleTheme } = useTheme();
 
   // Left Sidebar Active Nav Item
-  const [activeNav, setActiveNav] = useState<'home' | 'search' | 'grid' | 'chat'>('home');
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [activeNav, setActiveNav] = useState<'home' | 'grid' | 'chat'>('home');
 
   // 3D Parallax Tracking
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -156,17 +154,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Home className="w-4 h-4" />
             </button>
 
-            {/* 2. Search Button */}
-            <button
-              type="button"
-              onClick={() => setSearchOpen(prev => !prev)}
-              className={`sidebar-dock-btn ${searchOpen ? 'is-active' : ''}`}
-              title="Search"
-            >
-              <Search className="w-4 h-4" />
-            </button>
-
-            {/* 3. Grid / Dashboard */}
+            {/* 2. Grid / Dashboard */}
             <button
               type="button"
               onClick={() => {
@@ -238,24 +226,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
         </aside>
-
-        {/* Quick Search Popout when search clicked in sidebar */}
-        {searchOpen && (
-          <div className="search-popout-island absolute left-20 top-24 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl flex items-center gap-2 border border-slate-200 dark:border-slate-800">
-            <Search className="w-4 h-4 text-slate-400" />
-            <input 
-              type="text"
-              placeholder="جستجو در املاک، ویلاها یا سیستم‌ها..."
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              className="bg-transparent text-xs text-slate-800 dark:text-slate-100 outline-none w-48 font-vazir"
-              autoFocus
-            />
-            <button onClick={() => setSearchOpen(false)} className="text-slate-400 hover:text-slate-600">
-              <X className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        )}
 
         {/* =========================================================
             BOTTOM CARDS: ORGANIC CARD
