@@ -28,9 +28,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const { mode, toggleTheme } = useTheme();
   
   // Interactive Filter States
-  const [activeLocation, setActiveLocation] = useState('Arizona');
-  const [activePropertyType, setActivePropertyType] = useState('Villa');
-  const [activeMaxPrice, setActiveMaxPrice] = useState('$300 000');
+  const [activeLocation, setActiveLocation] = useState('تهران');
+  const [activePropertyType, setActivePropertyType] = useState('کلوپ VIP');
+  const [activeMaxPrice, setActiveMaxPrice] = useState('پلن طلایی');
   const [openDropdown, setOpenDropdown] = useState<'location' | 'type' | 'price' | null>(null);
 
   // Left Sidebar Active Nav Item
@@ -100,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             title="ورود به صفحه خرید و فعال‌سازی لایسنس"
           >
             <ArrowUpLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
-            <span className="font-extrabold text-sm tracking-wide">Buy</span>
+            <span className="font-extrabold text-sm tracking-wide font-['Vazirmatn',sans-serif]">خرید لایسنس</span>
           </button>
 
           {/* Top Center: 3 Filter Telemetry Dropdowns */}
@@ -113,19 +113,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button 
                 type="button" 
                 onClick={() => setOpenDropdown(prev => prev === 'location' ? null : 'location')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
               >
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Location</span>
-                  <span className="text-xs sm:text-sm font-bold text-white">{activeLocation}</span>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">موقعیت</span>
+                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activeLocation}</span>
                 </div>
                 <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'location' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'location' && (
-                <div className="villa-dropdown-menu">
-                  {['Arizona', 'California', 'Dubai VIP', 'Tehran Central', 'Esfahan Lounge'].map(loc => (
+                <div className="villa-dropdown-menu" dir="rtl">
+                  {['تهران', 'اصفهان', 'مشهد', 'شیراز', 'تبریز', 'سراسر ایران'].map(loc => (
                     <button
                       key={loc}
                       type="button"
@@ -146,19 +146,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button 
                 type="button" 
                 onClick={() => setOpenDropdown(prev => prev === 'type' ? null : 'type')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
               >
                 <Building2 className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Property Type</span>
-                  <span className="text-xs sm:text-sm font-bold text-white">{activePropertyType}</span>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">نوع گیم‌نت</span>
+                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activePropertyType}</span>
                 </div>
                 <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'type' && (
-                <div className="villa-dropdown-menu">
-                  {['Villa', 'Penthouse', 'VIP Gaming Lounge', 'Esports Arena', 'Modern Mansion'].map(t => (
+                <div className="villa-dropdown-menu" dir="rtl">
+                  {['کلوپ VIP', 'گیم‌نت حرفه‌ای', 'کافه گیمینگ', 'مجموعه واقعیت مجازی', 'آرنا مسابقات'].map(t => (
                     <button
                       key={t}
                       type="button"
@@ -179,19 +179,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button 
                 type="button" 
                 onClick={() => setOpenDropdown(prev => prev === 'price' ? null : 'price')}
-                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+                className="filter-telemetry-btn flex items-center gap-1.5 text-right"
               >
                 <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Max Price</span>
-                  <span className="text-xs sm:text-sm font-bold text-white">{activeMaxPrice}</span>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-['Vazirmatn',sans-serif]">پلن انتخابی</span>
+                  <span className="text-xs sm:text-sm font-bold text-white font-['Vazirmatn',sans-serif]">{activeMaxPrice}</span>
                 </div>
                 <ChevronDown className={`w-3.5 h-3.5 text-emerald-400/70 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
               </button>
 
               {openDropdown === 'price' && (
-                <div className="villa-dropdown-menu">
-                  {['$150 000', '$300 000', '$500 000', '$1 000 000+'].map(p => (
+                <div className="villa-dropdown-menu" dir="rtl">
+                  {['پلن برنزی', 'پلن نقره‌ای', 'پلن طلایی VIP', 'پلن الماس نامحدود'].map(p => (
                     <button
                       key={p}
                       type="button"
@@ -216,9 +216,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               else onScrollToDemo?.();
             }}
             className="villa-pill-btn villa-rent-btn group"
-            title="مشاهده تعرفه‌ها و اشتراک"
+            title="مشاهده نسخه آزمایشی و تعرفه‌ها"
           >
-            <span className="font-extrabold text-sm tracking-wide">Rent</span>
+            <span className="font-extrabold text-sm tracking-wide font-['Vazirmatn',sans-serif]">نسخه دمو</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
 
@@ -230,17 +230,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="villa-hero-center-content relative z-20 flex-1 px-8 sm:px-14 lg:px-20 pt-10 sm:pt-14 pb-4 flex flex-col justify-center">
           
           {/* Big Majestic Headline sitting directly on artwork */}
-          <div className="villa-headline-stack text-center pointer-events-none select-none">
-            <h1 className="villa-huge-title leading-[0.95] tracking-tight">
-              <span className="block font-black text-white/90 drop-shadow-md">New Way Of</span>
-              <span className="block font-black text-white/85 drop-shadow-lg">Living</span>
+          <div className="villa-headline-stack text-center pointer-events-none select-none" dir="rtl">
+            <h1 className="villa-huge-title leading-[1.05] tracking-tight">
+              <span className="block font-black text-white/95 drop-shadow-md">شیوه نوین</span>
+              <span className="block font-black text-white/90 drop-shadow-lg">مدیریت گیم‌نت</span>
             </h1>
           </div>
 
-          {/* Elegant Floating Narrative Paragraph on Left */}
-          <div className="villa-narrative-box max-w-sm sm:max-w-md pt-4 sm:pt-6">
-            <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed drop-shadow-sm">
-              Discover extraordinary properties available for purchase or rent. Whether you're seeking a dream home or a unique investment, our curated listings offer the most exceptional estates worldwide.
+          {/* Elegant Floating Narrative Paragraph */}
+          <div className="villa-narrative-box max-w-sm sm:max-w-md pt-4 sm:pt-6" dir="rtl">
+            <p className="text-white/85 text-xs sm:text-sm font-medium leading-relaxed drop-shadow-sm font-['Vazirmatn',sans-serif] text-right">
+              پیشرفته‌ترین پلتفرم جامع برای کنترل استیشن‌ها، محاسبه دقیق زمان و دخل، تفکیک خودکار حساب و هوشمندسازی مدرن‌ترین گیم‌نت‌ها و کلاب‌های بازی سراسر کشور.
             </p>
           </div>
 
@@ -390,44 +390,44 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         )}
 
         {/* =========================================================
-            BOTTOM CARDS: ORGANIC LEFT CARD & FROSTED RIGHT CARD
+            BOTTOM CARDS: ORGANIC CARD
             ========================================================= */}
         <div className="villa-bottom-cards-row relative z-30 p-4 sm:p-6 lg:p-8 flex items-end justify-between gap-6 flex-wrap">
           
-          {/* 1. Bottom Left: White Organic Card "Find The Perfect Place" */}
-          <div className="villa-bottom-left-card bg-white text-slate-900 p-6 sm:p-8 rounded-[32px] sm:rounded-[36px] max-w-sm shadow-xl flex flex-col justify-between">
-            <div className="space-y-2">
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Find The Perfect Place
+          {/* 1. Bottom Left: White Organic Card */}
+          <div className="villa-bottom-left-card bg-white text-slate-900 p-6 sm:p-8 rounded-[32px] sm:rounded-[36px] max-w-sm shadow-xl flex flex-col justify-between" dir="rtl">
+            <div className="space-y-2 text-right">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight font-['Vazirmatn',sans-serif]">
+                انتخاب هوشمندانه کلوپ شما
               </h3>
-              <p className="text-slate-500 text-xs sm:text-xs leading-relaxed">
-                Our platform connects you with extraordinary homes in the most sought-after locations. Start your journey to discovering the perfect match for your lifestyle.
+              <p className="text-slate-600 text-xs sm:text-xs leading-relaxed font-['Vazirmatn',sans-serif]">
+                سامانه دیجی‌گیم به شما کمک می‌کند کلوپ خود را به نسل جدید استانداردهای مدیریتی، امنیت دخل و رضایت صددرصدی گیمرها مجهز کنید.
               </p>
             </div>
 
             {/* Stat Row: 10K+ Properties & Avatars */}
             <div className="pt-6 flex items-center justify-between">
-              <div>
-                <span className="block text-2xl sm:text-3xl font-black text-slate-900 leading-none">10K+</span>
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Properties</span>
+              <div className="text-right">
+                <span className="block text-2xl sm:text-3xl font-black text-slate-900 leading-none font-outfit">+10K</span>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider font-['Vazirmatn',sans-serif]">کنسول و گیمر فعال</span>
               </div>
 
               <div className="flex items-center gap-2">
-                {/* Overlapping circle property thumbnails */}
+                {/* Overlapping circle thumbnails */}
                 <div className="flex items-center -space-x-2">
                   <img 
                     src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=80&h=80&q=80" 
-                    alt="Property 1" 
+                    alt="Club 1" 
                     className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
                   />
                   <img 
                     src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=80&h=80&q=80" 
-                    alt="Property 2" 
+                    alt="Club 2" 
                     className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
                   />
                   <img 
                     src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=80&h=80&q=80" 
-                    alt="Property 3" 
+                    alt="Club 3" 
                     className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
                   />
                 </div>
@@ -440,9 +440,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     else onScrollToDemo?.();
                   }}
                   className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 flex items-center justify-center transition-transform hover:scale-105 shadow-sm"
-                  title="Explore All Features & Properties"
+                  title="مشاهده امکانات و ویژگی‌ها"
                 >
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpLeft className="w-4 h-4" />
                 </button>
               </div>
             </div>
