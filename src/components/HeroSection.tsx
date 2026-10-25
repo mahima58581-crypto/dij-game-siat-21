@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  LayoutDashboard, Monitor, Sparkles, ShieldCheck, 
-  Lock, ArrowUpLeft 
+  Home, Search, LayoutGrid, MessageSquare, Bell, Settings, 
+  Moon, Sun, MapPin, Building2, ChevronDown, ArrowUpRight, 
+  ArrowUpLeft, Heart, Bookmark, Share2, Bed, Bath, Maximize2, 
+  TreePine, DollarSign, X, Check
 } from 'lucide-react';
-import heroBg from '../assets/images/hero_cyber_arena_bg_1792238808313.jpg';
-import { TrialModal } from './TrialModal';
+import villaBg from '../assets/images/luxury_futuristic_villa_bg.jpg';
+import { useTheme } from '../context/ThemeContext';
 import { soundManager } from '../utils/audioAlerts';
 import './HeroSection.css';
 
@@ -16,41 +18,39 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
+  onOpenOrderModal,
+  onScrollToDemo,
   onOpenAuthModal,
   isLoggedIn = false
 }) => {
-  const [trialModalOpen, setTrialModalOpen] = useState(false);
-  const [trialSoftwareType, setTrialSoftwareType] = useState<'manager' | 'client'>('manager');
-  const [authNotice, setAuthNotice] = useState<string | null>(null);
+  const { mode, toggleTheme } = useTheme();
+  
+  // Interactive Filter States
+  const [activeLocation, setActiveLocation] = useState('Arizona');
+  const [activePropertyType, setActivePropertyType] = useState('Villa');
+  const [activeMaxPrice, setActiveMaxPrice] = useState('$300 000');
+  const [openDropdown, setOpenDropdown] = useState<'location' | 'type' | 'price' | null>(null);
 
-  const handleTrialClick = (type: 'manager' | 'client') => {
-    try {
-      soundManager.playRelayClick();
-    } catch {
-      // Audio fallback
-    }
+  // Card Interactive States
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(4400);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [bookmarkCount, setBookmarkCount] = useState(152);
+  const [showShareNotice, setShowShareNotice] = useState(false);
 
-    if (!isLoggedIn) {
-      setAuthNotice('برای شروع ۵ روز تست رایگان، لطفاً ابتدا وارد حساب کاربری خود شوید یا ثبت‌نام کنید.');
-      if (onOpenAuthModal) {
-        onOpenAuthModal();
-      }
-      return;
-    }
+  // Left Sidebar Active Nav Item
+  const [activeNav, setActiveNav] = useState<'home' | 'search' | 'grid' | 'chat'>('home');
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-    setAuthNotice(null);
-    setTrialSoftwareType(type);
-    setTrialModalOpen(true);
-  };
-
-  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  // 3D Parallax Tracking
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Normalized tilt (-1 to 1) with smooth clamping
     const tiltX = Math.max(-1, Math.min(1, (x - centerX) / centerX));
     const tiltY = Math.max(-1, Math.min(1, (y - centerY) / centerY));
     
@@ -60,202 +60,524 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     e.currentTarget.style.setProperty('--tilt-y', `${tiltY.toFixed(3)}`);
   };
 
-  const handleHeroMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     e.currentTarget.style.setProperty('--tilt-x', '0');
     e.currentTarget.style.setProperty('--tilt-y', '0');
   };
 
-  return (
-    <section id="home" className="hero-arena-wrapper relative pt-4 pb-4 sm:pb-6 px-3 sm:px-6 lg:px-8 max-w-[1440px] mx-auto overflow-hidden scroll-mt-24">
-      {/* Ambient Lighting Orbs */}
-      <div className="hero-ambient-beam-1" aria-hidden="true" />
+  const handleLikeToggle = () => {
+    setIsLiked(prev => {
+      const next = !prev;
+      setLikeCount(c => next ? c + 1 : c - 1);
+      return next;
+    });
+    try {
+      soundManager.playRelayClick();
+    } catch {}
+  };
 
-      {/* Main Master Chassis */}
-      <div
-        className="hero-master-chassis hero-chassis relative text-slate-100 p-6 sm:p-8 md:p-12 transition-all overflow-hidden"
-        onMouseMove={handleHeroMouseMove}
-        onMouseLeave={handleHeroMouseLeave}
+  const handleBookmarkToggle = () => {
+    setIsBookmarked(prev => {
+      const next = !prev;
+      setBookmarkCount(c => next ? c + 1 : c - 1);
+      return next;
+    });
+    try {
+      soundManager.playRelayClick();
+    } catch {}
+  };
+
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+      setShowShareNotice(true);
+      setTimeout(() => setShowShareNotice(false), 2400);
+    }
+  };
+
+  return (
+    <section 
+      id="home" 
+      className="villa-hero-section relative w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6 pt-2 pb-6 select-none"
+      onClick={() => setOpenDropdown(null)}
+    >
+      {/* Master Viewport Frame matching reference image */}
+      <div 
+        className="villa-master-frame relative w-full min-h-[720px] sm:min-h-[780px] lg:min-h-[820px] rounded-[38px] sm:rounded-[46px] overflow-hidden shadow-2xl flex flex-col justify-between"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         style={{
-          ['--hero-bg' as any]: `url(${heroBg})`
+          backgroundImage: `url(${villaBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 45%'
         }}
       >
-        {/* Cyber Emblem Pulsing Energy Aura (Behind Artwork) */}
-        <div className="hero-emblem-aura" aria-hidden="true" />
+        {/* Soft Ambient Cinematic Vignette Overlay */}
+        <div className="villa-ambient-overlay pointer-events-none" />
 
-        {/* Hero Grid Canvas: Right Column has the content, Left Column leaves the 3D Emblem completely clear! */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[580px]">
+        {/* =========================================================
+            TOP FLOATING BRIDGE & NAV ISLAND
+            ========================================================= */}
+        <div className="villa-top-bar-wrapper relative z-30 pt-4 px-4 sm:px-8 flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
+          
+          {/* Top Left: Buy Pill Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenOrderModal?.();
+            }}
+            className="villa-pill-btn villa-buy-btn group"
+            title="خرید اشتراک و لایسنس"
+          >
+            <ArrowUpLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span className="font-extrabold text-sm tracking-wide">Buy</span>
+          </button>
 
-          {/* Right Column (Starts from Right in RTL) */}
-          <div className="lg:col-span-7 flex flex-col justify-between h-full z-10 space-y-4 sm:space-y-5">
-            
-            {/* 1. Top Telemetry & Trust Cluster */}
-            <div className="space-y-3">
-              <div className="hero-stats-bar">
-                {/* 450+ Stat Pod */}
-                <div className="hero-counter-box">
-                  <span className="hero-counter-num">
-                    ۴۵۰<span className="hero-counter-unit">+</span>
-                  </span>
-                  <span className="hero-counter-label">
-                    گیم‌نت در سراسر کشور
-                  </span>
+          {/* Top Center: 3 Filter Telemetry Dropdowns */}
+          <div 
+            className="villa-filter-island flex items-center gap-2 sm:gap-6 px-4 sm:px-6 py-2.5 rounded-full"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* 1. Location Dropdown */}
+            <div className="relative">
+              <button 
+                type="button" 
+                onClick={() => setOpenDropdown(prev => prev === 'location' ? null : 'location')}
+                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+              >
+                <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Location</span>
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activeLocation}</span>
                 </div>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'location' ? 'rotate-180' : ''}`} />
+              </button>
 
-                {/* Server Status Live Pill */}
-                <div className="hero-status-pill">
-                  <span className="hero-live-beacon" />
-                  <span>ONLINE 2026</span>
+              {openDropdown === 'location' && (
+                <div className="villa-dropdown-menu">
+                  {['Arizona', 'California', 'Dubai VIP', 'Tehran Central', 'Esfahan Lounge'].map(loc => (
+                    <button
+                      key={loc}
+                      type="button"
+                      onClick={() => { setActiveLocation(loc); setOpenDropdown(null); }}
+                      className={`dropdown-opt ${activeLocation === loc ? 'active' : ''}`}
+                    >
+                      {loc}
+                    </button>
+                  ))}
                 </div>
-              </div>
-              
-              {/* Trust Platforms Bar */}
-              <div className="hero-trust-bar">
-                <div className="hero-platform-chips">
-                  <div className="platform-chip chip-pc">PC</div>
-                  <div className="platform-chip chip-ps5">PS5</div>
-                  <div className="platform-chip chip-vip">VIP</div>
-                </div>
-                <div className="hero-trust-text">
-                  مورد اعتماد برترین کلوپ‌ها و گیم‌سنترهای مدرن ایران
-                </div>
-              </div>
+              )}
             </div>
 
-            {/* 2. Giant Brand Typography: DIGI GAME */}
-            <div className="hero-brand-group">
-              <span className="hero-brand-digi">
-                DIGI
-              </span>
-              <span className="hero-brand-game">
-                GAME
-              </span>
+            <div className="h-5 w-px bg-slate-300/60 dark:bg-slate-700/60" />
+
+            {/* 2. Property Type Dropdown */}
+            <div className="relative">
+              <button 
+                type="button" 
+                onClick={() => setOpenDropdown(prev => prev === 'type' ? null : 'type')}
+                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+              >
+                <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Property Type</span>
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activePropertyType}</span>
+                </div>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'type' ? 'rotate-180' : ''}`} />
+              </button>
+
+              {openDropdown === 'type' && (
+                <div className="villa-dropdown-menu">
+                  {['Villa', 'Penthouse', 'VIP Gaming Lounge', 'Esports Arena', 'Modern Mansion'].map(t => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => { setActivePropertyType(t); setOpenDropdown(null); }}
+                      className={`dropdown-opt ${activePropertyType === t ? 'active' : ''}`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* 3. Symmetrical, Neat 5-Day Free Trial Launch Pod: "اول تست کن" */}
-            <div className="hero-launch-card">
-              <span className="hero-launch-top-beam" aria-hidden="true" />
+            <div className="h-5 w-px bg-slate-300/60 dark:bg-slate-700/60 hidden sm:block" />
 
-              {/* Pod Header */}
-              <div className="hero-launch-header">
-                <div className="hero-launch-badge">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>اول تست کن</span>
+            {/* 3. Max Price Dropdown */}
+            <div className="relative hidden sm:block">
+              <button 
+                type="button" 
+                onClick={() => setOpenDropdown(prev => prev === 'price' ? null : 'price')}
+                className="filter-telemetry-btn flex items-center gap-1.5 text-left"
+              >
+                <DollarSign className="w-3.5 h-3.5 text-slate-500" />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Max Price</span>
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">{activeMaxPrice}</span>
                 </div>
-                <span className="hero-launch-guarantee">
-                  ⚡ ۵ روز تست کامل و بدون قید و شرط
-                </span>
-              </div>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${openDropdown === 'price' ? 'rotate-180' : ''}`} />
+              </button>
 
-              {/* Two Action Buttons Grid */}
-              <div className="hero-launch-buttons">
-                {/* Button 1: نرم افزار مدیریتی */}
-                <button
-                  type="button"
-                  onClick={() => handleTrialClick('manager')}
-                  className="hero-launch-btn btn-primary"
-                >
-                  <div className="btn-icon-wrapper">
-                    <LayoutDashboard className="w-4 h-4" />
-                  </div>
-                  <span>نرم‌افزار مدیریتی</span>
-                  <span className="btn-status-beacon beacon-green" />
-                </button>
-
-                {/* Button 2: دمو کلاینت */}
-                <button
-                  type="button"
-                  onClick={() => handleTrialClick('client')}
-                  className="hero-launch-btn"
-                >
-                  <div className="btn-icon-wrapper">
-                    <Monitor className="w-4 h-4" />
-                  </div>
-                  <span>دمو کلاینت</span>
-                  <span className="btn-status-beacon beacon-cyan" />
-                </button>
-              </div>
-
-              {/* Auth / Login Guidance Footer */}
-              <div className="hero-launch-footer">
-                <div className={`hero-auth-text ${isLoggedIn ? 'is-active' : ''}`}>
-                  {isLoggedIn ? (
-                    <>
-                      <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                      <span>حساب شما فعال است؛ آماده تست و دانلود نرم‌افزار</span>
-                    </>
-                  ) : (
-                    <>
-                      <Lock className="w-3.5 h-3.5 shrink-0" />
-                      <span>برای فعال‌سازی تست ۵ روزه، ابتدا ورود یا عضویت لازم است</span>
-                    </>
-                  )}
-                </div>
-
-                {!isLoggedIn && (
-                  <button
-                    type="button"
-                    onClick={onOpenAuthModal}
-                    className="hero-auth-link"
-                  >
-                    <span>ورود / ثبت‌نام</span>
-                    <ArrowUpLeft className="w-3 h-3" />
-                  </button>
-                )}
-              </div>
-
-              {authNotice && !isLoggedIn && (
-                <div className="mt-3 text-[11px] text-amber-300 bg-amber-950/60 border border-amber-500/40 p-2.5 rounded-xl flex items-center gap-2">
-                  <Lock className="w-3.5 h-3.5 shrink-0 text-amber-400" />
-                  <span>{authNotice}</span>
+              {openDropdown === 'price' && (
+                <div className="villa-dropdown-menu">
+                  {['$150 000', '$300 000', '$500 000', '$1 000 000+'].map(p => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => { setActiveMaxPrice(p); setOpenDropdown(null); }}
+                      className={`dropdown-opt ${activeMaxPrice === p ? 'active' : ''}`}
+                    >
+                      {p}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
           </div>
 
-          {/* Left Column: Holographic Cyber HUD & Scanner over Controller */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center relative pointer-events-none select-none min-h-[480px]">
-            {/* Cyber Scanning Laser Beam */}
-            <div className="hero-scanner-laser" aria-hidden="true" />
+          {/* Top Right: Rent Pill Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onScrollToDemo?.();
+            }}
+            className="villa-pill-btn villa-rent-btn group"
+            title="مشاهده نسخه آزمایشی و تست"
+          >
+            <span className="font-extrabold text-sm tracking-wide">Rent</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </button>
 
-            {/* Rotating Cyber HUD Rings */}
-            <div className="cyber-hud-reactor-pod">
-              <div className="cyber-ring ring-outer" />
-              <div className="cyber-ring ring-middle" />
-              <div className="cyber-ring ring-inner" />
-              <div className="cyber-reactor-core" />
-              <div className="cyber-target-crosshairs" />
-              
-              {/* Micro Telemetry HUD Floating Badges */}
-              <div className="cyber-telemetry-tag tag-top">
-                <span className="telemetry-dot" />
-                <span>OVERCLOCK // 2026</span>
-              </div>
-              <div className="cyber-telemetry-tag tag-bottom">
-                <span>AI CLOUD RELAY : 0.4ms</span>
-              </div>
-            </div>
+        </div>
 
-            {/* Floating Cyber Particle Moters */}
-            <div className="cyber-sparks-field" aria-hidden="true">
-              <span className="spark-particle p1" />
-              <span className="spark-particle p2" />
-              <span className="spark-particle p3" />
-              <span className="spark-particle p4" />
-              <span className="spark-particle p5" />
-            </div>
+        {/* =========================================================
+            MIDDLE CANVAS: BIG TYPOGRAPHY & INTRO PARAGRAPH
+            ========================================================= */}
+        <div className="villa-hero-center-content relative z-20 flex-1 px-8 sm:px-14 lg:px-20 pt-10 sm:pt-14 pb-4 flex flex-col justify-center">
+          
+          {/* Big Majestic Headline sitting directly on artwork */}
+          <div className="villa-headline-stack text-center pointer-events-none select-none">
+            <h1 className="villa-huge-title leading-[0.95] tracking-tight">
+              <span className="block font-black text-white/90 drop-shadow-md">New Way Of</span>
+              <span className="block font-black text-white/85 drop-shadow-lg">Living</span>
+            </h1>
+          </div>
+
+          {/* Elegant Floating Narrative Paragraph on Left */}
+          <div className="villa-narrative-box max-w-sm sm:max-w-md pt-4 sm:pt-6">
+            <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed drop-shadow-sm">
+              Discover extraordinary properties available for purchase or rent. Whether you're seeking a dream home or a unique investment, our curated listings offer the most exceptional estates worldwide.
+            </p>
           </div>
 
         </div>
 
-      </div>
+        {/* =========================================================
+            LEFT DOCK & SIDEBAR (ORGANIC CURVED ISLAND)
+            ========================================================= */}
+        <aside className="villa-left-sidebar absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center gap-2 py-3 px-2 rounded-full">
+          
+          {/* Upper Cluster */}
+          <div className="flex flex-col items-center gap-2">
+            
+            {/* 1. Home Button (Active) */}
+            <button
+              type="button"
+              onClick={() => setActiveNav('home')}
+              className={`sidebar-dock-btn ${activeNav === 'home' ? 'is-active' : ''}`}
+              title="Home"
+            >
+              <Home className="w-4 h-4" />
+            </button>
 
-      {/* 5-Day Free Trial Download & Activation Modal */}
-      <TrialModal
-        isOpen={trialModalOpen}
-        onClose={() => setTrialModalOpen(false)}
-        softwareType={trialSoftwareType}
-      />
+            {/* 2. Search Button */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(prev => !prev)}
+              className={`sidebar-dock-btn ${searchOpen ? 'is-active' : ''}`}
+              title="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
+            {/* 3. Grid / Dashboard */}
+            <button
+              type="button"
+              onClick={() => setActiveNav('grid')}
+              className={`sidebar-dock-btn ${activeNav === 'grid' ? 'is-active' : ''}`}
+              title="Dashboard Grid"
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+
+            {/* 4. Chat / Messages */}
+            <button
+              type="button"
+              onClick={() => {
+                setActiveNav('chat');
+                if (!isLoggedIn && onOpenAuthModal) onOpenAuthModal();
+              }}
+              className={`sidebar-dock-btn ${activeNav === 'chat' ? 'is-active' : ''}`}
+              title="Messages"
+            >
+              <MessageSquare className="w-4 h-4" />
+            </button>
+
+            {/* 5. User Profile Photo with Green Live Beacon */}
+            <div 
+              className="sidebar-avatar-pod relative cursor-pointer group"
+              onClick={() => onOpenAuthModal?.()}
+              title={isLoggedIn ? "پروفایل کاربری شما" : "ورود به حساب کاربری"}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" 
+                alt="User Profile" 
+                className="w-8 h-8 rounded-full object-cover border-2 border-white/80 shadow-sm transition-transform group-hover:scale-105"
+              />
+              <span className="avatar-online-beacon absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full" />
+            </div>
+
+            {/* 6. Notification Bell with Alert Dot */}
+            <button
+              type="button"
+              onClick={() => onOpenAuthModal?.()}
+              className="sidebar-dock-btn relative"
+              title="Notifications"
+            >
+              <Bell className="w-4 h-4" />
+              <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+            </button>
+
+          </div>
+
+          {/* Organic Inset Bridge Notch */}
+          <div className="sidebar-divider w-5 h-px bg-slate-300/40 my-1" />
+
+          {/* Lower Cluster (Settings & Theme Toggles) */}
+          <div className="flex flex-col items-center gap-2">
+            
+            {/* 7. Settings */}
+            <button
+              type="button"
+              onClick={() => onOpenOrderModal?.()}
+              className="sidebar-dock-btn"
+              title="Settings & Options"
+            >
+              <Settings className="w-4 h-4" />
+            </button>
+
+            {/* 8. Dark Mode Moon */}
+            <button
+              type="button"
+              onClick={() => { if (mode !== 'dark') toggleTheme(); }}
+              className={`sidebar-dock-btn ${mode === 'dark' ? 'is-theme-active' : ''}`}
+              title="Dark Mode"
+            >
+              <Moon className="w-4 h-4" />
+            </button>
+
+            {/* 9. Light Mode Sun */}
+            <button
+              type="button"
+              onClick={() => { if (mode !== 'light') toggleTheme(); }}
+              className={`sidebar-dock-btn ${mode === 'light' ? 'is-theme-active' : ''}`}
+              title="Light Mode"
+            >
+              <Sun className="w-4 h-4" />
+            </button>
+
+          </div>
+
+        </aside>
+
+        {/* Quick Search Popout when search clicked in sidebar */}
+        {searchOpen && (
+          <div className="search-popout-island absolute left-20 top-24 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-3 rounded-2xl shadow-xl flex items-center gap-2 border border-slate-200 dark:border-slate-800">
+            <Search className="w-4 h-4 text-slate-400" />
+            <input 
+              type="text"
+              placeholder="جستجو در املاک، ویلاها یا سیستم‌ها..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="bg-transparent text-xs text-slate-800 dark:text-slate-100 outline-none w-48 font-vazir"
+              autoFocus
+            />
+            <button onClick={() => setSearchOpen(false)} className="text-slate-400 hover:text-slate-600">
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
+        {/* =========================================================
+            BOTTOM CARDS: ORGANIC LEFT CARD & FROSTED RIGHT CARD
+            ========================================================= */}
+        <div className="villa-bottom-cards-row relative z-30 p-4 sm:p-6 lg:p-8 flex items-end justify-between gap-6 flex-wrap">
+          
+          {/* 1. Bottom Left: White Organic Card "Find The Perfect Place" */}
+          <div className="villa-bottom-left-card bg-white text-slate-900 p-6 sm:p-8 rounded-[32px] sm:rounded-[36px] max-w-sm shadow-xl flex flex-col justify-between">
+            <div className="space-y-2">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                Find The Perfect Place
+              </h3>
+              <p className="text-slate-500 text-xs sm:text-xs leading-relaxed">
+                Our platform connects you with extraordinary homes in the most sought-after locations. Start your journey to discovering the perfect match for your lifestyle.
+              </p>
+            </div>
+
+            {/* Stat Row: 10K+ Properties & Avatars */}
+            <div className="pt-6 flex items-center justify-between">
+              <div>
+                <span className="block text-2xl sm:text-3xl font-black text-slate-900 leading-none">10K+</span>
+                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Properties</span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {/* Overlapping circle property thumbnails */}
+                <div className="flex items-center -space-x-2">
+                  <img 
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=80&h=80&q=80" 
+                    alt="Property 1" 
+                    className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
+                  />
+                  <img 
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=80&h=80&q=80" 
+                    alt="Property 2" 
+                    className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
+                  />
+                  <img 
+                    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=80&h=80&q=80" 
+                    alt="Property 3" 
+                    className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm"
+                  />
+                </div>
+
+                {/* Circular Arrow Button */}
+                <button
+                  type="button"
+                  onClick={() => onScrollToDemo?.()}
+                  className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 flex items-center justify-center transition-transform hover:scale-105 shadow-sm"
+                  title="Explore All Properties"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Bottom Right: Frosted Glassmorphism Card "Lunar Oasis Villa" */}
+          <div className="villa-bottom-right-card max-w-lg w-full sm:w-[460px] p-6 sm:p-7 rounded-[32px] sm:rounded-[36px] shadow-2xl flex flex-col justify-between">
+            
+            {/* Header: Title, Pin Location & Arrow Action */}
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h4 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                  Lunar Oasis Villa
+                </h4>
+                <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 text-xs mt-1">
+                  <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                  <span>1874 Forest Haven Rd, Asheville</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => onOpenOrderModal?.()}
+                className="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-800/90 hover:bg-white text-slate-900 dark:text-white flex items-center justify-center transition-transform hover:scale-105 shadow-md shrink-0"
+                title="View Villa Details"
+              >
+                <ArrowUpRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Description */}
+            <p className="text-slate-700 dark:text-slate-200 text-xs sm:text-[13px] leading-relaxed pt-3 pb-4">
+              This futuristic villa seamlessly blends into the desert environment, offering a modern, flowing space with panoramic desert views. Its innovative design makes it a perfect luxury getaway.
+            </p>
+
+            {/* Specs Badges Row */}
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap text-slate-700 dark:text-slate-200 text-xs pb-5 border-b border-white/20 dark:border-white/10">
+              <span className="flex items-center gap-1.5">
+                <Maximize2 className="w-3.5 h-3.5 opacity-70" />
+                595m²
+              </span>
+              <span className="flex items-center gap-1.5">
+                <TreePine className="w-3.5 h-3.5 opacity-70" />
+                126m² yard
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Bed className="w-3.5 h-3.5 opacity-70" />
+                3 bedrooms
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Bath className="w-3.5 h-3.5 opacity-70" />
+                2 baths
+              </span>
+            </div>
+
+            {/* Footer Action Row: Monogram Badge & Social Counters */}
+            <div className="pt-4 flex items-center justify-between">
+              
+              {/* Monogram Brand Avatar Logo */}
+              <div 
+                className="w-12 h-12 rounded-full bg-[#1e1548] text-white font-outfit font-black text-2xl flex items-center justify-center shadow-lg border border-white/20 transition-transform hover:scale-105 cursor-pointer"
+                title="DigiGame Luxury Monogram"
+              >
+                <span className="translate-y-[-1px]">U</span>
+              </div>
+
+              {/* Action Buttons: Like, Save, Share */}
+              <div className="flex items-center gap-2 sm:gap-3">
+                
+                {/* Like Button */}
+                <button
+                  type="button"
+                  onClick={handleLikeToggle}
+                  className={`villa-action-pill ${isLiked ? 'is-liked' : ''}`}
+                >
+                  <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-500 text-rose-500' : ''}`} />
+                  <span className="font-outfit font-bold text-xs">{likeCount > 4400 ? '4.4K+' : '4.4K'}</span>
+                </button>
+
+                {/* Bookmark Button */}
+                <button
+                  type="button"
+                  onClick={handleBookmarkToggle}
+                  className={`villa-action-pill ${isBookmarked ? 'is-saved' : ''}`}
+                >
+                  <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-amber-400 text-amber-400' : ''}`} />
+                  <span className="font-outfit font-bold text-xs">{bookmarkCount}</span>
+                </button>
+
+                {/* Share Button */}
+                <button
+                  type="button"
+                  onClick={handleShare}
+                  className="villa-action-pill"
+                  title="کپی لینک اشتراک‌گذاری"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Share Feedback Toast */}
+        {showShareNotice && (
+          <div className="absolute top-20 right-8 z-50 bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 px-4 py-2 rounded-xl text-xs flex items-center gap-2 shadow-xl backdrop-blur-md">
+            <Check className="w-4 h-4 text-emerald-400" />
+            <span>لینک اختصاصی ویلا کپی شد!</span>
+          </div>
+        )}
+
+      </div>
     </section>
   );
 };
