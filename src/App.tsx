@@ -171,7 +171,7 @@ export default function App() {
             />
 
             {/* Main Public & Interactive Sections */}
-            <main className="flex-1">
+            <main className="flex-1 m-0 p-0">
           {/* Full-Page Cinematic Hero Section based on reference image */}
           <HeroSection
             onOpenOrderModal={() => handleOpenOrderModal('gold')}

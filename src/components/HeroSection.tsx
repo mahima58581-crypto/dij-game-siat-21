@@ -74,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         style={{
           backgroundImage: `url(${villaBg})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center 45%'
+          backgroundPosition: 'center top'
         }}
       >
         {/* Soft Ambient Cinematic Vignette Overlay */}
