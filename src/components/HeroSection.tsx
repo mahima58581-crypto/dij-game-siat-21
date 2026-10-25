@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowUpLeft } from 'lucide-react';
 import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
 import digigameOfficialLogo from '../assets/images/digigame_official_logo_2026.jpg';
 import ThemeToggle from './ThemeToggle';
@@ -25,11 +24,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     if (onOpenAuthModal) onOpenAuthModal();
     else if (onOpenOrderModal) onOpenOrderModal();
     else if (onNavigateToPurchase) onNavigateToPurchase('new');
-  };
-
-  const handleExploreClick = () => {
-    if (onNavigateToSection) onNavigateToSection('special-features');
-    else if (onScrollToDemo) onScrollToDemo();
   };
 
   return (
@@ -132,17 +126,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <p className="stylecraft-sub-title font-['Vazirmatn',sans-serif]">
               کنترل خودکار برق کنسول‌ها، محاسبه دقیق ثانیه‌ای و افزایش قطعی درآمد کلوپ شما.
             </p>
-
-            {/* Cyber Emerald Rectangular Action Button */}
-            <button 
-              type="button" 
-              onClick={handleExploreClick} 
-              className="stylecraft-explore-btn group"
-            >
-              <span className="stylecraft-btn-shine" aria-hidden="true" />
-              <span>مشاهده و کاوش بیشتر</span>
-              <ArrowUpLeft className="w-4 h-4" />
-            </button>
 
           </div>
 
