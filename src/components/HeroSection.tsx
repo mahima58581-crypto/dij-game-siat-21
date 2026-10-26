@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import cyberpunkGreenRoomBg from '../assets/images/cyberpunk_green_gaming_room.png';
 import digigameOfficialLogo from '../assets/images/digigame_official_logo_2026.jpg';
 import ThemeToggle from './ThemeToggle';
@@ -20,17 +20,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onNavigateToSection,
   onNavigateToPurchase
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const handleConnectClick = () => {
     if (onOpenAuthModal) onOpenAuthModal();
     else if (onOpenOrderModal) onOpenOrderModal();
@@ -51,9 +40,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="stylecraft-canvas-overlay" />
 
           {/* =========================================================
-              TOP INVERTED NOTCH NAVIGATION BAR (STICKY ON SCROLL)
+              TOP INVERTED NOTCH NAVIGATION BAR (STATIC AT TOP OF HERO)
               ========================================================= */}
-          <header className={`stylecraft-top-bar ${isScrolled ? 'is-scrolled' : ''}`} dir="ltr">
+          <header className="stylecraft-top-bar" dir="ltr">
             
             {/* Top Left Action Tab: Connect With Us Button & Light/Dark Theme Toggle */}
             <div className="stylecraft-action-tab" dir="rtl">
@@ -116,9 +105,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
           </header>
-
-          {/* Spacer to preserve natural flow while top bar is fixed */}
-          <div className="stylecraft-top-bar-spacer" aria-hidden="true" />
 
           {/* =========================================================
               CENTER HERO CONTENT (HEADLINE + SUBTITLE + EXPLORE BUTTON)
